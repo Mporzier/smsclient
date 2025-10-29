@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMS Marketing Pro - ROI Garanti</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .hero .subtitle {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            opacity: 0.95;
+        }
+        
+        .hero .roi-highlight {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin: 30px 0;
+            background: rgba(255,255,255,0.2);
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+        
+        .cta-primary {
+            background: #ff6b6b;
+            color: white;
+            padding: 18px 50px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .cta-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255,107,107,0.3);
+        }
+        
+        .stats-section {
+            background: #f8f9fa;
+            padding: 60px 20px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-number {
+            font-size: 3em;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 1.1em;
+            color: #666;
+        }
+        
+        .features-section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 50px;
+            color: #333;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .feature-card {
+            padding: 30px;
+            border-left: 4px solid #667eea;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #667eea;
+        }
+        
+        .feature-card p {
+            color: #666;
+            line-height: 1.7;
+        }
+        
+        .use-cases {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 20px;
+        }
+        
+        .use-cases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 40px auto 0;
+        }
+        
+        .use-case-item {
+            background: rgba(255,255,255,0.15);
+            padding: 25px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .use-case-item h4 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        
+        .pricing {
+            padding: 80px 20px;
+            text-align: center;
+            background: #f8f9fa;
+        }
+        
+        .price-highlight {
+            font-size: 2em;
+            color: #667eea;
+            margin: 30px 0;
+        }
+        
+        .price-value {
+            font-size: 3em;
+            font-weight: bold;
+        }
+        
+        footer {
+            background: #333;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        .conversion-banner {
+            background: #ff6b6b;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        .conversion-banner h3 {
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.2em;
+            }
+            
+            .hero .roi-highlight {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <h1>Multipliez vos ventes par SMS</h1>
+        <p class="subtitle">La plateforme de SMS marketing qui génère des résultats mesurables</p>
+        <div class="roi-highlight">
+            ROI de 5 à 10x votre investissement
+        </div>
+        <p style="font-size: 1.2em; margin-top: 20px;">97% de taux d'ouverture • Conversion 8-12% • Lu en moins de 3 minutes</p>
+        <button class="cta-primary" onclick="alert('Démo disponible bientôt!')">Démarrer gratuitement</button>
+    </section>
+
+    <section class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">97%</div>
+                <div class="stat-label">Taux d'ouverture (vs 20-30% email)</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">8-12%</div>
+                <div class="stat-label">Taux de conversion moyen</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">3 min</div>
+                <div class="stat-label">Délai moyen de lecture</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">75%</div>
+                <div class="stat-label">Des clients apprécient recevoir des SMS</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <h2 class="section-title">Fonctionnalités qui maximisent vos revenus</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>📊 Ciblage Intelligent</h3>
+                <p>Segmentez votre base et envoyez des messages personnalisés. La personnalisation augmente les résultats de +10% et multiplie le ROI par 5 à 8.</p>
+            </div>
+            <div class="feature-card">
+                <h3>⚡ Envoi Instantané ou Programmé</h3>
+                <p>Optimisez vos campagnes : mardi/jeudi 10h-12h ou 14h-16h pour un impact maximal. 95% des SMS reçus en moins de 10 secondes.</p>
+            </div>
+            <div class="feature-card">
+                <h3>💰 Coût Ultra-Compétitif</h3>
+                <p>À partir de 0,04€/SMS. Envoyez 1000 SMS pour 50€ avec un retour sur investissement exceptionnel.</p>
+            </div>
+            <div class="feature-card">
+                <h3>✅ Vérification HLR</h3>
+                <p>Vérifiez la validité des numéros avant envoi. Optimisez vos coûts et la qualité de votre base de données.</p>
+            </div>
+            <div class="feature-card">
+                <h3>📈 Analytics Temps Réel</h3>
+                <p>Suivez vos taux d'ouverture, de clics et de conversion en direct. Rapports détaillés pour chaque campagne.</p>
+            </div>
+            <div class="feature-card">
+                <h3>🔄 Import Simplifié</h3>
+                <p>Importez vos contacts via XLS ou CSV. Nettoyage automatique des doublons inclus gratuitement.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="use-cases">
+        <h2 class="section-title" style="color: white;">11 stratégies pour booster votre CA</h2>
+        <div class="use-cases-grid">
+            <div class="use-case-item">
+                <h4>🎯 Promotions Flash</h4>
+                <p>Soldes, Black Friday, ventes privées : taux de conversion jusqu'à 12%</p>
+            </div>
+            <div class="use-case-item">
+                <h4>🎂 SMS Anniversaire</h4>
+                <p>Offre personnalisée qui fidélise et convertit</p>
+            </div>
+            <div class="use-case-item">
+                <h4>🛒 Panier Abandonné</h4>
+                <p>Récupérez jusqu'à 30% des ventes perdues</p>
+            </div>
+            <div class="use-case-item">
+                <h4>📦 Suivi de Commande</h4>
+                <p>Notifications transactionnelles valorisant l'expérience client</p>
+            </div>
+            <div class="use-case-item">
+                <h4>💎 Programme VIP</h4>
+                <p>Invitations exclusives pour vos meilleurs clients</p>
+            </div>
+            <div class="use-case-item">
+                <h4>🎁 Coupons SMS</h4>
+                <p>Utilisés 10x plus souvent que par email</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="conversion-banner">
+        <h3>48% des Français préfèrent le SMS pour recevoir des offres</h3>
+        <p style="font-size: 1.3em; margin: 20px 0;">14,2 milliards de SMS marketing envoyés en France en 2024 (+6,4% vs 2023)</p>
+        <button class="cta-primary" style="background: white; color: #ff6b6b;" onclick="alert('Inscription disponible bientôt!')">Essai gratuit 14 jours</button>
+    </section>
+
+    <section class="pricing">
+        <h2 class="section-title">Calculez votre retour sur investissement</h2>
+        
+        <div style="max-width: 800px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+            <div style="margin-bottom: 40px;">
+                <label style="display: block; font-size: 1.2em; margin-bottom: 15px; color: #333;">Budget SMS : <strong id="budgetDisplay">250€</strong></label>
+                <input type="range" id="budgetSlider" min="50" max="5000" value="250" step="50" style="width: 100%; height: 8px; border-radius: 5px; outline: none; background: linear-gradient(to right, #667eea 0%, #764ba2 100%);">
+                <div style="display: flex; justify-content: space-between; margin-top: 10px; color: #999;">
+                    <span>50€</span>
+                    <span>5000€</span>
+                </div>
+            </div>
+            
+            <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px; border-radius: 10px; color: white; margin-bottom: 30px;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; text-align: center;">
+                    <div>
+                        <div style="font-size: 0.9em; opacity: 0.9;">Nombre de SMS</div>
+                        <div style="font-size: 2em; font-weight: bold;" id="smsCount">5000</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 0.9em; opacity: 0.9;">Taux conversion (10%)</div>
+                        <div style="font-size: 2em; font-weight: bold;" id="conversions">500</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 0.9em; opacity: 0.9;">CA moyen/vente: 35€</div>
+                        <div style="font-size: 2em; font-weight: bold;" id="revenue">17 500€</div>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 8px;">
+                        <div style="font-size: 0.9em; opacity: 0.9;">ROI Net</div>
+                        <div style="font-size: 2.5em; font-weight: bold; color: #ffd700;" id="roi">6900%</div>
+                    </div>
+                </div>
+            </div>
+            
+            <p style="text-align: center; color: #666; font-size: 0.95em;">* Calculs basés sur taux de conversion moyen de 10% et panier moyen de 35€</p>
+        </div>
+
+        <div style="margin-top: 60px;">
+            <h3 style="font-size: 1.8em; margin-bottom: 30px;">Offres</h3>
+            <ul style="list-style: none; font-size: 1.1em; color: #666; max-width: 500px; margin: 0 auto; text-align: left;">
+                <li style="padding: 10px 0;">✓ Envois illimités sans restriction de volume</li>
+                <li style="padding: 10px 0;">✓ Personnalisation avancée incluse</li>
+                <li style="padding: 10px 0;">✓ Support client dédié</li>
+                <li style="padding: 10px 0;">✓ Conformité RGPD garantie</li>
+                <li style="padding: 10px 0;">✓ API & intégrations disponibles</li>
+            </ul>
+            <button class="cta-primary" style="margin-top: 40px;" onclick="alert('Contact disponible bientôt!')">Demander une démo</button>
+        </div>
+    </section>
+
+    <section style="padding: 80px 20px; background: white;">
+        <h2 class="section-title">Générateur de SMS par IA</h2>
+        <p style="text-align: center; color: #666; margin-bottom: 40px; font-size: 1.1em;">Créez des messages percutants en quelques clics</p>
+        
+        <div style="max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+            <div style="background: #f8f9fa; padding: 30px; border-radius: 15px;">
+                <h3 style="margin-bottom: 25px; color: #667eea;">Paramètres du message</h3>
+                
+                <div style="margin-bottom: 20px;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 600;">Type de campagne</label>
+                    <select id="campaignType" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 1em;">
+                        <option value="promo">Promotion / Soldes</option>
+                        <option value="birthday">Anniversaire client</option>
+                        <option value="cart">Panier abandonné</option>
+                        <option value="vip">Invitation VIP</option>
+                        <option value="newproduct">Nouveau produit</option>
+                    </select>
+                </div>
+                
+                <div style="margin-bottom: 20px;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 600;">Ton du message</label>
+                    <select id="tone" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 1em;">
+                        <option value="friendly">Amical</option>
+                        <option value="professional">Professionnel</option>
+                        <option value="urgent">Urgent</option>
+                        <option value="exclusive">Exclusif</option>
+                    </select>
+                </div>
+                
+                <div style="margin-bottom: 20px;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 600;">Inclure un code promo</label>
+                    <input type="checkbox" id="includePromo" checked style="width: 20px; height: 20px; cursor: pointer;">
+                </div>
+                
+                <button onclick="generateSMS()" style="width: 100%; background: #667eea; color: white; padding: 15px; border: none; border-radius: 8px; font-size: 1.1em; font-weight: 600; cursor: pointer; transition: background 0.3s;">
+                    ✨ Générer le SMS
+                </button>
+            </div>
+            
+            <div>
+                <div style="background: #f8f9fa; padding: 30px; border-radius: 15px; border: 2px solid #667eea;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                        <h3 style="color: #667eea;">Prévisualisation</h3>
+                        <span id="charCount" style="color: #999; font-size: 0.9em;">0/160 caractères</span>
+                    </div>
+                    
+                    <div style="background: white; padding: 20px; border-radius: 10px; min-height: 150px; border: 1px solid #ddd; position: relative;">
+                        <div style="position: absolute; top: 10px; right: 10px; background: #667eea; color: white; padding: 4px 8px; border-radius: 5px; font-size: 0.8em;">SMS</div>
+                        <p id="smsPreview" style="font-family: 'Courier New', monospace; line-height: 1.6; color: #333; white-space: pre-wrap;">
+Cliquez sur "Générer le SMS" pour voir votre message...
+                        </p>
+                    </div>
+                    
+                    <div style="margin-top: 20px; padding: 15px; background: #e3f2fd; border-radius: 8px; border-left: 4px solid #2196f3;">
+                        <p style="margin: 0; font-size: 0.95em; color: #1976d2;">
+                            <strong>💡 Astuce :</strong> Les SMS de moins de 160 caractères ont un meilleur taux d'engagement.
+                        </p>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 20px; text-align: center;">
+                    <button onclick="copySMS()" style="background: #ff6b6b; color: white; padding: 12px 30px; border: none; border-radius: 8px; font-size: 1em; font-weight: 600; cursor: pointer; margin-right: 10px;">
+                        📋 Copier le message
+                    </button>
+                    <button onclick="generateSMS()" style="background: white; color: #667eea; padding: 12px 30px; border: 2px solid #667eea; border-radius: 8px; font-size: 1em; font-weight: 600; cursor: pointer;">
+                        🔄 Régénérer
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // ROI Calculator
+        const budgetSlider = document.getElementById('budgetSlider');
+        const budgetDisplay = document.getElementById('budgetDisplay');
+        const smsCount = document.getElementById('smsCount');
+        const conversions = document.getElementById('conversions');
+        const revenue = document.getElementById('revenue');
+        const roi = document.getElementById('roi');
+        
+        budgetSlider.addEventListener('input', function() {
+            const budget = parseInt(this.value);
+            const smsNumber = Math.floor(budget / 0.05);
+            const conversionNumber = Math.floor(smsNumber * 0.10);
+            const revenueAmount = conversionNumber * 35;
+            const roiPercent = Math.floor(((revenueAmount - budget) / budget) * 100);
+            
+            budgetDisplay.textContent = budget + '€';
+            smsCount.textContent = smsNumber.toLocaleString();
+            conversions.textContent = conversionNumber.toLocaleString();
+            revenue.textContent = revenueAmount.toLocaleString() + '€';
+            roi.textContent = roiPercent.toLocaleString() + '%';
+        });
+        
+        // SMS Generator
+        const smsTemplates = {
+            promo: {
+                friendly: [
+                    "🎉 Hey {prenom} ! C'est le moment parfait : -30% sur TOUT le site jusqu'à dimanche avec le code {code}. On t'attend ! 🛍️",
+                    "Salut {prenom} ! Flash sale pour toi : -25% sur ta sélection préférée 💫 Code: {code} (valable 48h)",
+                    "Hello {prenom} ! Weekend exceptionnel : -30% dès maintenant ! Code {code}. Vite, stocks limités 🚀"
+                ],
+                professional: [
+                    "Bonjour {prenom}, profitez de notre offre exclusive : -30% sur l'ensemble de nos produits avec le code {code}. Valable jusqu'au {date}.",
+                    "{prenom}, offre spéciale clients : réduction de 25% sur votre prochaine commande. Code: {code}",
+                    "Offre réservée : -30% pour nos clients privilégiés. Votre code: {code}. Valable ce weekend uniquement."
+                ],
+                urgent: [
+                    "⚡ DERNIÈRES HEURES {prenom} ! -40% sur tout avec {code}. Plus que 3h ! Ne passez pas à côté 🔥",
+                    "🚨 ATTENTION {prenom} ! Flash sale -35% expire dans 2h. Code: {code}. C'est MAINTENANT !",
+                    "⏰ Plus que quelques heures ! -30% sur votre wishlist avec {code}. Dépêchez-vous {prenom} !"
+                ],
+                exclusive: [
+                    "✨ Accès VIP {prenom} : vente privée -40% avant tout le monde. Code exclusif: {code}",
+                    "{prenom}, vous êtes invité(e) à notre vente privée : -35% sur les nouveautés. Code: {code} (24h seulement)",
+                    "Privilège client {prenom} : preview sale -30% rien que pour vous. {code} valable 48h 💎"
+                ]
+            },
+            birthday: {
+                friendly: [
+                    "🎂 Joyeux anniversaire {prenom} ! On te gâte : -25% + livraison offerte avec ton code {code}. Profites-en ! 🎁",
+                    "Happy Birthday {prenom} ! 🎉 Ton cadeau : 30€ offerts sur ta prochaine commande. Code: {code}",
+                    "C'est ton jour {prenom} ! 🥳 -30% sur tout + un petit cadeau surprise avec {code} 🎁"
+                ],
+                professional: [
+                    "Joyeux anniversaire {prenom}. Nous vous offrons 25% de réduction sur votre commande anniversaire. Code: {code}",
+                    "Bon anniversaire {prenom}. Profitez de votre remise spéciale de 30€. Code personnel: {code}",
+                    "Anniversaire client : {prenom}, recevez votre réduction exclusive de 25%. Code: {code}"
+                ],
+                urgent: [
+                    "🎂 C'est VOTRE jour {prenom} ! -30% expire ce soir ! Code: {code}. Foncez ! 🎁",
+                    "Anniversaire flash {prenom} ! -35% mais seulement aujourd'hui ! {code} 🎉",
+                    "Dernier jour pour profiter de votre cadeau anniv {prenom} ! -30% avec {code} ⏰"
+                ],
+                exclusive: [
+                    "Joyeux anniversaire {prenom} 🎂 Votre cadeau VIP : -40% + shopping privé sur RDV. Code: {code}",
+                    "Anniversaire privilège {prenom} : accès privé + 50€ offerts. Code exclusif: {code} 💎",
+                    "{prenom}, célébrez en VIP : -35% + cadeau surprise en boutique. Code: {code} ✨"
+                ]
+            },
+            cart: {
+                friendly: [
+                    "Hey {prenom}, tu as oublié quelque chose ! 😊 -15% sur ton panier avec {code} si tu finalises maintenant 🛒",
+                    "Coucou {prenom} ! Ton panier t'attend toujours... On t'offre -20% pour te motiver ? Code: {code} 💙",
+                    "{prenom}, tes articles vont bientôt partir ! -15% pour toi aujourd'hui avec {code} 🎯"
+                ],
+                professional: [
+                    "Bonjour {prenom}, finalisez votre commande avec -15% supplémentaires. Code: {code} (valable 24h)",
+                    "{prenom}, vos articles sont réservés. Bénéficiez de -20% pour finaliser : {code}",
+                    "Rappel {prenom} : votre panier vous attend. Profitez de -15% avec le code {code}"
+                ],
+                urgent: [
+                    "⚠️ {prenom}, vos articles partent vite ! -20% maintenant avec {code}. Plus que 2h ! 🔥",
+                    "ALERTE {prenom} ! Stock limité sur votre panier. Finalisez avec -15% : {code} ⏰",
+                    "⏰ Dernière chance {prenom} ! -20% sur votre panier expire dans 1h. Code: {code}"
+                ],
+                exclusive: [
+                    "Privilège client {prenom} : -25% exclusif sur votre sélection. Code VIP: {code} (48h)",
+                    "{prenom}, offre spéciale panier : -30% réservé à nos meilleurs clients. Code: {code} 💎",
+                    "Attention VIP {prenom} : -25% sur votre wishlist + livraison express offerte. {code} ✨"
+                ]
+            },
+            vip: {
+                friendly: [
+                    "✨ {prenom}, sois parmi les premiers ! Vente privée demain 18h. RSVP avec {code} 🎊",
+                    "Hey {prenom} ! Invit' exclusive : soirée shopping privée jeudi 19h. Ton pass: {code} 🥂",
+                    "{prenom}, rendez-vous secret : preview nouvelle collection samedi. Code d'accès: {code} 💫"
+                ],
+                professional: [
+                    "{prenom}, vous êtes invité(e) à notre événement VIP le {date}. Code d'accès: {code}",
+                    "Invitation privilège {prenom} : vente privée réservée. Accès avec le code: {code}",
+                    "Événement clients premium {prenom}. Présentation exclusive {date}. Code: {code}"
+                ],
+                urgent: [
+                    "🔥 MAINTENANT {prenom} ! Vente VIP démarre dans 1h ! Accès prioritaire: {code}",
+                    "⚡ {prenom}, places limitées ! Événement exclusif ce soir 19h. RSVP rapide: {code}",
+                    "DERNIERS ACCÈS {prenom} ! Event privé dans 2h. Réservez avec {code} ⏰"
+                ],
+                exclusive: [
+                    "💎 Privilège Diamond {prenom} : preview collection + champagne samedi. Pass: {code}",
+                    "{prenom}, expérience VIP ultime : personal shopper + cocktail. Code prestige: {code}",
+                    "Invitation Platinum {prenom} : soirée privée exceptionnelle {date}. Code: {code} ✨"
+                ]
+            },
+            newproduct: {
+                friendly: [
+                    "🆕 {prenom}, c'est tout frais ! Découvre notre nouvelle collection en avant-première avec {code} (-20%) 🎨",
+                    "Hey {prenom} ! Du neuf pour toi : nouvelle gamme dispo + -15% pour les premiers. Code: {code} 🌟",
+                    "Psst {prenom} ! En exclu pour toi : nouveautés just dropped ! -20% avec {code} 🔥"
+                ],
+                professional: [
+                    "Nouveauté {prenom} : découvrez notre dernière collection avec -15% d'avantage. Code: {code}",
+                    "{prenom}, avant-première : nouvelle gamme disponible. Réduction lancement: {code}",
+                    "Lancement produit {prenom} : -20% sur les nouveautés avec le code {code}"
+                ],
+                urgent: [
+                    "🚨 NOUVEAU {prenom} ! Lancement exclusif MAINTENANT ! -25% premières 24h. Code: {code} ⚡",
+                    "⏰ {prenom}, nouveauté en stock limité ! -20% mais plus pour longtemps. {code} 🔥",
+                    "ALERTE {prenom} ! Drop surprise + -25% early bird. Code: {code}. Vite ! ⚡"
+                ],
+                exclusive: [
+                    "✨ Preview VIP {prenom} : nouvelle collection avant tout le monde. -30% privilège: {code}",
+                    "{prenom}, accès anticipé : nouveautés + -25% réservé aux VIP. Code: {code} 💎",
+                    "Avant-première prestige {prenom} : découvrez en premier + -30%. Code exclusif: {code}"
+                ]
+            }
+        };
+        
+        function generateSMS() {
+            const campaignType = document.getElementById('campaignType').value;
+            const tone = document.getElementById('tone').value;
+            const includePromo = document.getElementById('includePromo').checked;
+            
+            const templates = smsTemplates[campaignType][tone];
+            const template = templates[Math.floor(Math.random() * templates.length)];
+            
+            let sms = template
+                .replace('{prenom}', 'Marie')
+                .replace('{date}', 'dimanche')
+                .replace('{code}', includePromo ? 'PROMO30' : '');
+            
+            if (!includePromo) {
+                sms = sms.replace(/avec le code [A-Z0-9]+/gi, '')
+                          .replace(/Code[: ]*[A-Z0-9]+/gi, '')
+                          .replace(/\{code\}/g, '')
+                          .replace(/  +/g, ' ')
+                          .trim();
+            }
+            
+            document.getElementById('smsPreview').textContent = sms;
+            document.getElementById('charCount').textContent = sms.length + '/160 caractères';
+        }
+        
+        function copySMS() {
+            const smsText = document.getElementById('smsPreview').textContent;
+            navigator.clipboard.writeText(smsText).then(() => {
+                alert('SMS copié dans le presse-papier ! ✓');
+            });
+        }
+        
+        // Generate initial SMS
+        window.addEventListener('load', generateSMS);
+    </script>
+
+    <footer>
+        <p>&copy; 2025 SMS Marketing Pro - Tous droits réservés</p>
+        <p style="margin-top: 10px; font-size: 0.9em;">Conforme RGPD • Hébergement France • Support 7j/7</p>
+    </footer>
+</body>
+</html>
