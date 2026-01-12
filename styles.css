@@ -136,12 +136,38 @@ html {
     }
 }
 
-/* Amélioration de la fluidité des hovers */
+/* Optimisations GPU et performance */
 .feature-card,
 .use-case-item,
 .generator-panel,
-.stat-card {
+.stat-card,
+.carousel-track,
+.scroll-reveal,
+.scroll-reveal-left,
+.scroll-reveal-right,
+.scroll-reveal-scale {
+    will-change: transform, opacity;
+    transform: translateZ(0); /* Forcer l'accélération GPU */
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+/* Optimiser les éléments animés */
+.hero::before,
+.stats-section::before,
+.features-section::before,
+.use-cases::before,
+.pricing::before {
     will-change: transform;
+    transform: translateZ(0);
+}
+
+/* Réduire will-change après animation */
+.scroll-reveal.revealed,
+.scroll-reveal-left.revealed,
+.scroll-reveal-right.revealed,
+.scroll-reveal-scale.revealed {
+    will-change: auto;
 }
 
 /* Menu burger mobile */
@@ -404,6 +430,21 @@ html {
     .section-transition {
         height: 40px;
     }
+}
+
+/* Optimisation du rendu des sections */
+section {
+    contain: layout style paint;
+}
+
+/* Optimisation pour les grandes sections */
+.stats-section,
+.features-section,
+.use-cases,
+.pricing,
+.sms-generator {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 600px; /* Estimation de hauteur */
 }
 
 /* Optimisation des performances pour les animations */

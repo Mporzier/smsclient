@@ -397,14 +397,17 @@ function updateScrollProgress(progressBar) {
 function initScrollAnimations() {
     // Ajuster les options selon l'appareil
     const observerOptions = {
-        threshold: isMobile() ? 0.1 : 0.15,
-        rootMargin: isMobile() ? '0px 0px -50px 0px' : '0px 0px -100px 0px'
+        threshold: isMobile() ? 0.05 : 0.1, // Réduit pour commencer plus tôt
+        rootMargin: isMobile() ? '0px 0px -30px 0px' : '0px 0px -80px 0px'
     };
     
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('revealed');
+                // Ajouter un petit délai pour éviter trop d'animations simultanées
+                requestAnimationFrame(() => {
+                    entry.target.classList.add('revealed');
+                });
                 // Une fois révélé, on peut arrêter d'observer cet élément
                 observer.unobserve(entry.target);
             }
@@ -416,7 +419,13 @@ function initScrollAnimations() {
         '.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right, .scroll-reveal-scale'
     );
     
-    revealElements.forEach(el => observer.observe(el));
+    // Observer progressivement pour éviter la surcharge initiale
+    revealElements.forEach((el, index) => {
+        // Petit délai entre chaque observation
+        setTimeout(() => {
+            observer.observe(el);
+        }, index * 10); // 10ms entre chaque
+    });
 }
 
 // Effet parallax subtil sur les éléments de fond (désactivé sur mobile)
@@ -428,21 +437,54 @@ function initParallax() {
     
     const parallaxElements = document.querySelectorAll('.hero::before, .stats-section::before, .features-section::before, .use-cases::before, .pricing::before');
     
+    // Utiliser Intersection Observer pour n'animer que les éléments visibles
+    const observerOptions = {
+        threshold: 0,
+        rootMargin: '100px'
+    };
+    
+    const visibleSections = new Set();
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const beforeElement = entry.target.querySelector('::before') || entry.target;
+            if (entry.isIntersecting) {
+                visibleSections.add(entry.target);
+            } else {
+                visibleSections.delete(entry.target);
+            }
+        });
+    }, observerOptions);
+    
+    // Observer les sections parentes
+    parallaxElements.forEach(el => {
+        const section = el.parentElement;
+        if (section) {
+            observer.observe(section);
+        }
+    });
+    
     let ticking = false;
+    let lastScrollPos = 0;
     
     window.addEventListener('scroll', () => {
+        const currentScrollPos = window.pageYOffset;
+        
+        // N'animer que si le scroll a changé significativement (throttling)
+        if (Math.abs(currentScrollPos - lastScrollPos) < 5) {
+            return;
+        }
+        
+        lastScrollPos = currentScrollPos;
+        
         if (!ticking) {
             window.requestAnimationFrame(() => {
-                const scrolled = window.pageYOffset;
-                
-                parallaxElements.forEach((el, index) => {
+                // Animer seulement les sections visibles
+                parallaxElements.forEach((el) => {
                     const section = el.parentElement;
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.offsetHeight;
-                    
-                    // Calculer si la section est visible
-                    if (scrolled + window.innerHeight > sectionTop && scrolled < sectionTop + sectionHeight) {
-                        const offset = (scrolled - sectionTop) * 0.3;
+                    if (visibleSections.has(section)) {
+                        const sectionTop = section.offsetTop;
+                        const offset = (currentScrollPos - sectionTop) * 0.2; // Réduit de 0.3 à 0.2
                         el.style.transform = `translateY(${offset}px) translateY(-50%)`;
                     }
                 });
@@ -482,33 +524,10 @@ function animateStatsOnScroll() {
     observer.observe(statsSection);
 }
 
-// Animation du header au scroll et gestion du bouton back-to-top
+// Animation du header - maintenant géré dans initOptimizedScrollHandler
+// Cette fonction est conservée pour compatibilité mais ne fait plus rien
 function animateHeaderOnScroll() {
-    const header = document.querySelector('.main-header');
-    const backToTopBtn = document.querySelector('.back-to-top');
-    let lastScroll = 0;
-    
-    window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
-        
-        // Animation du header
-        if (currentScroll > 100) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-        
-        // Afficher/masquer le bouton back-to-top
-        if (backToTopBtn) {
-            if (currentScroll > 500) {
-                backToTopBtn.classList.add('visible');
-            } else {
-                backToTopBtn.classList.remove('visible');
-            }
-        }
-        
-        lastScroll = currentScroll;
-    }, { passive: true });
+    // Déprécié - Géré par initOptimizedScrollHandler
 }
 
 // Animation pour les transitions entre sections
@@ -574,31 +593,98 @@ function optimizeMobileScroll() {
     }
 }
 
+// Gestionnaire de scroll unique et optimisé
+function initOptimizedScrollHandler() {
+    const progressBar = createScrollProgress();
+    const header = document.querySelector('.main-header');
+    const backToTopBtn = document.querySelector('.back-to-top');
+    
+    let ticking = false;
+    let lastKnownScrollPosition = 0;
+    
+    // Fonction unique pour tous les traitements de scroll
+    function handleScroll(scrollPos) {
+        // Barre de progression
+        updateScrollProgress(progressBar);
+        
+        // Header
+        if (scrollPos > 100) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+        
+        // Bouton back-to-top
+        if (backToTopBtn) {
+            if (scrollPos > 500) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        }
+    }
+    
+    // Event listener optimisé avec requestAnimationFrame
+    window.addEventListener('scroll', () => {
+        lastKnownScrollPosition = window.pageYOffset;
+        
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                handleScroll(lastKnownScrollPosition);
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }, { passive: true });
+}
+
 // Initialiser toutes les animations au chargement
 function initAllScrollAnimations() {
-    // Créer et initialiser la barre de progression
-    const progressBar = createScrollProgress();
-    
-    // Mettre à jour la barre lors du scroll
-    window.addEventListener('scroll', () => {
-        updateScrollProgress(progressBar);
-    }, { passive: true });
+    // Utiliser le gestionnaire de scroll optimisé
+    initOptimizedScrollHandler();
     
     // Initialiser les animations
     initScrollAnimations();
-    initParallax();
+    
+    // Parallax seulement sur desktop
+    if (!isMobile()) {
+        initParallax();
+    }
+    
     animateStatsOnScroll();
-    animateHeaderOnScroll();
     animateSectionTransitions();
     handleResize();
     optimizeMobileScroll();
 }
 
-// Attendre que tout soit chargé avant d'initialiser
-window.addEventListener('load', () => {
-    initCarousel();
-    initAllScrollAnimations();
+// Initialisation progressive pour de meilleures performances
+window.addEventListener('DOMContentLoaded', () => {
+    // Initialiser les éléments critiques immédiatement
     initMobileMenu();
+    initOptimizedScrollHandler();
+    
+    // Initialiser les animations après un court délai
+    setTimeout(() => {
+        initScrollAnimations();
+        animateStatsOnScroll();
+        animateSectionTransitions();
+        optimizeMobileScroll();
+    }, 100);
+    
+    // Initialiser le parallax (desktop uniquement) après les animations
+    if (!isMobile()) {
+        setTimeout(() => {
+            initParallax();
+        }, 300);
+    }
+    
+    // Initialiser le carousel en dernier (chargement différé)
+    setTimeout(() => {
+        initCarousel();
+    }, 500);
+    
+    // Gestion du redimensionnement
+    handleResize();
 });
 
 function initCarousel() {
