@@ -201,12 +201,30 @@ function sendSMS() {
 // Fonction pour scroller vers le générateur de SMS
 function scrollToGenerator() {
     const generatorSection = document.querySelector('.sms-generator');
-    if (generatorSection) {
-        generatorSection.scrollIntoView({ 
-            behavior: 'smooth', 
-            block: 'center' 
-        });
+    if (!generatorSection) return;
+    
+    const isMobileView = window.innerWidth <= 768;
+    const header = document.querySelector('.main-header');
+    const headerHeight = header ? header.offsetHeight : 0;
+    
+    // Position de la section
+    const sectionTop = generatorSection.getBoundingClientRect().top + window.pageYOffset;
+    
+    // Sur mobile : positionner en haut avec offset pour le header
+    // Sur desktop : centrer la section
+    let scrollPosition;
+    if (isMobileView) {
+        scrollPosition = sectionTop - headerHeight - 20; // 20px de marge
+    } else {
+        const windowHeight = window.innerHeight;
+        const sectionHeight = generatorSection.offsetHeight;
+        scrollPosition = sectionTop - (windowHeight / 2) + (sectionHeight / 2);
     }
+    
+    window.scrollTo({
+        top: scrollPosition,
+        behavior: 'smooth'
+    });
 }
 
 // Fonction pour retourner en haut
@@ -217,7 +235,147 @@ function scrollToTop() {
     });
 }
 
+// Gestion du menu mobile
+function toggleMobileMenu(event) {
+    // Empêcher la propagation de l'événement
+    if (event) {
+        event.stopPropagation();
+        event.preventDefault();
+    }
+    
+    const nav = document.querySelector('.header-nav');
+    const toggle = document.querySelector('.mobile-menu-toggle');
+    const overlay = document.querySelector('.mobile-menu-overlay');
+    
+    const isActive = nav.classList.contains('active');
+    
+    if (isActive) {
+        closeMobileMenu();
+    } else {
+        openMobileMenu();
+    }
+}
+
+function openMobileMenu() {
+    const nav = document.querySelector('.header-nav');
+    const toggle = document.querySelector('.mobile-menu-toggle');
+    const overlay = document.querySelector('.mobile-menu-overlay');
+    
+    nav.classList.add('active');
+    toggle.classList.add('active');
+    overlay.classList.add('active');
+    toggle.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+    
+    // Ajouter listener pour la touche Escape
+    document.addEventListener('keydown', handleEscapeKey);
+}
+
+function closeMobileMenu(event) {
+    // Empêcher la propagation de l'événement si présent
+    if (event) {
+        event.stopPropagation();
+    }
+    
+    const nav = document.querySelector('.header-nav');
+    const toggle = document.querySelector('.mobile-menu-toggle');
+    const overlay = document.querySelector('.mobile-menu-overlay');
+    
+    if (!nav || !toggle || !overlay) return;
+    
+    nav.classList.remove('active');
+    toggle.classList.remove('active');
+    overlay.classList.remove('active');
+    toggle.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+    
+    // Retirer listener Escape
+    document.removeEventListener('keydown', handleEscapeKey);
+}
+
+function handleEscapeKey(event) {
+    if (event.key === 'Escape') {
+        closeMobileMenu();
+    }
+}
+
+// Fonction pour gérer le scroll avec offset pour le header fixe
+function scrollToSection(sectionId) {
+    const section = document.querySelector(sectionId);
+    if (!section) return;
+    
+    const isMobileView = window.innerWidth <= 768;
+    const headerHeight = document.querySelector('.main-header').offsetHeight;
+    const extraOffset = 20; // Marge supplémentaire
+    
+    // Position de la section
+    const sectionTop = section.getBoundingClientRect().top + window.pageYOffset;
+    
+    // Calculer la position finale
+    const scrollPosition = isMobileView 
+        ? sectionTop - headerHeight - extraOffset 
+        : sectionTop - headerHeight;
+    
+    window.scrollTo({
+        top: scrollPosition,
+        behavior: 'smooth'
+    });
+}
+
+// Initialiser la gestion du menu mobile
+function initMobileMenu() {
+    const toggle = document.querySelector('.mobile-menu-toggle');
+    const overlay = document.querySelector('.mobile-menu-overlay');
+    const navLinks = document.querySelectorAll('.header-nav a');
+    
+    // Ajouter listener au bouton toggle
+    if (toggle) {
+        toggle.addEventListener('click', toggleMobileMenu);
+    }
+    
+    // Fermer le menu au clic sur l'overlay
+    if (overlay) {
+        overlay.addEventListener('click', (e) => {
+            e.stopPropagation();
+            closeMobileMenu();
+        });
+    }
+    
+    // Fermer le menu au clic sur un lien de navigation
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            
+            // Si c'est une ancre interne
+            if (href && href.startsWith('#')) {
+                e.preventDefault();
+                
+                // Fermer le menu d'abord
+                closeMobileMenu();
+                
+                // Puis scroller avec un délai pour permettre la fermeture du menu
+                setTimeout(() => {
+                    scrollToSection(href);
+                }, 300);
+            }
+        });
+    });
+}
+
 // ==================== ANIMATIONS DE SCROLL ====================
+
+// Détection mobile
+function isMobile() {
+    return window.innerWidth <= 768 || 
+           /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+
+// Détection tactile
+function isTouchDevice() {
+    return (('ontouchstart' in window) ||
+            (navigator.maxTouchPoints > 0) ||
+            (navigator.msMaxTouchPoints > 0));
+}
 
 // Créer la barre de progression
 function createScrollProgress() {
@@ -237,9 +395,10 @@ function updateScrollProgress(progressBar) {
 
 // Intersection Observer pour les animations au scroll
 function initScrollAnimations() {
+    // Ajuster les options selon l'appareil
     const observerOptions = {
-        threshold: 0.15,
-        rootMargin: '0px 0px -100px 0px'
+        threshold: isMobile() ? 0.1 : 0.15,
+        rootMargin: isMobile() ? '0px 0px -50px 0px' : '0px 0px -100px 0px'
     };
     
     const observer = new IntersectionObserver((entries) => {
@@ -260,25 +419,40 @@ function initScrollAnimations() {
     revealElements.forEach(el => observer.observe(el));
 }
 
-// Effet parallax subtil sur les éléments de fond
+// Effet parallax subtil sur les éléments de fond (désactivé sur mobile)
 function initParallax() {
+    // Désactiver le parallax sur mobile pour de meilleures performances
+    if (isMobile()) {
+        return;
+    }
+    
     const parallaxElements = document.querySelectorAll('.hero::before, .stats-section::before, .features-section::before, .use-cases::before, .pricing::before');
     
+    let ticking = false;
+    
     window.addEventListener('scroll', () => {
-        const scrolled = window.pageYOffset;
-        
-        parallaxElements.forEach((el, index) => {
-            const section = el.parentElement;
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                const scrolled = window.pageYOffset;
+                
+                parallaxElements.forEach((el, index) => {
+                    const section = el.parentElement;
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    
+                    // Calculer si la section est visible
+                    if (scrolled + window.innerHeight > sectionTop && scrolled < sectionTop + sectionHeight) {
+                        const offset = (scrolled - sectionTop) * 0.3;
+                        el.style.transform = `translateY(${offset}px) translateY(-50%)`;
+                    }
+                });
+                
+                ticking = false;
+            });
             
-            // Calculer si la section est visible
-            if (scrolled + window.innerHeight > sectionTop && scrolled < sectionTop + sectionHeight) {
-                const offset = (scrolled - sectionTop) * 0.3;
-                el.style.transform = `translateY(${offset}px) translateY(-50%)`;
-            }
-        });
-    });
+            ticking = true;
+        }
+    }, { passive: true });
 }
 
 // Animation fluide pour les stats au scroll
@@ -356,6 +530,50 @@ function animateSectionTransitions() {
     });
 }
 
+// Gestion du redimensionnement
+function handleResize() {
+    let resizeTimer;
+    let lastWidth = window.innerWidth;
+    
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            const currentWidth = window.innerWidth;
+            
+            // Réinitialiser certaines animations si changement significatif
+            if (Math.abs(currentWidth - lastWidth) > 100) {
+                lastWidth = currentWidth;
+                
+                // Recalculer les positions du carrousel
+                if (typeof updateCarousel === 'function') {
+                    updateCarousel(false);
+                }
+            }
+        }, 250);
+    }, { passive: true });
+}
+
+// Optimiser le scroll sur mobile
+function optimizeMobileScroll() {
+    if (isMobile() && isTouchDevice()) {
+        // Améliorer la fluidité du scroll sur iOS
+        document.body.style.webkitOverflowScrolling = 'touch';
+        
+        // S'assurer que les inputs ont la bonne taille de font (16px minimum)
+        // pour éviter le zoom automatique sur iOS
+        const inputs = document.querySelectorAll('input:not([type="range"]), select, textarea');
+        inputs.forEach(input => {
+            const computedStyle = window.getComputedStyle(input);
+            const fontSize = parseFloat(computedStyle.fontSize);
+            
+            // Si la taille de police est inférieure à 16px, la forcer à 16px
+            if (fontSize < 16) {
+                input.style.fontSize = '16px';
+            }
+        });
+    }
+}
+
 // Initialiser toutes les animations au chargement
 function initAllScrollAnimations() {
     // Créer et initialiser la barre de progression
@@ -372,12 +590,15 @@ function initAllScrollAnimations() {
     animateStatsOnScroll();
     animateHeaderOnScroll();
     animateSectionTransitions();
+    handleResize();
+    optimizeMobileScroll();
 }
 
 // Attendre que tout soit chargé avant d'initialiser
 window.addEventListener('load', () => {
     initCarousel();
     initAllScrollAnimations();
+    initMobileMenu();
 });
 
 function initCarousel() {

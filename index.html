@@ -2,11 +2,17 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="theme-color" content="#e0c3fc">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <title>SMS Marketing Pro - ROI Garanti</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Overlay pour menu mobile -->
+    <div class="mobile-menu-overlay"></div>
+    
     <header class="main-header">
         <div class="header-content">
             <div class="logo">
@@ -19,6 +25,11 @@
                 <a href="#contact">Contact</a>
             </nav>
             <button onclick="scrollToGenerator()" class="header-cta">Testez gratuitement !</button>
+            <button class="mobile-menu-toggle" aria-label="Menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </header>
 
@@ -55,7 +66,7 @@
 
     <div class="section-transition transition-stats-features"></div>
 
-    <section class="features-section">
+    <section id="features" class="features-section">
         <h2 class="section-title scroll-reveal">Transformez vos SMS en ventes</h2>
         <div class="features-grid">
             <div class="feature-card scroll-reveal scroll-reveal-delay-1">
@@ -163,7 +174,7 @@
 
     <div class="section-transition transition-usecases-pricing"></div>
 
-    <section class="pricing">
+    <section id="pricing" class="pricing">
         <h2 class="section-title scroll-reveal">Calculez votre retour sur investissement</h2>
         
         <div class="roi-calculator scroll-reveal-scale">
@@ -277,7 +288,7 @@
 
     <script src="script.js"></script>
 
-    <footer>
+    <footer id="contact">
         <div class="footer-content">
             <div class="footer-main">
                 <div class="footer-brand">
