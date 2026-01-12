@@ -4,315 +4,149 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SMS Marketing Pro - ROI Garanti</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-        }
-        
-        .hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 80px 20px;
-            text-align: center;
-        }
-        
-        .hero h1 {
-            font-size: 3em;
-            margin-bottom: 20px;
-            font-weight: 700;
-        }
-        
-        .hero .subtitle {
-            font-size: 1.5em;
-            margin-bottom: 15px;
-            opacity: 0.95;
-        }
-        
-        .hero .roi-highlight {
-            font-size: 2.5em;
-            font-weight: bold;
-            margin: 30px 0;
-            background: rgba(255,255,255,0.2);
-            padding: 20px;
-            border-radius: 10px;
-            display: inline-block;
-        }
-        
-        .cta-primary {
-            background: #ff6b6b;
-            color: white;
-            padding: 18px 50px;
-            font-size: 1.2em;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            margin-top: 20px;
-            font-weight: 600;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        
-        .cta-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(255,107,107,0.3);
-        }
-        
-        .stats-section {
-            background: #f8f9fa;
-            padding: 60px 20px;
-        }
-        
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .stat-card {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            transition: transform 0.3s;
-        }
-        
-        .stat-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .stat-number {
-            font-size: 3em;
-            font-weight: bold;
-            color: #667eea;
-            margin-bottom: 10px;
-        }
-        
-        .stat-label {
-            font-size: 1.1em;
-            color: #666;
-        }
-        
-        .features-section {
-            padding: 80px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .section-title {
-            text-align: center;
-            font-size: 2.5em;
-            margin-bottom: 50px;
-            color: #333;
-        }
-        
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-        }
-        
-        .feature-card {
-            padding: 30px;
-            border-left: 4px solid #667eea;
-            background: #f8f9fa;
-            border-radius: 8px;
-        }
-        
-        .feature-card h3 {
-            font-size: 1.5em;
-            margin-bottom: 15px;
-            color: #667eea;
-        }
-        
-        .feature-card p {
-            color: #666;
-            line-height: 1.7;
-        }
-        
-        .use-cases {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 80px 20px;
-        }
-        
-        .use-cases-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            max-width: 1200px;
-            margin: 40px auto 0;
-        }
-        
-        .use-case-item {
-            background: rgba(255,255,255,0.15);
-            padding: 25px;
-            border-radius: 10px;
-            backdrop-filter: blur(10px);
-        }
-        
-        .use-case-item h4 {
-            font-size: 1.2em;
-            margin-bottom: 10px;
-        }
-        
-        .pricing {
-            padding: 80px 20px;
-            text-align: center;
-            background: #f8f9fa;
-        }
-        
-        .price-highlight {
-            font-size: 2em;
-            color: #667eea;
-            margin: 30px 0;
-        }
-        
-        .price-value {
-            font-size: 3em;
-            font-weight: bold;
-        }
-        
-        footer {
-            background: #333;
-            color: white;
-            padding: 40px 20px;
-            text-align: center;
-        }
-        
-        .conversion-banner {
-            background: #ff6b6b;
-            color: white;
-            padding: 40px 20px;
-            text-align: center;
-        }
-        
-        .conversion-banner h3 {
-            font-size: 2em;
-            margin-bottom: 15px;
-        }
-        
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2em;
-            }
-            
-            .hero .subtitle {
-                font-size: 1.2em;
-            }
-            
-            .hero .roi-highlight {
-                font-size: 1.8em;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <section class="hero">
-        <h1>Multipliez vos ventes par SMS</h1>
-        <p class="subtitle">La plateforme de SMS marketing qui génère des résultats mesurables</p>
-        <div class="roi-highlight">
-            ROI de 5 à 10x votre investissement
-        </div>
-        <p style="font-size: 1.2em; margin-top: 20px;">97% de taux d'ouverture • Conversion 8-12% • Lu en moins de 3 minutes</p>
-        <button class="cta-primary" onclick="alert('Démo disponible bientôt!')">Démarrer gratuitement</button>
+        <h1>Et si vos clients revenaient 1 fois de plus ce mois-ci ?</h1>
+        <p class="subtitle">Des SMS que vos clients sont contents de recevoir. Pas de spam.</p>
+        <button class="cta-primary" onclick="alert('Démo disponible bientôt!')">Rejoindre la liste d'attente</button>
+        <p class="cta-subtext">50 crédits offerts aux 100 premiers inscrits • Aucune carte bancaire</p>
+        <p class="social-proof">Déjà +100 utilisateurs sur liste d'attente</p>
     </section>
+
+    <div class="section-transition transition-hero-stats"></div>
 
     <section class="stats-section">
         <div class="stats-grid">
             <div class="stat-card">
-                <div class="stat-number">97%</div>
-                <div class="stat-label">Taux d'ouverture (vs 20-30% email)</div>
+                <div class="stat-number">98%</div>
+                <div class="stat-label">Taux d'ouverture (vs 20% email)</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number">8-12%</div>
-                <div class="stat-label">Taux de conversion moyen</div>
+                <div class="stat-number">90 sec</div>
+                <div class="stat-label">Délai moyen de lecture d'un SMS</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number">3 min</div>
-                <div class="stat-label">Délai moyen de lecture</div>
+                <div class="stat-number">29%</div>
+                <div class="stat-label">Taux de clic moyen sur les liens</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number">75%</div>
-                <div class="stat-label">Des clients apprécient recevoir des SMS</div>
+                <div class="stat-number">6-8x</div>
+                <div class="stat-label">ROI moyen par rapport à l'email</div>
             </div>
         </div>
     </section>
+
+    <div class="section-transition transition-stats-features"></div>
 
     <section class="features-section">
-        <h2 class="section-title">Fonctionnalités qui maximisent vos revenus</h2>
+        <h2 class="section-title">Transformez vos SMS en ventes</h2>
         <div class="features-grid">
             <div class="feature-card">
-                <h3>📊 Ciblage Intelligent</h3>
-                <p>Segmentez votre base et envoyez des messages personnalisés. La personnalisation augmente les résultats de +10% et multiplie le ROI par 5 à 8.</p>
+                <h3>💰 Rentabilité Immédiate</h3>
+                <p>Envoyez 100 SMS pour seulement 10€. Un SMS à 0,10€ peut générer un panier à 30€ : <strong>votre investissement est rentabilisé dès la première vente.</strong></p>
             </div>
+            
             <div class="feature-card">
-                <h3>⚡ Envoi Instantané ou Programmé</h3>
-                <p>Optimisez vos campagnes : mardi/jeudi 10h-12h ou 14h-16h pour un impact maximal. 95% des SMS reçus en moins de 10 secondes.</p>
+                <h3>🎯 Ciblage Client Précis</h3>
+                <p>Ne parlez qu'aux bons clients. Créez des groupes (ex: "VIP", "Inactifs") pour <strong>multiplier vos conversions par 3</strong> grâce à des offres qui les concernent vraiment.</p>
             </div>
+            
             <div class="feature-card">
-                <h3>💰 Coût Ultra-Compétitif</h3>
-                <p>À partir de 0,04€/SMS. Envoyez 1000 SMS pour 50€ avec un retour sur investissement exceptionnel.</p>
+                <h3>⚡ Envoi Flash ou Planifié</h3>
+                <p>Envoyez une promo en 30 secondes ou programmez-la pour les heures de pointe. <strong>98% de vos messages sont lus dans les 3 minutes</strong> suivant la réception.</p>
             </div>
+            
             <div class="feature-card">
-                <h3>✅ Vérification HLR</h3>
-                <p>Vérifiez la validité des numéros avant envoi. Optimisez vos coûts et la qualité de votre base de données.</p>
+                <h3>✅ Nettoyage Inclus</h3>
+                <p>Évitez de payer pour rien. Notre système vérifie la validité des numéros avant l'envoi pour <strong>garantir que 100% de votre budget arrive à destination.</strong></p>
             </div>
+            
             <div class="feature-card">
-                <h3>📈 Analytics Temps Réel</h3>
-                <p>Suivez vos taux d'ouverture, de clics et de conversion en direct. Rapports détaillés pour chaque campagne.</p>
+                <h3>🤖 IA Rédactrice Intégrée</h3>
+                <p>Panne d'inspiration ? <strong>L'IA écrit vos messages de vente à votre place.</strong> Générez des textes percutants qui donnent envie de cliquer en un instant.</p>
             </div>
+            
             <div class="feature-card">
-                <h3>🔄 Import Simplifié</h3>
-                <p>Importez vos contacts via XLS ou CSV. Nettoyage automatique des doublons inclus gratuitement.</p>
+                <h3>🔄 Importation en 1 Clic</h3>
+                <p>Ne perdez pas de temps. Glissez-déposez votre fichier client (Excel, CRM) et <strong>commencez à communiquer avec votre base en moins de 2 minutes.</strong></p>
             </div>
         </div>
     </section>
 
+    <div class="section-transition transition-features-usecases"></div>
+
     <section class="use-cases">
-        <h2 class="section-title" style="color: white;">11 stratégies pour booster votre CA</h2>
-        <div class="use-cases-grid">
-            <div class="use-case-item">
-                <h4>🎯 Promotions Flash</h4>
-                <p>Soldes, Black Friday, ventes privées : taux de conversion jusqu'à 12%</p>
+        <h2 class="section-title">Différentes stratégies pour booster votre CA</h2>
+        <div class="carousel-container">
+            <button class="carousel-btn carousel-prev" aria-label="Précédent">‹</button>
+            <div class="carousel-wrapper">
+                <div class="carousel-track">
+                    <div class="use-case-item">
+                        <h4>🎯 Promotions Flash</h4>
+                        <p>Soldes, Black Friday, ventes privées : taux de conversion jusqu'à 12%</p>
+                    </div>
+                    <div class="use-case-item">
+                        <h4>🎂 SMS Anniversaire</h4>
+                        <p>Offre personnalisée qui fidélise et convertit automatiquement</p>
+                    </div>
+                    <div class="use-case-item">
+                        <h4>🛒 Panier Abandonné</h4>
+                        <p>Récupérez jusqu'à 30% des ventes perdues avec un rappel au bon moment</p>
+                    </div>
+                    <div class="use-case-item">
+                        <h4>📦 Suivi de Commande</h4>
+                        <p>Notifications transactionnelles valorisant l'expérience client</p>
+                    </div>
+                    <div class="use-case-item">
+                        <h4>💎 Programme VIP</h4>
+                        <p>Invitations exclusives et avant-premières pour vos meilleurs clients</p>
+                    </div>
+                    <div class="use-case-item">
+                        <h4>🎁 Coupons SMS</h4>
+                        <p>Utilisés 10x plus souvent que les coupons envoyés par email</p>
+                    </div>
+                    <div class="use-case-item">
+                        <h4>🔔 Rappel de RDV</h4>
+                        <p>Réduisez les no-shows de 40% avec des rappels automatiques</p>
+                    </div>
+                    <div class="use-case-item">
+                        <h4>⚡ Réactivation Client</h4>
+                        <p>Relancez les clients inactifs avec une offre irrésistible</p>
+                    </div>
+                    <div class="use-case-item">
+                        <h4>🆕 Nouveautés & Lancements</h4>
+                        <p>Annoncez vos nouveaux produits en priorité à votre base fidèle</p>
+                    </div>
+                    <div class="use-case-item">
+                        <h4>🏷️ Stock Limité</h4>
+                        <p>Créez l'urgence avec des alertes sur les dernières pièces disponibles</p>
+                    </div>
+                    <div class="use-case-item">
+                        <h4>📍 Géolocalisation</h4>
+                        <p>Offres locales pour attirer les clients près de votre boutique</p>
+                    </div>
+                    <div class="use-case-item">
+                        <h4>🎊 Événements Spéciaux</h4>
+                        <p>Invitations aux ventes privées, soirées shopping, inaugurations</p>
+                    </div>
+                </div>
             </div>
-            <div class="use-case-item">
-                <h4>🎂 SMS Anniversaire</h4>
-                <p>Offre personnalisée qui fidélise et convertit</p>
-            </div>
-            <div class="use-case-item">
-                <h4>🛒 Panier Abandonné</h4>
-                <p>Récupérez jusqu'à 30% des ventes perdues</p>
-            </div>
-            <div class="use-case-item">
-                <h4>📦 Suivi de Commande</h4>
-                <p>Notifications transactionnelles valorisant l'expérience client</p>
-            </div>
-            <div class="use-case-item">
-                <h4>💎 Programme VIP</h4>
-                <p>Invitations exclusives pour vos meilleurs clients</p>
-            </div>
-            <div class="use-case-item">
-                <h4>🎁 Coupons SMS</h4>
-                <p>Utilisés 10x plus souvent que par email</p>
-            </div>
+            <button class="carousel-btn carousel-next" aria-label="Suivant">›</button>
         </div>
+        <div class="carousel-dots"></div>
     </section>
+
+    <div class="section-transition transition-usecases-banner"></div>
 
     <section class="conversion-banner">
         <h3>48% des Français préfèrent le SMS pour recevoir des offres</h3>
         <p style="font-size: 1.3em; margin: 20px 0;">14,2 milliards de SMS marketing envoyés en France en 2024 (+6,4% vs 2023)</p>
-        <button class="cta-primary" style="background: white; color: #ff6b6b;" onclick="alert('Inscription disponible bientôt!')">Essai gratuit 14 jours</button>
+        <button class="cta-primary" onclick="alert('Inscription disponible bientôt!')">Essai gratuit 14 jours</button>
     </section>
+
+    <div class="section-transition transition-banner-pricing"></div>
 
     <section class="pricing">
         <h2 class="section-title">Calculez votre retour sur investissement</h2>
@@ -349,18 +183,6 @@
             </div>
             
             <p style="text-align: center; color: #666; font-size: 0.95em;">* Calculs basés sur taux de conversion moyen de 10% et panier moyen de 35€</p>
-        </div>
-
-        <div style="margin-top: 60px;">
-            <h3 style="font-size: 1.8em; margin-bottom: 30px;">Offres</h3>
-            <ul style="list-style: none; font-size: 1.1em; color: #666; max-width: 500px; margin: 0 auto; text-align: left;">
-                <li style="padding: 10px 0;">✓ Envois illimités sans restriction de volume</li>
-                <li style="padding: 10px 0;">✓ Personnalisation avancée incluse</li>
-                <li style="padding: 10px 0;">✓ Support client dédié</li>
-                <li style="padding: 10px 0;">✓ Conformité RGPD garantie</li>
-                <li style="padding: 10px 0;">✓ API & intégrations disponibles</li>
-            </ul>
-            <button class="cta-primary" style="margin-top: 40px;" onclick="alert('Contact disponible bientôt!')">Demander une démo</button>
         </div>
     </section>
 
@@ -460,120 +282,31 @@ Cliquez sur "Générer le SMS" pour voir votre message...
         });
         
         // SMS Generator
-        const smsTemplates = {
-            promo: {
-                friendly: [
-                    "🎉 Hey {prenom} ! C'est le moment parfait : -30% sur TOUT le site jusqu'à dimanche avec le code {code}. On t'attend ! 🛍️",
-                    "Salut {prenom} ! Flash sale pour toi : -25% sur ta sélection préférée 💫 Code: {code} (valable 48h)",
-                    "Hello {prenom} ! Weekend exceptionnel : -30% dès maintenant ! Code {code}. Vite, stocks limités 🚀"
-                ],
-                professional: [
-                    "Bonjour {prenom}, profitez de notre offre exclusive : -30% sur l'ensemble de nos produits avec le code {code}. Valable jusqu'au {date}.",
-                    "{prenom}, offre spéciale clients : réduction de 25% sur votre prochaine commande. Code: {code}",
-                    "Offre réservée : -30% pour nos clients privilégiés. Votre code: {code}. Valable ce weekend uniquement."
-                ],
-                urgent: [
-                    "⚡ DERNIÈRES HEURES {prenom} ! -40% sur tout avec {code}. Plus que 3h ! Ne passez pas à côté 🔥",
-                    "🚨 ATTENTION {prenom} ! Flash sale -35% expire dans 2h. Code: {code}. C'est MAINTENANT !",
-                    "⏰ Plus que quelques heures ! -30% sur votre wishlist avec {code}. Dépêchez-vous {prenom} !"
-                ],
-                exclusive: [
-                    "✨ Accès VIP {prenom} : vente privée -40% avant tout le monde. Code exclusif: {code}",
-                    "{prenom}, vous êtes invité(e) à notre vente privée : -35% sur les nouveautés. Code: {code} (24h seulement)",
-                    "Privilège client {prenom} : preview sale -30% rien que pour vous. {code} valable 48h 💎"
-                ]
-            },
-            birthday: {
-                friendly: [
-                    "🎂 Joyeux anniversaire {prenom} ! On te gâte : -25% + livraison offerte avec ton code {code}. Profites-en ! 🎁",
-                    "Happy Birthday {prenom} ! 🎉 Ton cadeau : 30€ offerts sur ta prochaine commande. Code: {code}",
-                    "C'est ton jour {prenom} ! 🥳 -30% sur tout + un petit cadeau surprise avec {code} 🎁"
-                ],
-                professional: [
-                    "Joyeux anniversaire {prenom}. Nous vous offrons 25% de réduction sur votre commande anniversaire. Code: {code}",
-                    "Bon anniversaire {prenom}. Profitez de votre remise spéciale de 30€. Code personnel: {code}",
-                    "Anniversaire client : {prenom}, recevez votre réduction exclusive de 25%. Code: {code}"
-                ],
-                urgent: [
-                    "🎂 C'est VOTRE jour {prenom} ! -30% expire ce soir ! Code: {code}. Foncez ! 🎁",
-                    "Anniversaire flash {prenom} ! -35% mais seulement aujourd'hui ! {code} 🎉",
-                    "Dernier jour pour profiter de votre cadeau anniv {prenom} ! -30% avec {code} ⏰"
-                ],
-                exclusive: [
-                    "Joyeux anniversaire {prenom} 🎂 Votre cadeau VIP : -40% + shopping privé sur RDV. Code: {code}",
-                    "Anniversaire privilège {prenom} : accès privé + 50€ offerts. Code exclusif: {code} 💎",
-                    "{prenom}, célébrez en VIP : -35% + cadeau surprise en boutique. Code: {code} ✨"
-                ]
-            },
-            cart: {
-                friendly: [
-                    "Hey {prenom}, tu as oublié quelque chose ! 😊 -15% sur ton panier avec {code} si tu finalises maintenant 🛒",
-                    "Coucou {prenom} ! Ton panier t'attend toujours... On t'offre -20% pour te motiver ? Code: {code} 💙",
-                    "{prenom}, tes articles vont bientôt partir ! -15% pour toi aujourd'hui avec {code} 🎯"
-                ],
-                professional: [
-                    "Bonjour {prenom}, finalisez votre commande avec -15% supplémentaires. Code: {code} (valable 24h)",
-                    "{prenom}, vos articles sont réservés. Bénéficiez de -20% pour finaliser : {code}",
-                    "Rappel {prenom} : votre panier vous attend. Profitez de -15% avec le code {code}"
-                ],
-                urgent: [
-                    "⚠️ {prenom}, vos articles partent vite ! -20% maintenant avec {code}. Plus que 2h ! 🔥",
-                    "ALERTE {prenom} ! Stock limité sur votre panier. Finalisez avec -15% : {code} ⏰",
-                    "⏰ Dernière chance {prenom} ! -20% sur votre panier expire dans 1h. Code: {code}"
-                ],
-                exclusive: [
-                    "Privilège client {prenom} : -25% exclusif sur votre sélection. Code VIP: {code} (48h)",
-                    "{prenom}, offre spéciale panier : -30% réservé à nos meilleurs clients. Code: {code} 💎",
-                    "Attention VIP {prenom} : -25% sur votre wishlist + livraison express offerte. {code} ✨"
-                ]
-            },
-            vip: {
-                friendly: [
-                    "✨ {prenom}, sois parmi les premiers ! Vente privée demain 18h. RSVP avec {code} 🎊",
-                    "Hey {prenom} ! Invit' exclusive : soirée shopping privée jeudi 19h. Ton pass: {code} 🥂",
-                    "{prenom}, rendez-vous secret : preview nouvelle collection samedi. Code d'accès: {code} 💫"
-                ],
-                professional: [
-                    "{prenom}, vous êtes invité(e) à notre événement VIP le {date}. Code d'accès: {code}",
-                    "Invitation privilège {prenom} : vente privée réservée. Accès avec le code: {code}",
-                    "Événement clients premium {prenom}. Présentation exclusive {date}. Code: {code}"
-                ],
-                urgent: [
-                    "🔥 MAINTENANT {prenom} ! Vente VIP démarre dans 1h ! Accès prioritaire: {code}",
-                    "⚡ {prenom}, places limitées ! Événement exclusif ce soir 19h. RSVP rapide: {code}",
-                    "DERNIERS ACCÈS {prenom} ! Event privé dans 2h. Réservez avec {code} ⏰"
-                ],
-                exclusive: [
-                    "💎 Privilège Diamond {prenom} : preview collection + champagne samedi. Pass: {code}",
-                    "{prenom}, expérience VIP ultime : personal shopper + cocktail. Code prestige: {code}",
-                    "Invitation Platinum {prenom} : soirée privée exceptionnelle {date}. Code: {code} ✨"
-                ]
-            },
-            newproduct: {
-                friendly: [
-                    "🆕 {prenom}, c'est tout frais ! Découvre notre nouvelle collection en avant-première avec {code} (-20%) 🎨",
-                    "Hey {prenom} ! Du neuf pour toi : nouvelle gamme dispo + -15% pour les premiers. Code: {code} 🌟",
-                    "Psst {prenom} ! En exclu pour toi : nouveautés just dropped ! -20% avec {code} 🔥"
-                ],
-                professional: [
-                    "Nouveauté {prenom} : découvrez notre dernière collection avec -15% d'avantage. Code: {code}",
-                    "{prenom}, avant-première : nouvelle gamme disponible. Réduction lancement: {code}",
-                    "Lancement produit {prenom} : -20% sur les nouveautés avec le code {code}"
-                ],
-                urgent: [
-                    "🚨 NOUVEAU {prenom} ! Lancement exclusif MAINTENANT ! -25% premières 24h. Code: {code} ⚡",
-                    "⏰ {prenom}, nouveauté en stock limité ! -20% mais plus pour longtemps. {code} 🔥",
-                    "ALERTE {prenom} ! Drop surprise + -25% early bird. Code: {code}. Vite ! ⚡"
-                ],
-                exclusive: [
-                    "✨ Preview VIP {prenom} : nouvelle collection avant tout le monde. -30% privilège: {code}",
-                    "{prenom}, accès anticipé : nouveautés + -25% réservé aux VIP. Code: {code} 💎",
-                    "Avant-première prestige {prenom} : découvrez en premier + -30%. Code exclusif: {code}"
-                ]
-            }
-        };
+        let smsTemplates = {};
+        
+        // Charger les templates depuis le fichier JSON
+        fetch('templates.json')
+            .then(response => response.json())
+            .then(data => {
+                smsTemplates = data;
+                generateSMS(); // Générer un SMS initial après le chargement
+            })
+            .catch(error => {
+                console.error('Erreur lors du chargement des templates:', error);
+                // Fallback avec un template par défaut en cas d'erreur
+                smsTemplates = {
+                    promo: {
+                        friendly: ["🎉 Hey {prenom} ! Offre spéciale : -30% avec le code {code} ! 🛍️"]
+                    }
+                };
+                generateSMS();
+            });
         
         function generateSMS() {
+            if (!smsTemplates || Object.keys(smsTemplates).length === 0) {
+                return; // Attendre que les templates soient chargés
+            }
+            
             const campaignType = document.getElementById('campaignType').value;
             const tone = document.getElementById('tone').value;
             const includePromo = document.getElementById('includePromo').checked;
@@ -604,14 +337,369 @@ Cliquez sur "Générer le SMS" pour voir votre message...
                 alert('SMS copié dans le presse-papier ! ✓');
             });
         }
+    </script>
+
+    <script>
+        // Attendre que tout soit chargé avant d'initialiser le carrousel
+        window.addEventListener('load', initCarousel);
         
-        // Generate initial SMS
-        window.addEventListener('load', generateSMS);
+        function initCarousel() {
+            // Carrousel infini centré
+            const track = document.querySelector('.carousel-track');
+            const wrapper = document.querySelector('.carousel-wrapper');
+            const prevBtn = document.querySelector('.carousel-prev');
+            const nextBtn = document.querySelector('.carousel-next');
+            const dotsContainer = document.querySelector('.carousel-dots');
+            const itemsOriginal = Array.from(document.querySelectorAll('.use-case-item'));
+            
+            let currentIndex = 0;
+            let isDragging = false;
+            let startPos = 0;
+            let currentTranslate = 0;
+            let prevTranslate = 0;
+            let animationID = 0;
+            let isAnimating = false;
+        
+            // Créer un carrousel infini en clonant les items
+            function createInfiniteCarousel() {
+                // Cloner les items 3 fois (avant, original, après)
+                const clonesBefore = itemsOriginal.map(item => item.cloneNode(true));
+                const clonesAfter = itemsOriginal.map(item => item.cloneNode(true));
+                
+                // Ajouter les clones avant
+                clonesBefore.reverse().forEach(clone => {
+                    track.insertBefore(clone, track.firstChild);
+                });
+                
+                // Ajouter les clones après
+                clonesAfter.forEach(clone => {
+                    track.appendChild(clone);
+                });
+                
+                // Position initiale sur les vrais items
+                currentIndex = itemsOriginal.length;
+                updateCarousel(false);
+            }
+            
+            // Créer les dots
+            function createDots() {
+                dotsContainer.innerHTML = '';
+                itemsOriginal.forEach((_, index) => {
+                    const dot = document.createElement('button');
+                    dot.classList.add('carousel-dot');
+                    if (index === 0) dot.classList.add('active');
+                    dot.addEventListener('click', () => goToSlide(index));
+                    dotsContainer.appendChild(dot);
+                });
+            }
+            
+            // Mettre à jour le carrousel
+            function updateCarousel(animated = true) {
+                const items = Array.from(track.children);
+                const itemWidth = items[0].offsetWidth;
+                const gap = 30;
+                const containerWidth = track.parentElement.offsetWidth;
+                const offset = containerWidth / 2 - itemWidth / 2 - currentIndex * (itemWidth + gap);
+                
+                if (animated) {
+                    isAnimating = true;
+                    track.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+                    track.classList.add('transitioning');
+                    
+                    // Réactiver les transitions des cards après l'animation du track
+                    setTimeout(() => {
+                        track.classList.remove('transitioning');
+                        isAnimating = false;
+                        // Forcer le recalcul des styles des cards
+                        items.forEach(item => {
+                            item.style.transition = 'all 0.4s ease';
+                        });
+                        
+                        // Vérifier si on doit boucler APRÈS l'animation
+                        checkLoop();
+                    }, 400);
+                } else {
+                    track.style.transition = 'none';
+                    track.classList.remove('transitioning');
+                    items.forEach(item => {
+                        item.style.transition = 'none';
+                    });
+                    
+                    // Réactiver les transitions après le saut instantané
+                    setTimeout(() => {
+                        items.forEach(item => {
+                            item.style.transition = 'all 0.4s ease';
+                        });
+                    }, 50);
+                }
+                
+                track.style.transform = `translateX(${offset}px)`;
+                currentTranslate = offset;
+                prevTranslate = offset;
+                
+                // Mettre à jour les classes center et appliquer les transformations 3D
+                items.forEach((item, index) => {
+                    const isCentered = index === currentIndex;
+                    item.classList.toggle('center', isCentered);
+                    
+                    if (!isCentered) {
+                        // Calculer la distance par rapport au centre
+                        const distance = index - currentIndex;
+                        const absDistance = Math.abs(distance);
+                        
+                        // Rotation basée sur la position (gauche ou droite)
+                        const rotationY = distance < 0 ? 8 : -8;
+                        
+                        // Réduire l'opacité et l'échelle en fonction de la distance
+                        const scale = Math.max(0.75, 0.85 - (absDistance - 1) * 0.05);
+                        const opacity = Math.max(0.3, 0.5 - (absDistance - 1) * 0.1);
+                        const translateZ = -80 - (absDistance - 1) * 20;
+                        
+                        item.style.transform = `scale(${scale}) rotateY(${rotationY}deg) translateZ(${translateZ}px)`;
+                        item.style.opacity = opacity;
+                        item.style.filter = 'brightness(0.9)';
+                    } else {
+                        item.style.transform = 'scale(1.08) translateZ(50px)';
+                        item.style.opacity = '1';
+                        item.style.filter = 'brightness(1)';
+                    }
+                });
+                
+                // Mettre à jour les dots
+                updateDots();
+            }
+            
+            // Vérifier si on doit boucler
+            function checkLoop() {
+                if (currentIndex < itemsOriginal.length) {
+                    // On est dans les clones du début, aller à la vraie position
+                    currentIndex += itemsOriginal.length;
+                    updateCarousel(false);
+                } else if (currentIndex >= itemsOriginal.length * 2) {
+                    // On est dans les clones de fin, revenir à la vraie position
+                    currentIndex -= itemsOriginal.length;
+                    updateCarousel(false);
+                }
+            }
+            
+            // Mettre à jour les dots
+            function updateDots() {
+                const dots = Array.from(dotsContainer.children);
+                const realIndex = ((currentIndex - itemsOriginal.length) % itemsOriginal.length + itemsOriginal.length) % itemsOriginal.length;
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === realIndex);
+                });
+            }
+            
+            // Aller à une slide spécifique
+            function goToSlide(index) {
+                currentIndex = itemsOriginal.length + index;
+                updateCarousel(true);
+            }
+            
+            // Navigation
+            prevBtn.addEventListener('click', () => {
+                if (isAnimating) return;
+                currentIndex--;
+                updateCarousel(true);
+            });
+            
+            nextBtn.addEventListener('click', () => {
+                if (isAnimating) return;
+                currentIndex++;
+                updateCarousel(true);
+            });
+            
+            // Touch/Mouse events pour le drag
+            function touchStart(index) {
+                return function(event) {
+                    // Empêcher le drag si une animation est en cours
+                    if (isAnimating) {
+                        return;
+                    }
+                    
+                    isDragging = true;
+                    startPos = getPositionX(event);
+                    animationID = requestAnimationFrame(animation);
+                    track.classList.add('dragging');
+                }
+            }
+            
+            function touchMove(event) {
+                if (isDragging) {
+                    const currentPosition = getPositionX(event);
+                    currentTranslate = prevTranslate + currentPosition - startPos;
+                }
+            }
+            
+            function touchEnd() {
+                if (!isDragging) return;
+                
+                isDragging = false;
+                cancelAnimationFrame(animationID);
+                track.classList.remove('dragging');
+                
+                const movedBy = currentTranslate - prevTranslate;
+                
+                // Calculer quelle card est la plus proche du centre après le drag
+                const items = Array.from(track.children);
+                const itemWidth = items[0].offsetWidth;
+                const gap = 30;
+                const containerWidth = track.parentElement.offsetWidth;
+                const centerPosition = containerWidth / 2;
+                
+                // Trouver la card la plus proche du centre
+                let closestIndex = currentIndex;
+                let closestDistance = Infinity;
+                
+                items.forEach((item, index) => {
+                    const itemCenter = item.offsetLeft + itemWidth / 2 - Math.abs(currentTranslate);
+                    const distance = Math.abs(itemCenter - centerPosition);
+                    
+                    if (distance < closestDistance) {
+                        closestDistance = distance;
+                        closestIndex = index;
+                    }
+                });
+                
+                // Si on a bougé significativement ou si une autre card est plus proche, naviguer
+                if (Math.abs(movedBy) > 50 || closestIndex !== currentIndex) {
+                    currentIndex = closestIndex;
+                }
+                
+                updateCarousel(true);
+            }
+            
+            function getPositionX(event) {
+                return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
+            }
+            
+            function animation() {
+                track.style.transform = `translateX(${currentTranslate}px)`;
+                if (isDragging) requestAnimationFrame(animation);
+            }
+            
+            // Click sur les cards pour naviguer
+            function setupCardClicks() {
+                const items = Array.from(track.children);
+                items.forEach((item, index) => {
+                    // Supprimer les anciens listeners s'ils existent
+                    const newItem = item.cloneNode(true);
+                    item.parentNode.replaceChild(newItem, item);
+                });
+                
+                // Réattacher sur les nouveaux items
+                const newItems = Array.from(track.children);
+                newItems.forEach((item, index) => {
+                    item.addEventListener('click', function(e) {
+                        console.log('Card clicked:', index, 'Current:', currentIndex);
+                        
+                        // Ne pas naviguer si on est en train de drag
+                        if (Math.abs(currentTranslate - prevTranslate) > 10) {
+                            console.log('Drag detected, ignoring click');
+                            return;
+                        }
+                        
+                        // Ne pas naviguer si une animation est en cours
+                        if (isAnimating) {
+                            console.log('Animation in progress, ignoring click');
+                            return;
+                        }
+                        
+                        // Si ce n'est pas la card centrée, naviguer vers elle
+                        if (index !== currentIndex) {
+                            console.log('Navigating to card:', index);
+                            currentIndex = index;
+                            updateCarousel(true);
+                        }
+                    }, { capture: false });
+                    
+                    // Ajouter le style pointer
+                    item.style.cursor = 'pointer';
+                });
+            }
+            
+            // Ajouter les event listeners
+            track.addEventListener('mousedown', touchStart(currentIndex));
+            track.addEventListener('touchstart', touchStart(currentIndex));
+            
+            // Les événements mousemove et mouseup sur document pour continuer le drag même hors du track
+            document.addEventListener('mousemove', touchMove);
+            track.addEventListener('touchmove', touchMove);
+            
+            document.addEventListener('mouseup', touchEnd);
+            track.addEventListener('touchend', touchEnd);
+            
+            // Empêcher le comportement par défaut
+            track.addEventListener('contextmenu', e => e.preventDefault());
+            track.addEventListener('dragstart', e => e.preventDefault());
+            
+            // Support clavier
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') prevBtn.click();
+                if (e.key === 'ArrowRight') nextBtn.click();
+            });
+            
+            // Responsive
+            window.addEventListener('resize', () => {
+                updateCarousel(false);
+            });
+            
+            // Initialisation
+            createInfiniteCarousel();
+            createDots();
+            
+            // Petit délai pour s'assurer que tout est bien calculé
+            setTimeout(() => {
+                updateCarousel(false);
+                setupCardClicks();
+                
+                // Afficher le carrousel avec un fade-in
+                setTimeout(() => {
+                    wrapper.classList.add('loaded');
+                }, 50);
+            }, 100);
+        }
     </script>
 
     <footer>
-        <p>&copy; 2025 SMS Marketing Pro - Tous droits réservés</p>
-        <p style="margin-top: 10px; font-size: 0.9em;">Conforme RGPD • Hébergement France • Support 7j/7</p>
+        <div class="footer-content">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <h4>SMS Facile</h4>
+                    <div class="footer-badges">
+                        <span class="badge">✓ RGPD</span>
+                        <span class="badge">✓ Français</span>
+                        <span class="badge">✓ Support 7j/7</span>
+                        <span class="badge">✓ Sans engagement</span>
+                        <span class="badge">✓ Désinscription en 1 clic</span>
+                    </div>
+                </div>
+                
+                <div class="footer-links-inline">
+                    <a href="#mentions-legales">Mentions légales</a>
+                    <a href="#cgv">CGV</a>
+                    <a href="#confidentialite">Confidentialité</a>
+                </div>
+                
+                <div class="footer-social">
+                    <a href="#" aria-label="LinkedIn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="Instagram">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-copyright">
+                <p>&copy; 2025 SMS Facile</p>
+            </div>
+        </div>
     </footer>
 </body>
 </html>
