@@ -7,11 +7,25 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <header class="main-header">
+        <div class="header-content">
+            <div class="logo">
+                <span class="logo-icon">📱</span>
+                <span class="logo-text">SMS Facile</span>
+            </div>
+            <nav class="header-nav">
+                <a href="#features">Fonctionnalités</a>
+                <a href="#pricing">Tarifs</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
     <section class="hero">
-        <h1>Et si vos clients revenaient 1 fois de plus ce mois-ci ?</h1>
+        <h1>Et si vos clients revenaient<br><span class="highlight-gradient">une fois de plus cette semaine ?</span></h1>
         <p class="subtitle">Des SMS que vos clients sont contents de recevoir. Pas de spam.</p>
         <button class="cta-primary" onclick="alert('Démo disponible bientôt!')">Rejoindre la liste d'attente</button>
-        <p class="cta-subtext">50 crédits offerts aux 100 premiers inscrits • Aucune carte bancaire</p>
+        <p class="cta-subtext">10 crédits offerts aux 100 premiers inscrits • Aucune carte bancaire</p>
         <p class="social-proof">Déjà +100 utilisateurs sur liste d'attente</p>
     </section>
 
@@ -21,7 +35,7 @@
         <div class="stats-grid">
             <div class="stat-card">
                 <div class="stat-number">98%</div>
-                <div class="stat-label">Taux d'ouverture (vs 20% email)</div>
+                <div class="stat-label">Taux d'ouverture<br>(vs 20% email)</div>
             </div>
             <div class="stat-card">
                 <div class="stat-number">90 sec</div>
@@ -29,11 +43,11 @@
             </div>
             <div class="stat-card">
                 <div class="stat-number">29%</div>
-                <div class="stat-label">Taux de clic moyen sur les liens</div>
+                <div class="stat-label">Taux de clic moyen<br>sur les liens</div>
             </div>
             <div class="stat-card">
                 <div class="stat-number">6-8x</div>
-                <div class="stat-label">ROI moyen par rapport à l'email</div>
+                <div class="stat-label">ROI moyen<br>par rapport à l'email</div>
             </div>
         </div>
     </section>
@@ -80,7 +94,11 @@
     <section class="use-cases">
         <h2 class="section-title">Différentes stratégies pour booster votre CA</h2>
         <div class="carousel-container">
-            <button class="carousel-btn carousel-prev" aria-label="Précédent">‹</button>
+            <button class="carousel-btn carousel-prev" aria-label="Précédent">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
             <div class="carousel-wrapper">
                 <div class="carousel-track">
                     <div class="use-case-item">
@@ -133,7 +151,11 @@
                     </div>
                 </div>
             </div>
-            <button class="carousel-btn carousel-next" aria-label="Suivant">›</button>
+            <button class="carousel-btn carousel-next" aria-label="Suivant">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </button>
         </div>
         <div class="carousel-dots"></div>
     </section>
@@ -151,516 +173,112 @@
     <section class="pricing">
         <h2 class="section-title">Calculez votre retour sur investissement</h2>
         
-        <div style="max-width: 800px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
-            <div style="margin-bottom: 40px;">
-                <label style="display: block; font-size: 1.2em; margin-bottom: 15px; color: #333;">Budget SMS : <strong id="budgetDisplay">250€</strong></label>
-                <input type="range" id="budgetSlider" min="50" max="5000" value="250" step="50" style="width: 100%; height: 8px; border-radius: 5px; outline: none; background: linear-gradient(to right, #667eea 0%, #764ba2 100%);">
-                <div style="display: flex; justify-content: space-between; margin-top: 10px; color: #999;">
-                    <span>50€</span>
-                    <span>5000€</span>
+        <div class="roi-calculator">
+            <div class="slider-container">
+                <label class="slider-label">Budget SMS : <strong id="budgetDisplay">100€</strong></label>
+                <input type="range" id="budgetSlider" class="budget-slider" min="10" max="200" value="100" step="10">
+                <div class="slider-range">
+                    <span>10€</span>
+                    <span>200€</span>
                 </div>
             </div>
             
-            <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px; border-radius: 10px; color: white; margin-bottom: 30px;">
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; text-align: center;">
-                    <div>
-                        <div style="font-size: 0.9em; opacity: 0.9;">Nombre de SMS</div>
-                        <div style="font-size: 2em; font-weight: bold;" id="smsCount">5000</div>
+            <div class="roi-results">
+                <div class="results-grid">
+                    <div class="result-item">
+                        <div class="result-label">Nombre de SMS</div>
+                        <div class="result-value" id="smsCount">2 000</div>
                     </div>
-                    <div>
-                        <div style="font-size: 0.9em; opacity: 0.9;">Taux conversion (10%)</div>
-                        <div style="font-size: 2em; font-weight: bold;" id="conversions">500</div>
+                    <div class="result-item">
+                        <div class="result-label">Taux conversion (10%)</div>
+                        <div class="result-value" id="conversions">200</div>
                     </div>
-                    <div>
-                        <div style="font-size: 0.9em; opacity: 0.9;">CA moyen/vente: 35€</div>
-                        <div style="font-size: 2em; font-weight: bold;" id="revenue">17 500€</div>
+                    <div class="result-item">
+                        <div class="result-label">CA moyen/vente: 20€</div>
+                        <div class="result-value" id="revenue">4 000€</div>
                     </div>
-                    <div style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 8px;">
-                        <div style="font-size: 0.9em; opacity: 0.9;">ROI Net</div>
-                        <div style="font-size: 2.5em; font-weight: bold; color: #ffd700;" id="roi">6900%</div>
+                    <div class="result-item result-highlight">
+                        <div class="result-label">💎 ROI</div>
+                        <div class="result-value" id="roi">3 900%</div>
                     </div>
                 </div>
             </div>
             
-            <p style="text-align: center; color: #666; font-size: 0.95em;">* Calculs basés sur taux de conversion moyen de 10% et panier moyen de 35€</p>
+            <p class="roi-disclaimer">* Calculs basés sur un taux de conversion moyen de 10% et un panier moyen de 20€</p>
         </div>
     </section>
 
-    <section style="padding: 80px 20px; background: white;">
-        <h2 class="section-title">Générateur de SMS par IA</h2>
-        <p style="text-align: center; color: #666; margin-bottom: 40px; font-size: 1.1em;">Créez des messages percutants en quelques clics</p>
+    <div class="section-transition transition-pricing-generator"></div>
+
+    <section class="sms-generator">
+        <h2 class="section-title">Testez gratuitement un SMS généré par IA</h2>
         
-        <div style="max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
-            <div style="background: #f8f9fa; padding: 30px; border-radius: 15px;">
-                <h3 style="margin-bottom: 25px; color: #667eea;">Paramètres du message</h3>
+        <div class="generator-container">
+            <div class="generator-panel">
+                <h3 class="panel-title">⚙️ Paramètres</h3>
                 
-                <div style="margin-bottom: 20px;">
-                    <label style="display: block; margin-bottom: 8px; font-weight: 600;">Type de campagne</label>
-                    <select id="campaignType" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 1em;">
-                        <option value="promo">Promotion / Soldes</option>
-                        <option value="birthday">Anniversaire client</option>
-                        <option value="cart">Panier abandonné</option>
-                        <option value="vip">Invitation VIP</option>
-                        <option value="newproduct">Nouveau produit</option>
+                <div class="form-group">
+                    <label class="form-label">Type de campagne</label>
+                    <select id="campaignType" class="form-select">
+                        <option value="promo">🎉 Promotion / Soldes</option>
+                        <option value="birthday">🎂 Anniversaire client</option>
+                        <option value="cart">🛒 Panier abandonné</option>
+                        <option value="vip">💎 Invitation VIP</option>
+                        <option value="newproduct">🆕 Nouveau produit</option>
                     </select>
                 </div>
                 
-                <div style="margin-bottom: 20px;">
-                    <label style="display: block; margin-bottom: 8px; font-weight: 600;">Ton du message</label>
-                    <select id="tone" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 1em;">
-                        <option value="friendly">Amical</option>
-                        <option value="professional">Professionnel</option>
-                        <option value="urgent">Urgent</option>
-                        <option value="exclusive">Exclusif</option>
+                <div class="form-group">
+                    <label class="form-label">Ton du message</label>
+                    <select id="tone" class="form-select">
+                        <option value="friendly">😊 Amical</option>
+                        <option value="professional">💼 Professionnel</option>
+                        <option value="urgent">⚡ Urgent</option>
+                        <option value="exclusive">✨ Exclusif</option>
                     </select>
                 </div>
                 
-                <div style="margin-bottom: 20px;">
-                    <label style="display: block; margin-bottom: 8px; font-weight: 600;">Inclure un code promo</label>
-                    <input type="checkbox" id="includePromo" checked style="width: 20px; height: 20px; cursor: pointer;">
+                <div class="form-group">
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="includePromo" checked class="form-checkbox">
+                        <span class="checkbox-label">Inclure un code promo</span>
+                    </label>
                 </div>
                 
-                <button onclick="generateSMS()" style="width: 100%; background: #667eea; color: white; padding: 15px; border: none; border-radius: 8px; font-size: 1.1em; font-weight: 600; cursor: pointer; transition: background 0.3s;">
+                <button onclick="generateSMS()" class="btn-generate">
                     ✨ Générer le SMS
                 </button>
             </div>
             
-            <div>
-                <div style="background: #f8f9fa; padding: 30px; border-radius: 15px; border: 2px solid #667eea;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                        <h3 style="color: #667eea;">Prévisualisation</h3>
-                        <span id="charCount" style="color: #999; font-size: 0.9em;">0/160 caractères</span>
-                    </div>
-                    
-                    <div style="background: white; padding: 20px; border-radius: 10px; min-height: 150px; border: 1px solid #ddd; position: relative;">
-                        <div style="position: absolute; top: 10px; right: 10px; background: #667eea; color: white; padding: 4px 8px; border-radius: 5px; font-size: 0.8em;">SMS</div>
-                        <p id="smsPreview" style="font-family: 'Courier New', monospace; line-height: 1.6; color: #333; white-space: pre-wrap;">
-Cliquez sur "Générer le SMS" pour voir votre message...
-                        </p>
-                    </div>
-                    
-                    <div style="margin-top: 20px; padding: 15px; background: #e3f2fd; border-radius: 8px; border-left: 4px solid #2196f3;">
-                        <p style="margin: 0; font-size: 0.95em; color: #1976d2;">
-                            <strong>💡 Astuce :</strong> Les SMS de moins de 160 caractères ont un meilleur taux d'engagement.
-                        </p>
-                    </div>
+            <div class="generator-panel preview-panel">
+                <div class="preview-header">
+                    <h3>📱 Prévisualisation</h3>
+                    <span id="charCount" class="char-count">0/160 caractères</span>
                 </div>
                 
-                <div style="margin-top: 20px; text-align: center;">
-                    <button onclick="copySMS()" style="background: #ff6b6b; color: white; padding: 12px 30px; border: none; border-radius: 8px; font-size: 1em; font-weight: 600; cursor: pointer; margin-right: 10px;">
-                        📋 Copier le message
-                    </button>
-                    <button onclick="generateSMS()" style="background: white; color: #667eea; padding: 12px 30px; border: 2px solid #667eea; border-radius: 8px; font-size: 1em; font-weight: 600; cursor: pointer;">
-                        🔄 Régénérer
+                <div class="preview-box">
+                    <span class="sms-badge">SMS</span>
+                    <p id="smsPreview" class="preview-text">Cliquez sur "Générer le SMS" pour voir votre message...</p>
+                </div>
+                
+                <div class="preview-tip">
+                    <p><strong>💡 Astuce :</strong> Les SMS de moins de 160 caractères ont un meilleur taux d'engagement.</p>
+                </div>
+                
+                <div class="action-section">
+                    <div class="phone-input-container">
+                        <label for="phoneNumber" class="phone-label">📱 Numéro de téléphone</label>
+                        <input type="tel" id="phoneNumber" class="phone-input" placeholder="+33 6 12 34 56 78" />
+                    </div>
+                    <button class="btn-regenerate-full">
+                        📤 Envoyer
                     </button>
                 </div>
             </div>
         </div>
     </section>
 
-    <script>
-        // ROI Calculator
-        const budgetSlider = document.getElementById('budgetSlider');
-        const budgetDisplay = document.getElementById('budgetDisplay');
-        const smsCount = document.getElementById('smsCount');
-        const conversions = document.getElementById('conversions');
-        const revenue = document.getElementById('revenue');
-        const roi = document.getElementById('roi');
-        
-        budgetSlider.addEventListener('input', function() {
-            const budget = parseInt(this.value);
-            const smsNumber = Math.floor(budget / 0.05);
-            const conversionNumber = Math.floor(smsNumber * 0.10);
-            const revenueAmount = conversionNumber * 35;
-            const roiPercent = Math.floor(((revenueAmount - budget) / budget) * 100);
-            
-            budgetDisplay.textContent = budget + '€';
-            smsCount.textContent = smsNumber.toLocaleString();
-            conversions.textContent = conversionNumber.toLocaleString();
-            revenue.textContent = revenueAmount.toLocaleString() + '€';
-            roi.textContent = roiPercent.toLocaleString() + '%';
-        });
-        
-        // SMS Generator
-        let smsTemplates = {};
-        
-        // Charger les templates depuis le fichier JSON
-        fetch('templates.json')
-            .then(response => response.json())
-            .then(data => {
-                smsTemplates = data;
-                generateSMS(); // Générer un SMS initial après le chargement
-            })
-            .catch(error => {
-                console.error('Erreur lors du chargement des templates:', error);
-                // Fallback avec un template par défaut en cas d'erreur
-                smsTemplates = {
-                    promo: {
-                        friendly: ["🎉 Hey {prenom} ! Offre spéciale : -30% avec le code {code} ! 🛍️"]
-                    }
-                };
-                generateSMS();
-            });
-        
-        function generateSMS() {
-            if (!smsTemplates || Object.keys(smsTemplates).length === 0) {
-                return; // Attendre que les templates soient chargés
-            }
-            
-            const campaignType = document.getElementById('campaignType').value;
-            const tone = document.getElementById('tone').value;
-            const includePromo = document.getElementById('includePromo').checked;
-            
-            const templates = smsTemplates[campaignType][tone];
-            const template = templates[Math.floor(Math.random() * templates.length)];
-            
-            let sms = template
-                .replace('{prenom}', 'Marie')
-                .replace('{date}', 'dimanche')
-                .replace('{code}', includePromo ? 'PROMO30' : '');
-            
-            if (!includePromo) {
-                sms = sms.replace(/avec le code [A-Z0-9]+/gi, '')
-                          .replace(/Code[: ]*[A-Z0-9]+/gi, '')
-                          .replace(/\{code\}/g, '')
-                          .replace(/  +/g, ' ')
-                          .trim();
-            }
-            
-            document.getElementById('smsPreview').textContent = sms;
-            document.getElementById('charCount').textContent = sms.length + '/160 caractères';
-        }
-        
-        function copySMS() {
-            const smsText = document.getElementById('smsPreview').textContent;
-            navigator.clipboard.writeText(smsText).then(() => {
-                alert('SMS copié dans le presse-papier ! ✓');
-            });
-        }
-    </script>
-
-    <script>
-        // Attendre que tout soit chargé avant d'initialiser le carrousel
-        window.addEventListener('load', initCarousel);
-        
-        function initCarousel() {
-            // Carrousel infini centré
-            const track = document.querySelector('.carousel-track');
-            const wrapper = document.querySelector('.carousel-wrapper');
-            const prevBtn = document.querySelector('.carousel-prev');
-            const nextBtn = document.querySelector('.carousel-next');
-            const dotsContainer = document.querySelector('.carousel-dots');
-            const itemsOriginal = Array.from(document.querySelectorAll('.use-case-item'));
-            
-            let currentIndex = 0;
-            let isDragging = false;
-            let startPos = 0;
-            let currentTranslate = 0;
-            let prevTranslate = 0;
-            let animationID = 0;
-            let isAnimating = false;
-        
-            // Créer un carrousel infini en clonant les items
-            function createInfiniteCarousel() {
-                // Cloner les items 3 fois (avant, original, après)
-                const clonesBefore = itemsOriginal.map(item => item.cloneNode(true));
-                const clonesAfter = itemsOriginal.map(item => item.cloneNode(true));
-                
-                // Ajouter les clones avant
-                clonesBefore.reverse().forEach(clone => {
-                    track.insertBefore(clone, track.firstChild);
-                });
-                
-                // Ajouter les clones après
-                clonesAfter.forEach(clone => {
-                    track.appendChild(clone);
-                });
-                
-                // Position initiale sur les vrais items
-                currentIndex = itemsOriginal.length;
-                updateCarousel(false);
-            }
-            
-            // Créer les dots
-            function createDots() {
-                dotsContainer.innerHTML = '';
-                itemsOriginal.forEach((_, index) => {
-                    const dot = document.createElement('button');
-                    dot.classList.add('carousel-dot');
-                    if (index === 0) dot.classList.add('active');
-                    dot.addEventListener('click', () => goToSlide(index));
-                    dotsContainer.appendChild(dot);
-                });
-            }
-            
-            // Mettre à jour le carrousel
-            function updateCarousel(animated = true) {
-                const items = Array.from(track.children);
-                const itemWidth = items[0].offsetWidth;
-                const gap = 30;
-                const containerWidth = track.parentElement.offsetWidth;
-                const offset = containerWidth / 2 - itemWidth / 2 - currentIndex * (itemWidth + gap);
-                
-                if (animated) {
-                    isAnimating = true;
-                    track.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-                    track.classList.add('transitioning');
-                    
-                    // Réactiver les transitions des cards après l'animation du track
-                    setTimeout(() => {
-                        track.classList.remove('transitioning');
-                        isAnimating = false;
-                        // Forcer le recalcul des styles des cards
-                        items.forEach(item => {
-                            item.style.transition = 'all 0.4s ease';
-                        });
-                        
-                        // Vérifier si on doit boucler APRÈS l'animation
-                        checkLoop();
-                    }, 400);
-                } else {
-                    track.style.transition = 'none';
-                    track.classList.remove('transitioning');
-                    items.forEach(item => {
-                        item.style.transition = 'none';
-                    });
-                    
-                    // Réactiver les transitions après le saut instantané
-                    setTimeout(() => {
-                        items.forEach(item => {
-                            item.style.transition = 'all 0.4s ease';
-                        });
-                    }, 50);
-                }
-                
-                track.style.transform = `translateX(${offset}px)`;
-                currentTranslate = offset;
-                prevTranslate = offset;
-                
-                // Mettre à jour les classes center et appliquer les transformations 3D
-                items.forEach((item, index) => {
-                    const isCentered = index === currentIndex;
-                    item.classList.toggle('center', isCentered);
-                    
-                    if (!isCentered) {
-                        // Calculer la distance par rapport au centre
-                        const distance = index - currentIndex;
-                        const absDistance = Math.abs(distance);
-                        
-                        // Rotation basée sur la position (gauche ou droite)
-                        const rotationY = distance < 0 ? 8 : -8;
-                        
-                        // Réduire l'opacité et l'échelle en fonction de la distance
-                        const scale = Math.max(0.75, 0.85 - (absDistance - 1) * 0.05);
-                        const opacity = Math.max(0.3, 0.5 - (absDistance - 1) * 0.1);
-                        const translateZ = -80 - (absDistance - 1) * 20;
-                        
-                        item.style.transform = `scale(${scale}) rotateY(${rotationY}deg) translateZ(${translateZ}px)`;
-                        item.style.opacity = opacity;
-                        item.style.filter = 'brightness(0.9)';
-                    } else {
-                        item.style.transform = 'scale(1.08) translateZ(50px)';
-                        item.style.opacity = '1';
-                        item.style.filter = 'brightness(1)';
-                    }
-                });
-                
-                // Mettre à jour les dots
-                updateDots();
-            }
-            
-            // Vérifier si on doit boucler
-            function checkLoop() {
-                if (currentIndex < itemsOriginal.length) {
-                    // On est dans les clones du début, aller à la vraie position
-                    currentIndex += itemsOriginal.length;
-                    updateCarousel(false);
-                } else if (currentIndex >= itemsOriginal.length * 2) {
-                    // On est dans les clones de fin, revenir à la vraie position
-                    currentIndex -= itemsOriginal.length;
-                    updateCarousel(false);
-                }
-            }
-            
-            // Mettre à jour les dots
-            function updateDots() {
-                const dots = Array.from(dotsContainer.children);
-                const realIndex = ((currentIndex - itemsOriginal.length) % itemsOriginal.length + itemsOriginal.length) % itemsOriginal.length;
-                dots.forEach((dot, index) => {
-                    dot.classList.toggle('active', index === realIndex);
-                });
-            }
-            
-            // Aller à une slide spécifique
-            function goToSlide(index) {
-                currentIndex = itemsOriginal.length + index;
-                updateCarousel(true);
-            }
-            
-            // Navigation
-            prevBtn.addEventListener('click', () => {
-                if (isAnimating) return;
-                currentIndex--;
-                updateCarousel(true);
-            });
-            
-            nextBtn.addEventListener('click', () => {
-                if (isAnimating) return;
-                currentIndex++;
-                updateCarousel(true);
-            });
-            
-            // Touch/Mouse events pour le drag
-            function touchStart(index) {
-                return function(event) {
-                    // Empêcher le drag si une animation est en cours
-                    if (isAnimating) {
-                        return;
-                    }
-                    
-                    isDragging = true;
-                    startPos = getPositionX(event);
-                    animationID = requestAnimationFrame(animation);
-                    track.classList.add('dragging');
-                }
-            }
-            
-            function touchMove(event) {
-                if (isDragging) {
-                    const currentPosition = getPositionX(event);
-                    currentTranslate = prevTranslate + currentPosition - startPos;
-                }
-            }
-            
-            function touchEnd() {
-                if (!isDragging) return;
-                
-                isDragging = false;
-                cancelAnimationFrame(animationID);
-                track.classList.remove('dragging');
-                
-                const movedBy = currentTranslate - prevTranslate;
-                
-                // Calculer quelle card est la plus proche du centre après le drag
-                const items = Array.from(track.children);
-                const itemWidth = items[0].offsetWidth;
-                const gap = 30;
-                const containerWidth = track.parentElement.offsetWidth;
-                const centerPosition = containerWidth / 2;
-                
-                // Trouver la card la plus proche du centre
-                let closestIndex = currentIndex;
-                let closestDistance = Infinity;
-                
-                items.forEach((item, index) => {
-                    const itemCenter = item.offsetLeft + itemWidth / 2 - Math.abs(currentTranslate);
-                    const distance = Math.abs(itemCenter - centerPosition);
-                    
-                    if (distance < closestDistance) {
-                        closestDistance = distance;
-                        closestIndex = index;
-                    }
-                });
-                
-                // Si on a bougé significativement ou si une autre card est plus proche, naviguer
-                if (Math.abs(movedBy) > 50 || closestIndex !== currentIndex) {
-                    currentIndex = closestIndex;
-                }
-                
-                updateCarousel(true);
-            }
-            
-            function getPositionX(event) {
-                return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
-            }
-            
-            function animation() {
-                track.style.transform = `translateX(${currentTranslate}px)`;
-                if (isDragging) requestAnimationFrame(animation);
-            }
-            
-            // Click sur les cards pour naviguer
-            function setupCardClicks() {
-                const items = Array.from(track.children);
-                items.forEach((item, index) => {
-                    // Supprimer les anciens listeners s'ils existent
-                    const newItem = item.cloneNode(true);
-                    item.parentNode.replaceChild(newItem, item);
-                });
-                
-                // Réattacher sur les nouveaux items
-                const newItems = Array.from(track.children);
-                newItems.forEach((item, index) => {
-                    item.addEventListener('click', function(e) {
-                        console.log('Card clicked:', index, 'Current:', currentIndex);
-                        
-                        // Ne pas naviguer si on est en train de drag
-                        if (Math.abs(currentTranslate - prevTranslate) > 10) {
-                            console.log('Drag detected, ignoring click');
-                            return;
-                        }
-                        
-                        // Ne pas naviguer si une animation est en cours
-                        if (isAnimating) {
-                            console.log('Animation in progress, ignoring click');
-                            return;
-                        }
-                        
-                        // Si ce n'est pas la card centrée, naviguer vers elle
-                        if (index !== currentIndex) {
-                            console.log('Navigating to card:', index);
-                            currentIndex = index;
-                            updateCarousel(true);
-                        }
-                    }, { capture: false });
-                    
-                    // Ajouter le style pointer
-                    item.style.cursor = 'pointer';
-                });
-            }
-            
-            // Ajouter les event listeners
-            track.addEventListener('mousedown', touchStart(currentIndex));
-            track.addEventListener('touchstart', touchStart(currentIndex));
-            
-            // Les événements mousemove et mouseup sur document pour continuer le drag même hors du track
-            document.addEventListener('mousemove', touchMove);
-            track.addEventListener('touchmove', touchMove);
-            
-            document.addEventListener('mouseup', touchEnd);
-            track.addEventListener('touchend', touchEnd);
-            
-            // Empêcher le comportement par défaut
-            track.addEventListener('contextmenu', e => e.preventDefault());
-            track.addEventListener('dragstart', e => e.preventDefault());
-            
-            // Support clavier
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'ArrowLeft') prevBtn.click();
-                if (e.key === 'ArrowRight') nextBtn.click();
-            });
-            
-            // Responsive
-            window.addEventListener('resize', () => {
-                updateCarousel(false);
-            });
-            
-            // Initialisation
-            createInfiniteCarousel();
-            createDots();
-            
-            // Petit délai pour s'assurer que tout est bien calculé
-            setTimeout(() => {
-                updateCarousel(false);
-                setupCardClicks();
-                
-                // Afficher le carrousel avec un fade-in
-                setTimeout(() => {
-                    wrapper.classList.add('loaded');
-                }, 50);
-            }, 100);
-        }
-    </script>
+    <script src="script.js"></script>
 
     <footer>
         <div class="footer-content">
