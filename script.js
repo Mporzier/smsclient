@@ -147,15 +147,238 @@ function generateSMS() {
     }, 50);
 }
 
-function copySMS() {
-    const smsText = document.getElementById('smsPreview').textContent;
-    navigator.clipboard.writeText(smsText).then(() => {
-        alert('SMS copié dans le presse-papier ! ✓');
+function sendSMS() {
+    const phoneInput = document.getElementById('phoneNumber');
+    const smsPreview = document.getElementById('smsPreview');
+    const confirmationDiv = document.getElementById('sendConfirmation');
+    
+    const phoneNumber = phoneInput.value.trim();
+    const smsText = smsPreview.textContent;
+    
+    // Vérifier si un SMS est généré
+    if (!smsText || smsText === 'Cliquez sur "Générer le SMS" pour voir votre message...') {
+        confirmationDiv.textContent = '⚠️ Veuillez d\'abord générer un SMS';
+        confirmationDiv.className = 'send-confirmation error show';
+        setTimeout(() => {
+            confirmationDiv.classList.remove('show');
+        }, 3000);
+        return;
+    }
+    
+    // Vérifier si le numéro est rempli
+    if (!phoneNumber) {
+        confirmationDiv.textContent = '⚠️ Veuillez entrer un numéro de téléphone';
+        confirmationDiv.className = 'send-confirmation error show';
+        setTimeout(() => {
+            confirmationDiv.classList.remove('show');
+        }, 3000);
+        phoneInput.focus();
+        return;
+    }
+    
+    // Validation basique du numéro (peut contenir +, espaces, chiffres)
+    const phoneRegex = /^[\d\s\+\-\(\)]+$/;
+    if (!phoneRegex.test(phoneNumber)) {
+        confirmationDiv.textContent = '⚠️ Numéro de téléphone invalide';
+        confirmationDiv.className = 'send-confirmation error show';
+        setTimeout(() => {
+            confirmationDiv.classList.remove('show');
+        }, 3000);
+        phoneInput.focus();
+        return;
+    }
+    
+    // Simuler l'envoi (succès)
+    confirmationDiv.textContent = '✅ SMS envoyé !';
+    confirmationDiv.className = 'send-confirmation success show';
+    
+    // Masquer le message après 3 secondes
+    setTimeout(() => {
+        confirmationDiv.classList.remove('show');
+    }, 3000);
+}
+
+// Fonction pour scroller vers le générateur de SMS
+function scrollToGenerator() {
+    const generatorSection = document.querySelector('.sms-generator');
+    if (generatorSection) {
+        generatorSection.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'center' 
+        });
+    }
+}
+
+// Fonction pour retourner en haut
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
     });
 }
 
-// Attendre que tout soit chargé avant d'initialiser le carrousel
-window.addEventListener('load', initCarousel);
+// ==================== ANIMATIONS DE SCROLL ====================
+
+// Créer la barre de progression
+function createScrollProgress() {
+    const progressBar = document.createElement('div');
+    progressBar.classList.add('scroll-progress');
+    document.body.prepend(progressBar);
+    return progressBar;
+}
+
+// Mettre à jour la barre de progression
+function updateScrollProgress(progressBar) {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrollPercentage = (scrollTop / scrollHeight);
+    progressBar.style.transform = `scaleX(${scrollPercentage})`;
+}
+
+// Intersection Observer pour les animations au scroll
+function initScrollAnimations() {
+    const observerOptions = {
+        threshold: 0.15,
+        rootMargin: '0px 0px -100px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+                // Une fois révélé, on peut arrêter d'observer cet élément
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+    
+    // Observer tous les éléments avec les classes scroll-reveal
+    const revealElements = document.querySelectorAll(
+        '.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right, .scroll-reveal-scale'
+    );
+    
+    revealElements.forEach(el => observer.observe(el));
+}
+
+// Effet parallax subtil sur les éléments de fond
+function initParallax() {
+    const parallaxElements = document.querySelectorAll('.hero::before, .stats-section::before, .features-section::before, .use-cases::before, .pricing::before');
+    
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        
+        parallaxElements.forEach((el, index) => {
+            const section = el.parentElement;
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            
+            // Calculer si la section est visible
+            if (scrolled + window.innerHeight > sectionTop && scrolled < sectionTop + sectionHeight) {
+                const offset = (scrolled - sectionTop) * 0.3;
+                el.style.transform = `translateY(${offset}px) translateY(-50%)`;
+            }
+        });
+    });
+}
+
+// Animation fluide pour les stats au scroll
+function animateStatsOnScroll() {
+    const statsSection = document.querySelector('.stats-section');
+    if (!statsSection) return;
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !statsSection.dataset.animated) {
+                statsSection.dataset.animated = 'true';
+                
+                // Animer les chiffres
+                const statNumbers = statsSection.querySelectorAll('.stat-number');
+                statNumbers.forEach((stat, index) => {
+                    setTimeout(() => {
+                        stat.style.transform = 'scale(1.1)';
+                        setTimeout(() => {
+                            stat.style.transform = 'scale(1)';
+                        }, 300);
+                    }, index * 100);
+                });
+            }
+        });
+    }, { threshold: 0.3 });
+    
+    observer.observe(statsSection);
+}
+
+// Animation du header au scroll et gestion du bouton back-to-top
+function animateHeaderOnScroll() {
+    const header = document.querySelector('.main-header');
+    const backToTopBtn = document.querySelector('.back-to-top');
+    let lastScroll = 0;
+    
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        
+        // Animation du header
+        if (currentScroll > 100) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+        
+        // Afficher/masquer le bouton back-to-top
+        if (backToTopBtn) {
+            if (currentScroll > 500) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        }
+        
+        lastScroll = currentScroll;
+    }, { passive: true });
+}
+
+// Animation pour les transitions entre sections
+function animateSectionTransitions() {
+    const transitions = document.querySelectorAll('.section-transition');
+    
+    transitions.forEach(transition => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    transition.style.transform = 'scale(1.02)';
+                } else {
+                    transition.style.transform = 'scale(1)';
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        observer.observe(transition);
+    });
+}
+
+// Initialiser toutes les animations au chargement
+function initAllScrollAnimations() {
+    // Créer et initialiser la barre de progression
+    const progressBar = createScrollProgress();
+    
+    // Mettre à jour la barre lors du scroll
+    window.addEventListener('scroll', () => {
+        updateScrollProgress(progressBar);
+    }, { passive: true });
+    
+    // Initialiser les animations
+    initScrollAnimations();
+    initParallax();
+    animateStatsOnScroll();
+    animateHeaderOnScroll();
+    animateSectionTransitions();
+}
+
+// Attendre que tout soit chargé avant d'initialiser
+window.addEventListener('load', () => {
+    initCarousel();
+    initAllScrollAnimations();
+});
 
 function initCarousel() {
     // Carrousel infini centré
@@ -461,4 +684,3 @@ function initCarousel() {
         }, 50);
     }, 100);
 }
-
