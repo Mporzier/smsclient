@@ -81,6 +81,12 @@ iframe {
     --primary-foreground: lab(98.26% 0 0);
     --border: lab(90.952% 0 -.0000119209);
     --ring: lab(66.128% -.0000298023 .0000119209);
+    --background: lab(100% 0 0);
+    --foreground: lab(2.75381% 0 0);
+    --card: lab(100% 0 0);
+    --card-foreground: lab(2.75381% 0 0);
+    --muted: lab(96.52% -.0000298023 .0000119209);
+    --muted-foreground: lab(48.496% 0 0);
 }
 
 body {
@@ -677,10 +683,14 @@ section {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
     z-index: -1;
     pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.1s;
     /* Effet de fondu identique au site */
     mask-image: radial-gradient(ellipse 100% 60% at 50% 30%, white 0%, white 40%, transparent 90%);
     -webkit-mask-image: radial-gradient(ellipse 100% 60% at 50% 30%, white 0%, white 40%, transparent 90%);
@@ -1052,15 +1062,47 @@ section {
     padding: 0 20px;
 }
 
-/* Les styles des feature cards sont maintenant gérés par Tailwind CSS */
-.group.relative.rounded-\[inherit\] {
-    outline: 2px solid color-mix(in oklab, var(--ring) 50%, transparent);
-    outline-offset: 2px;
+/* Variables CSS pour les cards */
+.bg-background {
+    background-color: var(--background);
 }
 
-/* Rendre le gradient de bordure toujours visible */
-.group .pointer-events-none.absolute.inset-0.rounded-\[inherit\].bg-border {
-    opacity: 1 !important;
+.bg-card {
+    background-color: var(--card);
+}
+
+.text-card-foreground {
+    color: var(--card-foreground);
+}
+
+.bg-muted {
+    background-color: var(--muted);
+}
+
+.text-muted-foreground {
+    color: var(--muted-foreground);
+}
+
+.text-primary {
+    color: var(--primary);
+}
+
+/* Section features avec background transparent pour voir les dots */
+#features,
+#features.bg-background {
+    background: transparent !important;
+    background-color: transparent !important;
+}
+
+/* Transitions fluides pour les gradients des cards */
+.group .pointer-events-none.absolute.inset-0.rounded-\[inherit\] {
+    transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+    will-change: opacity, background;
+}
+
+.group .pointer-events-none.absolute.inset-px.rounded-\[inherit\] {
+    transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+    will-change: opacity, background;
 }
 
 .use-cases {

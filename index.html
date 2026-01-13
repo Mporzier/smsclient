@@ -43,6 +43,42 @@
         </defs>
         <rect width="100%" height="100%" fill="url(#dotPattern)" />
     </svg>
+    <script>
+        // Centrer immédiatement le pattern pour éviter le flash
+        (function() {
+            function centerDotPattern() {
+                const dotPattern = document.getElementById('dotPattern');
+                if (!dotPattern) return;
+                
+                const viewportWidth = document.documentElement.clientWidth;
+                const patternSize = 24;
+                const circleOffset = 12;
+                const fullPatterns = Math.floor(viewportWidth / patternSize);
+                const lastCircleX = fullPatterns * patternSize + circleOffset;
+                const rightGap = viewportWidth - lastCircleX;
+                const leftGap = circleOffset;
+                const offset = (rightGap - leftGap) / 2;
+                
+                dotPattern.setAttribute('x', -offset);
+                
+                // Afficher le SVG une fois centré
+                const dotBg = document.querySelector('.dot-bg');
+                if (dotBg) {
+                    dotBg.style.opacity = '1';
+                }
+            }
+            
+            // Exécuter immédiatement
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', centerDotPattern);
+            } else {
+                centerDotPattern();
+            }
+            
+            // Aussi au redimensionnement
+            window.addEventListener('resize', centerDotPattern);
+        })();
+    </script>
 
     <section class="hero">
         <div class="hero-content">
@@ -102,8 +138,8 @@
                 <div data-slot="card" class="bg-card text-card-foreground flex flex-col gap-6 rounded-xl border p-0 w-full shadow-none border-none max-w-md mx-auto min-h-[200px]">
                     <div class="group relative rounded-[inherit] p-0 min-h-[200px]">
                         <div class="pointer-events-none absolute inset-0 rounded-[inherit] opacity-60 duration-300 group-hover:opacity-100" style="background: radial-gradient(200px circle at -200px -200px,
-          #9E7AFF, 
-          #FE8BBB, 
+          #6B4DB8, 
+          #C85A8B, 
           var(--border) 100%
           );"></div>
                         <div class="absolute inset-px rounded-[inherit] bg-background"></div>
@@ -125,8 +161,8 @@
                 <div data-slot="card" class="bg-card text-card-foreground flex flex-col gap-6 rounded-xl border p-0 w-full shadow-none border-none max-w-md mx-auto min-h-[200px]">
                     <div class="group relative rounded-[inherit] p-0 min-h-[200px]">
                         <div class="pointer-events-none absolute inset-0 rounded-[inherit] opacity-60 duration-300 group-hover:opacity-100" style="background: radial-gradient(200px circle at -200px -200px,
-          #9E7AFF, 
-          #FE8BBB, 
+          #6B4DB8, 
+          #C85A8B, 
           var(--border) 100%
           );"></div>
                         <div class="absolute inset-px rounded-[inherit] bg-background"></div>
@@ -148,8 +184,8 @@
                 <div data-slot="card" class="bg-card text-card-foreground flex flex-col gap-6 rounded-xl border p-0 w-full shadow-none border-none max-w-md mx-auto min-h-[200px]">
                     <div class="group relative rounded-[inherit] p-0 min-h-[200px]">
                         <div class="pointer-events-none absolute inset-0 rounded-[inherit] opacity-60 duration-300 group-hover:opacity-100" style="background: radial-gradient(200px circle at -200px -200px,
-          #9E7AFF, 
-          #FE8BBB, 
+          #6B4DB8, 
+          #C85A8B, 
           var(--border) 100%
           );"></div>
                         <div class="absolute inset-px rounded-[inherit] bg-background"></div>
@@ -171,8 +207,8 @@
                 <div data-slot="card" class="bg-card text-card-foreground flex flex-col gap-6 rounded-xl border p-0 w-full shadow-none border-none max-w-md mx-auto min-h-[200px]">
                     <div class="group relative rounded-[inherit] p-0 min-h-[200px]">
                         <div class="pointer-events-none absolute inset-0 rounded-[inherit] opacity-60 duration-300 group-hover:opacity-100" style="background: radial-gradient(200px circle at -200px -200px,
-          #9E7AFF, 
-          #FE8BBB, 
+          #6B4DB8, 
+          #C85A8B, 
           var(--border) 100%
           );"></div>
                         <div class="absolute inset-px rounded-[inherit] bg-background"></div>
@@ -194,8 +230,8 @@
                 <div data-slot="card" class="bg-card text-card-foreground flex flex-col gap-6 rounded-xl border p-0 w-full shadow-none border-none max-w-md mx-auto min-h-[200px]">
                     <div class="group relative rounded-[inherit] p-0 min-h-[200px]">
                         <div class="pointer-events-none absolute inset-0 rounded-[inherit] opacity-60 duration-300 group-hover:opacity-100" style="background: radial-gradient(200px circle at -200px -200px,
-          #9E7AFF, 
-          #FE8BBB, 
+          #6B4DB8, 
+          #C85A8B, 
           var(--border) 100%
           );"></div>
                         <div class="absolute inset-px rounded-[inherit] bg-background"></div>
@@ -217,8 +253,8 @@
                 <div data-slot="card" class="bg-card text-card-foreground flex flex-col gap-6 rounded-xl border p-0 w-full shadow-none border-none max-w-md mx-auto min-h-[200px]">
                     <div class="group relative rounded-[inherit] p-0 min-h-[200px]">
                         <div class="pointer-events-none absolute inset-0 rounded-[inherit] opacity-60 duration-300 group-hover:opacity-100" style="background: radial-gradient(200px circle at -200px -200px,
-          #9E7AFF, 
-          #FE8BBB, 
+          #6B4DB8, 
+          #C85A8B, 
           var(--border) 100%
           );"></div>
                         <div class="absolute inset-px rounded-[inherit] bg-background"></div>

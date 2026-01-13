@@ -1047,27 +1047,119 @@ setTimeout(function() {
     }
 }, 100);
 
-// Effet de gradient qui suit la souris sur les feature cards
+// Effet de gradient qui suit la souris sur les feature cards et à proximité
 document.addEventListener('DOMContentLoaded', function() {
     const cards = document.querySelectorAll('.group');
+    const featuresSection = document.getElementById('features');
+    const proximityRadius = 250; // Rayon de proximité en pixels
     
-    cards.forEach(card => {
-        const gradientBorder = card.querySelector('.pointer-events-none.absolute.inset-0');
-        const gradientShine = card.querySelector('.pointer-events-none.absolute.inset-px');
+    if (!featuresSection || cards.length === 0) return;
+    
+    // Fonction pour calculer la distance entre un point et un rectangle
+    function getDistanceToRect(x, y, rect) {
+        const dx = Math.max(rect.left - x, 0, x - rect.right);
+        const dy = Math.max(rect.top - y, 0, y - rect.bottom);
+        return Math.sqrt(dx * dx + dy * dy);
+    }
+    
+    // Fonction pour obtenir le point le plus proche sur le rectangle depuis un point extérieur
+    function getClosestPointOnRect(x, y, rect) {
+        const closestX = Math.max(rect.left, Math.min(x, rect.right));
+        const closestY = Math.max(rect.top, Math.min(y, rect.bottom));
+        return { x: closestX, y: closestY };
+    }
+    
+    // Fonction pour mettre à jour le gradient d'une card
+    function updateCardGradient(card, mouseX, mouseY) {
+        const gradientBorder = card.querySelector('.pointer-events-none.absolute.inset-0.rounded-\\[inherit\\]');
+        // Le gradientShine est le deuxième élément inset-px avec pointer-events-none
+        const allInsetPx = card.querySelectorAll('.pointer-events-none.absolute.inset-px');
+        const gradientShine = allInsetPx.length > 0 ? allInsetPx[allInsetPx.length - 1] : null;
         
-        if (gradientBorder && gradientShine) {
-            card.addEventListener('mousemove', function(e) {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                gradientBorder.style.background = `radial-gradient(200px circle at ${x}px ${y}px, #9E7AFF, #FE8BBB, var(--border) 100%)`;
-                gradientShine.style.background = `radial-gradient(200px at ${x}px ${y}px, rgba(217, 217, 217, 0.333), transparent 100%)`;
+        if (!gradientBorder || !gradientShine) return;
+        
+        const rect = card.getBoundingClientRect();
+        const distance = getDistanceToRect(mouseX, mouseY, rect);
+        
+        // Calculer la distance normalisée (peut être > 1 si en dehors de la zone)
+        const normalizedDistance = distance / proximityRadius;
+        
+        // Calculer la position relative à la card (toujours calculer pour transition fluide)
+        let relativeX, relativeY;
+        
+        if (mouseX >= rect.left && mouseX <= rect.right && 
+            mouseY >= rect.top && mouseY <= rect.bottom) {
+            // La souris est directement sur la card
+            relativeX = mouseX - rect.left;
+            relativeY = mouseY - rect.top;
+        } else {
+            // La souris est à proximité mais en dehors, utiliser le point le plus proche
+            const closestPoint = getClosestPointOnRect(mouseX, mouseY, rect);
+            relativeX = closestPoint.x - rect.left;
+            relativeY = closestPoint.y - rect.top;
+        }
+        
+        // Calculer l'opacité de manière CONTINUE sans jamais créer de saut
+        // L'opacité doit toujours commencer à 0.6 et augmenter graduellement jusqu'à 1.0
+        // Même si la souris est en dehors de la zone, utiliser une transition douce
+        
+        // Clamper la distance normalisée pour le calcul de l'opacité
+        const clampedDistance = Math.min(normalizedDistance, 1);
+        
+        // Utiliser une courbe ease-out pour une transition progressive
+        const easedDistance = Math.pow(clampedDistance, 2);
+        
+        // Opacité du border : TOUJOURS de 0.6 (minimum) à 1.0 (maximum)
+        // Même si la souris est en dehors, commencer à 0.6 pour éviter tout saut
+        const minBorderOpacity = 0.6;
+        const maxBorderOpacity = 1.0;
+        const borderOpacity = minBorderOpacity + (1 - easedDistance) * (maxBorderOpacity - minBorderOpacity);
+        
+        // Opacité du shine : de 0 (loin) à 0.8 (proche)
+        const shineOpacity = (1 - easedDistance) * 0.8;
+        
+        // Toujours mettre à jour le gradient avec les valeurs calculées de manière continue
+        // La position du gradient suit toujours la souris pour une transition fluide
+        gradientBorder.style.setProperty('opacity', borderOpacity.toString(), 'important');
+        gradientBorder.style.background = `radial-gradient(200px circle at ${relativeX}px ${relativeY}px, #6B4DB8, #C85A8B, var(--border) 100%)`;
+        
+        gradientShine.style.setProperty('opacity', shineOpacity.toString(), 'important');
+        gradientShine.style.background = `radial-gradient(200px at ${relativeX}px ${relativeY}px, rgba(217, 217, 217, 0.333), transparent 100%)`;
+    }
+    
+    // Écouter les mouvements de la souris sur tout le document
+    // pour que l'effet fonctionne même quand la souris est en dehors de la section
+    document.addEventListener('mousemove', function(e) {
+        const mouseX = e.clientX;
+        const mouseY = e.clientY;
+        
+        // Vérifier si la souris est à proximité de la section des cards
+        const sectionRect = featuresSection.getBoundingClientRect();
+        const sectionPadding = proximityRadius;
+        const isNearSection = mouseX >= sectionRect.left - sectionPadding &&
+                             mouseX <= sectionRect.right + sectionPadding &&
+                             mouseY >= sectionRect.top - sectionPadding &&
+                             mouseY <= sectionRect.bottom + sectionPadding;
+        
+        if (isNearSection) {
+            // Mettre à jour toutes les cards
+            cards.forEach(card => {
+                updateCardGradient(card, mouseX, mouseY);
             });
-            
-            card.addEventListener('mouseleave', function() {
-                gradientBorder.style.background = 'radial-gradient(200px circle at -200px -200px, #9E7AFF, #FE8BBB, var(--border) 100%)';
-                gradientShine.style.background = 'radial-gradient(200px at -200px -200px, rgba(217, 217, 217, 0.333), transparent 100%)';
+        } else {
+            // Réinitialiser toutes les cards si la souris est trop loin
+            cards.forEach(card => {
+                const gradientBorder = card.querySelector('.pointer-events-none.absolute.inset-0.rounded-\\[inherit\\]');
+                const allInsetPx = card.querySelectorAll('.pointer-events-none.absolute.inset-px');
+                const gradientShine = allInsetPx.length > 0 ? allInsetPx[allInsetPx.length - 1] : null;
+                
+                if (gradientBorder && gradientShine) {
+                    gradientBorder.style.setProperty('opacity', '0', 'important');
+                    gradientBorder.style.background = 'radial-gradient(200px circle at -200px -200px, #6B4DB8, #C85A8B, var(--border) 100%)';
+                    
+                    gradientShine.style.setProperty('opacity', '0', 'important');
+                    gradientShine.style.background = 'radial-gradient(200px at -200px -200px, rgba(217, 217, 217, 0.333), transparent 100%)';
+                }
             });
         }
     });
