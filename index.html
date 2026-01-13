@@ -7,6 +7,8 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <title>SMS Marketing Pro - ROI Garanti</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://api.fontshare.com/v2/css?f[]=geist@400,500,600,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -33,12 +35,39 @@
         </div>
     </header>
 
+    <svg class="dot-bg" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <pattern id="dotPattern" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
+                <circle cx="12" cy="12" r="1.2" fill="#9ca3af" />
+            </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#dotPattern)" />
+    </svg>
+
     <section class="hero">
-        <h1 class="scroll-reveal-scale">Des SMS intelligents pour faire revenir<br><span class="highlight-gradient">vos clients chaque semaine.</span></h1>
-        <p class="subtitle scroll-reveal">Plus de clients fidèles. Moins de messages inutiles.</p>
-        <p class="subtitle scroll-reveal">👉 Simple, efficace, mesurable. Que des résultats.</p>
-        <button class="cta-primary scroll-reveal" onclick="scrollToGenerator()">Testez gratuitement !</button>
-        <p class="social-proof scroll-reveal">Déjà +100 utilisateurs sur liste d'attente</p>
+        <div class="hero-content">
+            <h1 class="scroll-reveal-scale">Envoyez <span class="highlight-black">facilement</span> des SMS qui<br>vendent, aux <span class="highlight-black">bons clients.</span></h1>
+            <p class="subtitle scroll-reveal">Informez, relancez et fidélisez vos clients instantanément.</p>
+            <div class="cta-buttons">
+                <button class="cta-primary scroll-reveal" onclick="scrollToGenerator()">Testez gratuitement !</button>
+                <button class="cta-secondary scroll-reveal">Rejoindre la liste d'attente</button>
+            </div>
+            <p class="subtitle scroll-reveal">Déjà +100 utilisateurs intéressés !</p>
+        </div>
+        
+        <div class="video-container">
+            <video id="hero-video" loop muted playsinline preload="auto">
+                <source src="dummy-video.mp4" type="video/mp4">
+            </video>
+            <div class="video-overlay" id="video-overlay">
+                <button class="video-play-button" id="video-play-btn">
+                    <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="40" cy="40" r="40" fill="white" opacity="0.9"/>
+                        <path d="M32 25L55 40L32 55V25Z" fill="black"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
     </section>
 
     <div class="section-transition transition-hero-stats"></div>
@@ -66,37 +95,145 @@
 
     <div class="section-transition transition-stats-features"></div>
 
-    <section id="features" class="features-section">
+    <section id="features" class="w-full py-10 px-4 flex flex-col items-center bg-background">
         <h2 class="section-title scroll-reveal">Transformez vos SMS en ventes</h2>
-        <div class="features-grid">
-            <div class="feature-card scroll-reveal scroll-reveal-delay-1">
-                <h3>💰 Rentabilité Immédiate</h3>
-                <p>Envoyez 100 SMS pour seulement 10€. Un SMS à 0,10€ peut générer un panier à 30€ : <strong>votre investissement est rentabilisé dès la première vente.</strong></p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl w-full">
+            <div style="opacity: 1; transform: none;">
+                <div data-slot="card" class="bg-card text-card-foreground flex flex-col gap-6 rounded-xl border p-0 w-full shadow-none border-none max-w-md mx-auto min-h-[200px]">
+                    <div class="group relative rounded-[inherit] p-0 min-h-[200px]">
+                        <div class="pointer-events-none absolute inset-0 rounded-[inherit] opacity-60 duration-300 group-hover:opacity-100" style="background: radial-gradient(200px circle at -200px -200px,
+          #9E7AFF, 
+          #FE8BBB, 
+          var(--border) 100%
+          );"></div>
+                        <div class="absolute inset-px rounded-[inherit] bg-background"></div>
+                        <div class="pointer-events-none absolute inset-px rounded-[inherit] opacity-0 transition-opacity duration-300 group-hover:opacity-100" style="opacity: 0.8; background: radial-gradient(200px at -200px -200px, rgba(217, 217, 217, 0.333), transparent 100%);"></div>
+                        <div class="relative">
+                            <div data-slot="card-header" class="@container/card-header auto-rows-min grid-rows-[auto_auto] has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6 p-6 pb-2 flex flex-col items-start gap-3">
+                                <div class="rounded-full bg-muted p-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dollar-sign w-6 h-6 text-primary" aria-hidden="true"><line x1="12" x2="12" y1="2" y2="22"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                                </div>
+                                <div data-slot="card-title" class="font-semibold text-lg">Rentabilité Immédiate</div>
+                            </div>
+                            <div data-slot="card-content" class="p-6 pt-2 text-muted-foreground text-sm">Envoyez 100 SMS pour seulement 10€. Un SMS à 0,10€ peut générer un panier à 30€ : <strong>votre investissement est rentabilisé dès la première vente.</strong></div>
+                        </div>
+                    </div>
+                </div>
             </div>
             
-            <div class="feature-card scroll-reveal scroll-reveal-delay-2">
-                <h3>🎯 Ciblage Client Précis</h3>
-                <p>Ne parlez qu'aux bons clients. Créez des groupes (ex: "VIP", "Inactifs") pour <strong>multiplier vos conversions par 3</strong> grâce à des offres qui les concernent vraiment.</p>
+            <div style="opacity: 1; transform: none;">
+                <div data-slot="card" class="bg-card text-card-foreground flex flex-col gap-6 rounded-xl border p-0 w-full shadow-none border-none max-w-md mx-auto min-h-[200px]">
+                    <div class="group relative rounded-[inherit] p-0 min-h-[200px]">
+                        <div class="pointer-events-none absolute inset-0 rounded-[inherit] opacity-60 duration-300 group-hover:opacity-100" style="background: radial-gradient(200px circle at -200px -200px,
+          #9E7AFF, 
+          #FE8BBB, 
+          var(--border) 100%
+          );"></div>
+                        <div class="absolute inset-px rounded-[inherit] bg-background"></div>
+                        <div class="pointer-events-none absolute inset-px rounded-[inherit] opacity-0 transition-opacity duration-300 group-hover:opacity-100" style="opacity: 0.8; background: radial-gradient(200px at -200px -200px, rgba(217, 217, 217, 0.333), transparent 100%);"></div>
+                        <div class="relative">
+                            <div data-slot="card-header" class="@container/card-header auto-rows-min grid-rows-[auto_auto] has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6 p-6 pb-2 flex flex-col items-start gap-3">
+                                <div class="rounded-full bg-muted p-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-target w-6 h-6 text-primary" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                                </div>
+                                <div data-slot="card-title" class="font-semibold text-lg">Ciblage Client Précis</div>
+                            </div>
+                            <div data-slot="card-content" class="p-6 pt-2 text-muted-foreground text-sm">Ne parlez qu'aux bons clients. Créez des groupes (ex: "VIP", "Inactifs") pour <strong>multiplier vos conversions par 3</strong> grâce à des offres qui les concernent vraiment.</div>
+                        </div>
+                    </div>
+                </div>
             </div>
             
-            <div class="feature-card scroll-reveal scroll-reveal-delay-3">
-                <h3>⚡ Envoi Flash ou Planifié</h3>
-                <p>Envoyez une promo en 30 secondes ou programmez-la pour les heures de pointe. <strong>98% de vos messages sont lus dans les 3 minutes</strong> suivant la réception.</p>
+            <div style="opacity: 1; transform: none;">
+                <div data-slot="card" class="bg-card text-card-foreground flex flex-col gap-6 rounded-xl border p-0 w-full shadow-none border-none max-w-md mx-auto min-h-[200px]">
+                    <div class="group relative rounded-[inherit] p-0 min-h-[200px]">
+                        <div class="pointer-events-none absolute inset-0 rounded-[inherit] opacity-60 duration-300 group-hover:opacity-100" style="background: radial-gradient(200px circle at -200px -200px,
+          #9E7AFF, 
+          #FE8BBB, 
+          var(--border) 100%
+          );"></div>
+                        <div class="absolute inset-px rounded-[inherit] bg-background"></div>
+                        <div class="pointer-events-none absolute inset-px rounded-[inherit] opacity-0 transition-opacity duration-300 group-hover:opacity-100" style="opacity: 0.8; background: radial-gradient(200px at -200px -200px, rgba(217, 217, 217, 0.333), transparent 100%);"></div>
+                        <div class="relative">
+                            <div data-slot="card-header" class="@container/card-header auto-rows-min grid-rows-[auto_auto] has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6 p-6 pb-2 flex flex-col items-start gap-3">
+                                <div class="rounded-full bg-muted p-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zap w-6 h-6 text-primary" aria-hidden="true"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path></svg>
+                                </div>
+                                <div data-slot="card-title" class="font-semibold text-lg">Envoi Flash ou Planifié</div>
+                            </div>
+                            <div data-slot="card-content" class="p-6 pt-2 text-muted-foreground text-sm">Envoyez une promo en 30 secondes ou programmez-la pour les heures de pointe. <strong>98% de vos messages sont lus dans les 3 minutes</strong> suivant la réception.</div>
+                        </div>
+                    </div>
+                </div>
             </div>
             
-            <div class="feature-card scroll-reveal scroll-reveal-delay-4">
-                <h3>✅ Nettoyage Inclus</h3>
-                <p>Évitez de payer pour rien. Notre système vérifie la validité des numéros avant l'envoi pour <strong>garantir que 100% de votre budget arrive à destination.</strong></p>
+            <div style="opacity: 1; transform: none;">
+                <div data-slot="card" class="bg-card text-card-foreground flex flex-col gap-6 rounded-xl border p-0 w-full shadow-none border-none max-w-md mx-auto min-h-[200px]">
+                    <div class="group relative rounded-[inherit] p-0 min-h-[200px]">
+                        <div class="pointer-events-none absolute inset-0 rounded-[inherit] opacity-60 duration-300 group-hover:opacity-100" style="background: radial-gradient(200px circle at -200px -200px,
+          #9E7AFF, 
+          #FE8BBB, 
+          var(--border) 100%
+          );"></div>
+                        <div class="absolute inset-px rounded-[inherit] bg-background"></div>
+                        <div class="pointer-events-none absolute inset-px rounded-[inherit] opacity-0 transition-opacity duration-300 group-hover:opacity-100" style="opacity: 0.8; background: radial-gradient(200px at -200px -200px, rgba(217, 217, 217, 0.333), transparent 100%);"></div>
+                        <div class="relative">
+                            <div data-slot="card-header" class="@container/card-header auto-rows-min grid-rows-[auto_auto] has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6 p-6 pb-2 flex flex-col items-start gap-3">
+                                <div class="rounded-full bg-muted p-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-circle w-6 h-6 text-primary" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg>
+                                </div>
+                                <div data-slot="card-title" class="font-semibold text-lg">Nettoyage Inclus</div>
+                            </div>
+                            <div data-slot="card-content" class="p-6 pt-2 text-muted-foreground text-sm">Évitez de payer pour rien. Notre système vérifie la validité des numéros avant l'envoi pour <strong>garantir que 100% de votre budget arrive à destination.</strong></div>
+                        </div>
+                    </div>
+                </div>
             </div>
             
-            <div class="feature-card scroll-reveal scroll-reveal-delay-5">
-                <h3>🤖 IA Rédactrice Intégrée</h3>
-                <p>Panne d'inspiration ? <strong>L'IA écrit vos messages de vente à votre place.</strong> Générez des textes percutants qui donnent envie de cliquer en un instant.</p>
+            <div style="opacity: 1; transform: none;">
+                <div data-slot="card" class="bg-card text-card-foreground flex flex-col gap-6 rounded-xl border p-0 w-full shadow-none border-none max-w-md mx-auto min-h-[200px]">
+                    <div class="group relative rounded-[inherit] p-0 min-h-[200px]">
+                        <div class="pointer-events-none absolute inset-0 rounded-[inherit] opacity-60 duration-300 group-hover:opacity-100" style="background: radial-gradient(200px circle at -200px -200px,
+          #9E7AFF, 
+          #FE8BBB, 
+          var(--border) 100%
+          );"></div>
+                        <div class="absolute inset-px rounded-[inherit] bg-background"></div>
+                        <div class="pointer-events-none absolute inset-px rounded-[inherit] opacity-0 transition-opacity duration-300 group-hover:opacity-100" style="opacity: 0.8; background: radial-gradient(200px at -200px -200px, rgba(217, 217, 217, 0.333), transparent 100%);"></div>
+                        <div class="relative">
+                            <div data-slot="card-header" class="@container/card-header auto-rows-min grid-rows-[auto_auto] has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6 p-6 pb-2 flex flex-col items-start gap-3">
+                                <div class="rounded-full bg-muted p-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles w-6 h-6 text-primary" aria-hidden="true"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"></path><path d="M20 3v4"></path><path d="M22 5h-4"></path><path d="M4 17v2"></path><path d="M5 18H3"></path></svg>
+                                </div>
+                                <div data-slot="card-title" class="font-semibold text-lg">IA Rédactrice Intégrée</div>
+                            </div>
+                            <div data-slot="card-content" class="p-6 pt-2 text-muted-foreground text-sm">Panne d'inspiration ? <strong>L'IA écrit vos messages de vente à votre place.</strong> Générez des textes percutants qui donnent envie de cliquer en un instant.</div>
+                        </div>
+                    </div>
+                </div>
             </div>
             
-            <div class="feature-card scroll-reveal scroll-reveal-delay-6">
-                <h3>🔄 Importation en 1 Clic</h3>
-                <p>Ne perdez pas de temps. Glissez-déposez votre fichier client (Excel, CRM) et <strong>commencez à communiquer avec votre base en moins de 2 minutes.</strong></p>
+            <div style="opacity: 1; transform: none;">
+                <div data-slot="card" class="bg-card text-card-foreground flex flex-col gap-6 rounded-xl border p-0 w-full shadow-none border-none max-w-md mx-auto min-h-[200px]">
+                    <div class="group relative rounded-[inherit] p-0 min-h-[200px]">
+                        <div class="pointer-events-none absolute inset-0 rounded-[inherit] opacity-60 duration-300 group-hover:opacity-100" style="background: radial-gradient(200px circle at -200px -200px,
+          #9E7AFF, 
+          #FE8BBB, 
+          var(--border) 100%
+          );"></div>
+                        <div class="absolute inset-px rounded-[inherit] bg-background"></div>
+                        <div class="pointer-events-none absolute inset-px rounded-[inherit] opacity-0 transition-opacity duration-300 group-hover:opacity-100" style="opacity: 0.8; background: radial-gradient(200px at -200px -200px, rgba(217, 217, 217, 0.333), transparent 100%);"></div>
+                        <div class="relative">
+                            <div data-slot="card-header" class="@container/card-header auto-rows-min grid-rows-[auto_auto] has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6 p-6 pb-2 flex flex-col items-start gap-3">
+                                <div class="rounded-full bg-muted p-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-upload w-6 h-6 text-primary" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" x2="12" y1="3" y2="15"></line></svg>
+                                </div>
+                                <div data-slot="card-title" class="font-semibold text-lg">Importation en 1 Clic</div>
+                            </div>
+                            <div data-slot="card-content" class="p-6 pt-2 text-muted-foreground text-sm">Glissez-déposez votre fichier client (Excel, CRM) et <strong>commencez à communiquer avec votre base en moins de 2 minutes.</strong></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

@@ -991,3 +991,84 @@ function initCarousel() {
         }, 50);
     }, 100);
 }
+
+// Video player controls
+setTimeout(function() {
+    const video = document.getElementById('hero-video');
+    const overlay = document.getElementById('video-overlay');
+    const playBtn = document.getElementById('video-play-btn');
+    
+    if (video && overlay && playBtn) {
+        // Précharger la vidéo
+        video.load();
+        
+        let hasStarted = false;
+        
+        // Click on overlay or play button
+        overlay.onclick = function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            if (!hasStarted) {
+                hasStarted = true;
+                // Cacher l'overlay immédiatement pour un feedback instantané
+                overlay.classList.add('hidden');
+                video.setAttribute('controls', 'controls');
+                
+                // Lancer la vidéo
+                video.play().catch(err => {
+                    console.error('Play error:', err);
+                    // Restaurer l'overlay en cas d'erreur
+                    hasStarted = false;
+                    overlay.classList.remove('hidden');
+                    video.removeAttribute('controls');
+                });
+            }
+        };
+        
+        // Gérer la fin de la vidéo
+        video.addEventListener('ended', function() {
+            hasStarted = false;
+            video.currentTime = 0;
+            video.removeAttribute('controls');
+            overlay.classList.remove('hidden');
+        });
+        
+        // Empêcher les bugs de pause/unpause
+        video.addEventListener('play', function() {
+            if (hasStarted) {
+                overlay.classList.add('hidden');
+            }
+        });
+        
+        video.addEventListener('pause', function() {
+            // Ne rien faire, laisser les contrôles natifs gérer
+        });
+    }
+}, 100);
+
+// Effet de gradient qui suit la souris sur les feature cards
+document.addEventListener('DOMContentLoaded', function() {
+    const cards = document.querySelectorAll('.group');
+    
+    cards.forEach(card => {
+        const gradientBorder = card.querySelector('.pointer-events-none.absolute.inset-0');
+        const gradientShine = card.querySelector('.pointer-events-none.absolute.inset-px');
+        
+        if (gradientBorder && gradientShine) {
+            card.addEventListener('mousemove', function(e) {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                gradientBorder.style.background = `radial-gradient(200px circle at ${x}px ${y}px, #9E7AFF, #FE8BBB, var(--border) 100%)`;
+                gradientShine.style.background = `radial-gradient(200px at ${x}px ${y}px, rgba(217, 217, 217, 0.333), transparent 100%)`;
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                gradientBorder.style.background = 'radial-gradient(200px circle at -200px -200px, #9E7AFF, #FE8BBB, var(--border) 100%)';
+                gradientShine.style.background = 'radial-gradient(200px at -200px -200px, rgba(217, 217, 217, 0.333), transparent 100%)';
+            });
+        }
+    });
+});
