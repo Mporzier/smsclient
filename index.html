@@ -138,29 +138,6 @@
 
     <div class="section-transition transition-hero-stats"></div>
 
-    <section class="stats-section">
-        <div class="stats-grid">
-            <div class="stat-card scroll-reveal scroll-reveal-delay-1">
-                <div class="stat-number">98%</div>
-                <div class="stat-label">Taux d'ouverture<br>(vs 20% email)</div>
-            </div>
-            <div class="stat-card scroll-reveal scroll-reveal-delay-2">
-                <div class="stat-number">90 sec</div>
-                <div class="stat-label">Délai moyen de lecture d'un SMS</div>
-            </div>
-            <div class="stat-card scroll-reveal scroll-reveal-delay-3">
-                <div class="stat-number">29%</div>
-                <div class="stat-label">Taux de clic moyen<br>sur les liens</div>
-            </div>
-            <div class="stat-card scroll-reveal scroll-reveal-delay-4">
-                <div class="stat-number">6-8x</div>
-                <div class="stat-label">ROI moyen<br>par rapport à l'email</div>
-            </div>
-        </div>
-    </section>
-
-    <div class="section-transition transition-stats-features"></div>
-
     <section id="features" class="w-full py-10 px-4 flex flex-col items-center bg-background">
         <h2 class="section-title scroll-reveal">Transformez vos SMS en ventes</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl w-full">
@@ -175,13 +152,13 @@
                         <div class="absolute inset-px rounded-[inherit] bg-background"></div>
                         <div class="pointer-events-none absolute inset-px rounded-[inherit] opacity-0 transition-opacity duration-300 group-hover:opacity-100" style="opacity: 0.8; background: radial-gradient(200px at -200px -200px, rgba(217, 217, 217, 0.333), transparent 100%);"></div>
                         <div class="relative">
-                            <div data-slot="card-header" class="@container/card-header auto-rows-min grid-rows-[auto_auto] has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6 p-6 pb-2 flex flex-col items-start gap-3">
+                            <div data-slot="card-header" class="@container/card-header auto-rows-min grid-rows-[auto_auto] has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6 p-6 pb-2 flex flex-row items-center gap-3">
                                 <div class="rounded-full bg-muted p-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dollar-sign w-6 h-6 text-primary" aria-hidden="true"><line x1="12" x2="12" y1="2" y2="22"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dollar-sign w-6 h-6 text-primary" aria-hidden="true"><line x1="12" x2="12" y1="2" y2="22"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
                                 </div>
                                 <div data-slot="card-title" class="font-semibold text-lg">Rentabilité Immédiate</div>
                             </div>
-                            <div data-slot="card-content" class="p-6 pt-2 text-muted-foreground text-sm">Envoyez 100 SMS pour seulement 10€. Un SMS à 0,10€ peut générer un panier à 30€ : <strong>votre investissement est rentabilisé dès la première vente.</strong></div>
+                            <div data-slot="card-content" class="p-6 pt-2 text-muted-foreground text-sm">Envoyez 100 SMS pour seulement 10€. Un SMS à 0,10€ peut générer un panier à 20€ : <strong>votre campagne est rentable dès la première vente.</strong></div>
                         </div>
                     </div>
                 </div>
@@ -198,13 +175,13 @@
                         <div class="absolute inset-px rounded-[inherit] bg-background"></div>
                         <div class="pointer-events-none absolute inset-px rounded-[inherit] opacity-0 transition-opacity duration-300 group-hover:opacity-100" style="opacity: 0.8; background: radial-gradient(200px at -200px -200px, rgba(217, 217, 217, 0.333), transparent 100%);"></div>
                         <div class="relative">
-                            <div data-slot="card-header" class="@container/card-header auto-rows-min grid-rows-[auto_auto] has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6 p-6 pb-2 flex flex-col items-start gap-3">
+                            <div data-slot="card-header" class="@container/card-header auto-rows-min grid-rows-[auto_auto] has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6 p-6 pb-2 flex flex-row items-center gap-3">
                                 <div class="rounded-full bg-muted p-2">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-target w-6 h-6 text-primary" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
                                 </div>
                                 <div data-slot="card-title" class="font-semibold text-lg">Ciblage Client Précis</div>
                             </div>
-                            <div data-slot="card-content" class="p-6 pt-2 text-muted-foreground text-sm">Ne parlez qu'aux bons clients. Créez des groupes (ex: "VIP", "Inactifs") pour <strong>multiplier vos conversions par 3</strong> grâce à des offres qui les concernent vraiment.</div>
+                            <div data-slot="card-content" class="p-6 pt-2 text-muted-foreground text-sm">Ne parlez qu'aux bons clients. Créez des groupes (ex: "VIP", "Inactifs") pour <strong>multiplier vos conversions par 3</strong> avec des offres qui les concernent vraiment.</div>
                         </div>
                     </div>
                 </div>
@@ -221,13 +198,13 @@
                         <div class="absolute inset-px rounded-[inherit] bg-background"></div>
                         <div class="pointer-events-none absolute inset-px rounded-[inherit] opacity-0 transition-opacity duration-300 group-hover:opacity-100" style="opacity: 0.8; background: radial-gradient(200px at -200px -200px, rgba(217, 217, 217, 0.333), transparent 100%);"></div>
                         <div class="relative">
-                            <div data-slot="card-header" class="@container/card-header auto-rows-min grid-rows-[auto_auto] has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6 p-6 pb-2 flex flex-col items-start gap-3">
+                            <div data-slot="card-header" class="@container/card-header auto-rows-min grid-rows-[auto_auto] has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6 p-6 pb-2 flex flex-row items-center gap-3">
                                 <div class="rounded-full bg-muted p-2">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zap w-6 h-6 text-primary" aria-hidden="true"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path></svg>
                                 </div>
                                 <div data-slot="card-title" class="font-semibold text-lg">Envoi Flash ou Planifié</div>
                             </div>
-                            <div data-slot="card-content" class="p-6 pt-2 text-muted-foreground text-sm">Envoyez une promo en 30 secondes ou programmez-la pour les heures de pointe. <strong>98% de vos messages sont lus dans les 3 minutes</strong> suivant la réception.</div>
+                            <div data-slot="card-content" class="p-6 pt-2 text-muted-foreground text-sm">Envoyez une promo en 30 secondes ou programmez-la pour les heures de pointe. <strong>98% de vos messages sont lus dans les 90 secondes</strong> suivant la réception.</div>
                         </div>
                     </div>
                 </div>
@@ -244,7 +221,7 @@
                         <div class="absolute inset-px rounded-[inherit] bg-background"></div>
                         <div class="pointer-events-none absolute inset-px rounded-[inherit] opacity-0 transition-opacity duration-300 group-hover:opacity-100" style="opacity: 0.8; background: radial-gradient(200px at -200px -200px, rgba(217, 217, 217, 0.333), transparent 100%);"></div>
                         <div class="relative">
-                            <div data-slot="card-header" class="@container/card-header auto-rows-min grid-rows-[auto_auto] has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6 p-6 pb-2 flex flex-col items-start gap-3">
+                            <div data-slot="card-header" class="@container/card-header auto-rows-min grid-rows-[auto_auto] has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6 p-6 pb-2 flex flex-row items-center gap-3">
                                 <div class="rounded-full bg-muted p-2">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-circle w-6 h-6 text-primary" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg>
                                 </div>
@@ -267,13 +244,13 @@
                         <div class="absolute inset-px rounded-[inherit] bg-background"></div>
                         <div class="pointer-events-none absolute inset-px rounded-[inherit] opacity-0 transition-opacity duration-300 group-hover:opacity-100" style="opacity: 0.8; background: radial-gradient(200px at -200px -200px, rgba(217, 217, 217, 0.333), transparent 100%);"></div>
                         <div class="relative">
-                            <div data-slot="card-header" class="@container/card-header auto-rows-min grid-rows-[auto_auto] has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6 p-6 pb-2 flex flex-col items-start gap-3">
+                            <div data-slot="card-header" class="@container/card-header auto-rows-min grid-rows-[auto_auto] has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6 p-6 pb-2 flex flex-row items-center gap-3">
                                 <div class="rounded-full bg-muted p-2">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles w-6 h-6 text-primary" aria-hidden="true"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"></path><path d="M20 3v4"></path><path d="M22 5h-4"></path><path d="M4 17v2"></path><path d="M5 18H3"></path></svg>
                                 </div>
                                 <div data-slot="card-title" class="font-semibold text-lg">IA Rédactrice Intégrée</div>
                             </div>
-                            <div data-slot="card-content" class="p-6 pt-2 text-muted-foreground text-sm">Panne d'inspiration ? <strong>L'IA écrit vos messages de vente à votre place.</strong> Générez des textes percutants qui donnent envie de cliquer en un instant.</div>
+                            <div data-slot="card-content" class="p-6 pt-2 text-muted-foreground text-sm">Panne d'inspiration ? <strong>L'IA écrit vos messages de vente à votre place.</strong> Générez des messages percutants qui donnent envie de cliquer en un instant.</div>
                         </div>
                     </div>
                 </div>
@@ -290,9 +267,9 @@
                         <div class="absolute inset-px rounded-[inherit] bg-background"></div>
                         <div class="pointer-events-none absolute inset-px rounded-[inherit] opacity-0 transition-opacity duration-300 group-hover:opacity-100" style="opacity: 0.8; background: radial-gradient(200px at -200px -200px, rgba(217, 217, 217, 0.333), transparent 100%);"></div>
                         <div class="relative">
-                            <div data-slot="card-header" class="@container/card-header auto-rows-min grid-rows-[auto_auto] has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6 p-6 pb-2 flex flex-col items-start gap-3">
+                            <div data-slot="card-header" class="@container/card-header auto-rows-min grid-rows-[auto_auto] has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6 p-6 pb-2 flex flex-row items-center gap-3">
                                 <div class="rounded-full bg-muted p-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-upload w-6 h-6 text-primary" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" x2="12" y1="3" y2="15"></line></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download w-6 h-6 text-primary" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" x2="12" y1="15" y2="3"></line></svg>
                                 </div>
                                 <div data-slot="card-title" class="font-semibold text-lg">Importation en 1 Clic</div>
                             </div>
@@ -491,44 +468,44 @@
 
     <script src="script.js"></script>
 
-    <footer id="contact">
-        <div class="footer-content">
-            <div class="footer-main">
-                <div class="footer-brand">
-                    <h4>SMS Facile</h4>
-                    <div class="footer-badges">
-                        <span class="badge">✓ RGPD</span>
-                        <span class="badge">✓ Français</span>
-                        <span class="badge">✓ Support 7j/7</span>
-                        <span class="badge">✓ Sans engagement</span>
-                        <span class="badge">✓ Désinscription en 1 clic</span>
+        <footer id="contact">
+            <div class="footer-content">
+                <div class="footer-main">
+                    <div class="footer-brand">
+                        <h4>SMS Client</h4>
+                        <div class="footer-badges">
+                            <span class="badge">✓ RGPD</span>
+                            <span class="badge">✓ Français</span>
+                            <span class="badge">✓ Support 7j/7</span>
+                            <span class="badge">✓ Sans engagement</span>
+                            <span class="badge">✓ Désinscription en 1 clic</span>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-links-inline">
+                        <a href="#mentions-legales">Mentions légales</a>
+                        <a href="#cgv">CGV</a>
+                        <a href="#confidentialite">Confidentialité</a>
+                    </div>
+                    
+                    <div class="footer-social">
+                        <a href="#" aria-label="LinkedIn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Instagram">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/>
+                            </svg>
+                        </a>
                     </div>
                 </div>
                 
-                <div class="footer-links-inline">
-                    <a href="#mentions-legales">Mentions légales</a>
-                    <a href="#cgv">CGV</a>
-                    <a href="#confidentialite">Confidentialité</a>
-                </div>
-                
-                <div class="footer-social">
-                    <a href="#" aria-label="LinkedIn">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                        </svg>
-                    </a>
-                    <a href="#" aria-label="Instagram">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/>
-                        </svg>
-                    </a>
+                <div class="footer-copyright">
+                    <p>&copy; 2026 SMS Client</p>
                 </div>
             </div>
-            
-            <div class="footer-copyright">
-                <p>&copy; 2025 SMS Facile</p>
-            </div>
-        </div>
-    </footer>
+        </footer>
 </body>
 </html>

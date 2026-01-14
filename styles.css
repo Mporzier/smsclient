@@ -308,7 +308,7 @@ html {
     right: 30px;
     width: 50px;
     height: 50px;
-    background: transparent;
+    background: rgba(255, 255, 255, 0.7);
     color: var(--color-black);
     border: none;
     border-radius: 50%;
@@ -318,11 +318,11 @@ html {
     justify-content: center;
     font-size: 24px;
     box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-    z-index: 999;
     opacity: 0;
     transform: scale(0.8) translateY(20px);
     transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     pointer-events: none;
+    z-index: 9999;
 }
 
 .back-to-top.visible {
@@ -739,7 +739,7 @@ section {
     font-family: 'Geist', sans-serif;
     z-index: 1;
     font-weight: 400;
-    color: lab(48.496% 0 0);
+    color: var(--color-black);
     text-shadow: 
         0 0 2px #F9F9F9,
         0 0 3px #F9F9F9,
@@ -1033,7 +1033,7 @@ section {
     text-align: center;
     font-size: 2.8em;
     margin-bottom: 50px;
-    color: #1a202c;
+    color: var(--color-black);
     font-weight: 800;
     letter-spacing: -0.5px;
     position: relative;
@@ -1087,8 +1087,24 @@ section {
 /* Section features avec background transparent pour voir les dots */
 #features,
 #features.bg-background {
+    color: var(--color-black);
     background: transparent !important;
     background-color: transparent !important;
+}
+
+#features *,
+#features.bg-background * {
+    color: inherit;
+}
+
+#features .text-muted-foreground,
+#features.bg-background .text-muted-foreground {
+    color: var(--color-black);
+}
+
+[data-slot="card-content"] {
+    font-size: 1rem;
+    line-height: 1.5;
 }
 
 /* Transitions fluides pour les gradients des cards */
@@ -1595,8 +1611,8 @@ section {
 }
 
 footer {
-    background: transparent;
-    color: #e2e8f0;
+    background: var(--color-black);
+    color: #9ca3af;
     padding: 30px 20px 20px;
     width: 100%;
     max-width: 100%;
@@ -1628,7 +1644,7 @@ footer {
 }
 
 .footer-brand h4 {
-    color: #ffffff;
+    color: #d1d5db;
     font-size: 1.1em;
     margin: 0;
     font-weight: 700;
@@ -1640,12 +1656,12 @@ footer {
 }
 
 .badge {
-    background: rgba(0, 0, 0, 0.05);
-    color: #a8d5f7;
+    background: rgba(255, 255, 255, 0.05);
+    color: #9ca3af;
     padding: 4px 10px;
     border-radius: 6px;
     font-size: 0.75em;
-    border: 1px solid rgba(102, 126, 234, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     white-space: nowrap;
 }
 
@@ -1656,14 +1672,14 @@ footer {
 }
 
 .footer-links-inline a {
-    color: #cbd5e0;
+    color: #9ca3af;
     text-decoration: none;
     font-size: 0.9em;
     transition: color 0.2s;
 }
 
 .footer-links-inline a:hover {
-    color: #a8d5f7;
+    color: #d1d5db;
 }
 
 .footer-social {
@@ -1672,7 +1688,7 @@ footer {
 }
 
 .footer-social a {
-    color: #cbd5e0;
+    color: #9ca3af;
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -1685,8 +1701,8 @@ footer {
 }
 
 .footer-social a:hover {
-    color: #a8d5f7;
-    background: rgba(0, 0, 0, 0.05);
+    color: #d1d5db;
+    background: rgba(255,255,255,0.1);
     transform: translateY(-3px);
 }
 
@@ -1702,7 +1718,7 @@ footer {
 }
 
 .footer-copyright p {
-    color: #718096;
+    color: #6b7280;
     font-size: 0.85em;
     margin: 0;
 }
