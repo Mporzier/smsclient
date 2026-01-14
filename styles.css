@@ -1723,6 +1723,112 @@ footer {
     margin: 0;
 }
 
+/* FAQ Section */
+.faq-section {
+    width: 100%;
+    padding: 80px 20px;
+    background: transparent;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.faq-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.faq-item {
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.faq-item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.faq-question {
+    width: 100%;
+    padding: 20px 24px;
+    background: transparent;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    color: var(--color-black);
+    font-size: 1.05em;
+    font-weight: 600;
+    transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq-question:hover {
+    color: var(--primary);
+}
+
+.faq-question.active {
+    color: var(--primary);
+}
+
+.faq-icon {
+    flex-shrink: 0;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    color: var(--color-black);
+}
+
+.faq-question.active .faq-icon {
+    transform: rotate(180deg);
+    color: var(--primary);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
+                padding 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 0 24px;
+    opacity: 0;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 500px;
+    padding: 0 24px 20px 24px;
+    opacity: 1;
+}
+
+.faq-answer p {
+    color: #6b7280;
+    line-height: 1.7;
+    margin: 0;
+    font-size: 0.95em;
+}
+
+@media (max-width: 768px) {
+    .faq-section {
+        padding: 60px 16px;
+    }
+    
+    .faq-question {
+        padding: 16px 20px;
+        font-size: 1em;
+    }
+    
+    .faq-answer {
+        padding: 0 20px;
+    }
+    
+    .faq-item.active .faq-answer {
+        padding: 0 20px 16px 20px;
+    }
+}
+
 @media (max-width: 768px) {
     .footer-main {
         flex-direction: column;

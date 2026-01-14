@@ -1164,3 +1164,21 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+// FAQ Toggle Function
+function toggleFaq(button) {
+    const faqItem = button.closest('.faq-item');
+    const isActive = faqItem.classList.contains('active');
+    
+    // Close all FAQ items
+    document.querySelectorAll('.faq-item').forEach(item => {
+        item.classList.remove('active');
+        item.querySelector('.faq-question').classList.remove('active');
+    });
+    
+    // Open clicked item if it wasn't active
+    if (!isActive) {
+        faqItem.classList.add('active');
+        button.classList.add('active');
+    }
+}
