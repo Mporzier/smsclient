@@ -2,7 +2,7 @@ import React from 'react';
 
 const Logo = () => {
     return (
-        <div className="group relative flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-fuchsia-600 to-fuchsia-900 shadow-lg shadow-fuchsia-500/30 transition-all duration-300 active:scale-95 cursor-pointer">
+        <div className="scale-50 md:scale-75 flex-none group relative flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-fuchsia-600 to-fuchsia-900 shadow-lg shadow-fuchsia-500/30 transition-all duration-300 cursor-pointer">
             {/* Subtle Inner Border Overlay */}
             <div className="absolute inset-0 rounded-2xl border border-white/10 pointer-events-none"></div>
 

@@ -1,44 +1,56 @@
 export default function Footer() {
   return (
-    <footer id="contact" className="bg-[var(--color-black)] text-[#9ca3af] py-[30px_20px_20px] w-full max-w-full overflow-hidden box-border">
-      <div className="footer-content max-w-[1200px] w-full mx-auto box-border">
-        <div className="footer-main flex justify-between items-center flex-wrap gap-5 pb-5 border-b border-white/8">
-          <div className="footer-brand flex items-center gap-4">
-            <h4 className="text-[#d1d5db] text-[1.1em] m-0 font-bold">SMS Client</h4>
-            <div className="footer-badges flex gap-2">
-              <span className="badge bg-white/5 text-[#9ca3af] px-2.5 py-1 rounded-md text-[0.75em] border border-white/10 whitespace-nowrap">✓ RGPD</span>
-              <span className="badge bg-white/5 text-[#9ca3af] px-2.5 py-1 rounded-md text-[0.75em] border border-white/10 whitespace-nowrap">✓ Français</span>
-              <span className="badge bg-white/5 text-[#9ca3af] px-2.5 py-1 rounded-md text-[0.75em] border border-white/10 whitespace-nowrap">✓ Support 7j/7</span>
-              <span className="badge bg-white/5 text-[#9ca3af] px-2.5 py-1 rounded-md text-[0.75em] border border-white/10 whitespace-nowrap">✓ Sans engagement</span>
-              <span className="badge bg-white/5 text-[#9ca3af] px-2.5 py-1 rounded-md text-[0.75em] border border-white/10 whitespace-nowrap">✓ Désinscription en 1 clic</span>
+    <footer
+      id="contact"
+      className="bg-[#0a0a0a] text-[#9ca3af] py-10 w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] border-t border-white/5"
+    >
+      {/* Container aligned with your site's max-width */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 pb-8 border-b border-white/10">
+
+          {/* Brand & Badges */}
+          <div className="flex flex-col md:flex-row items-start md:items-center gap-4">
+            <h4 className="text-[#d1d5db] text-lg font-bold tracking-tight">SMS Client</h4>
+
+            <div className="flex flex-wrap gap-2">
+              {[
+                "RGPD",
+                "Français",
+                "Support 7j/7",
+                "Sans engagement",
+                "Désinscription en 1 clic"
+              ].map((text) => (
+                <span
+                  key={text}
+                  className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded border
+                 text-[11px] font-medium tracking-wide
+                 bg-[#121212] text-[#9ca3af] 
+                 border-fuchsia-900/30 whitespace-nowrap"
+                >
+                  <span className="text-fuchsia-600/80 font-bold text-[10px]">✓</span>
+                  {text}
+                </span>
+              ))}
             </div>
           </div>
-          
-          <div className="footer-links-inline flex gap-5 flex-wrap">
-            <a href="#mentions-legales" className="text-[#9ca3af] no-underline text-[0.9em] transition-colors duration-200 hover:text-[#d1d5db]">Mentions légales</a>
-            <a href="#cgv" className="text-[#9ca3af] no-underline text-[0.9em] transition-colors duration-200 hover:text-[#d1d5db]">CGV</a>
-            <a href="#confidentialite" className="text-[#9ca3af] no-underline text-[0.9em] transition-colors duration-200 hover:text-[#d1d5db]">Confidentialité</a>
-          </div>
-          
-          <div className="footer-social flex gap-3">
-            <a href="#" aria-label="LinkedIn" className="text-[#9ca3af] no-underline flex items-center justify-center w-9 h-9 rounded-lg bg-white/5 transition-all duration-300 hover:text-[#d1d5db] hover:bg-white/10 hover:-translate-y-1">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-              </svg>
-            </a>
-            <a href="#" aria-label="Instagram" className="text-[#9ca3af] no-underline flex items-center justify-center w-9 h-9 rounded-lg bg-white/5 transition-all duration-300 hover:text-[#d1d5db] hover:bg-white/10 hover:-translate-y-1">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/>
-              </svg>
-            </a>
-          </div>
+
+          {/* Inline Links */}
+          <nav className="flex gap-6 flex-wrap text-sm">
+            <a href="#mentions-legales" className="transition-colors duration-200 hover:text-white">Mentions légales</a>
+            <a href="#cgv" className="transition-colors duration-200 hover:text-white">CGV</a>
+            <a href="#confidentialite" className="transition-colors duration-200 hover:text-white">Confidentialité</a>
+          </nav>
+
         </div>
-        
-        <div className="footer-copyright pt-4 text-center">
-          <p className="text-[#6b7280] text-[0.85em] m-0">&copy; 2026 SMS Client</p>
+
+        {/* Copyright */}
+        <div className="pt-6 text-center">
+          <p className="text-[#6b7280] text-xs">
+            &copy; {new Date().getFullYear()} SMS Client. Tous droits réservés.
+          </p>
         </div>
       </div>
     </footer>
   );
 }
-

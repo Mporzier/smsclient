@@ -1,9 +1,9 @@
 import type { Metadata, Viewport } from "next";
-import { Geist } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 
-const geist = Geist({
-  variable: "--font-geist",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   display: 'swap', // Ensures text remains visible during font load
@@ -36,7 +36,7 @@ export default function RootLayout({
   return (
     <html lang="fr" className="scroll-smooth">
       <body
-        className={`${geist.variable} font-sans antialiased bg-white text-slate-900`}
+        className={`${inter.variable} font-sans antialiased bg-slate-50 text-slate-900`}
       >
         {children}
       </body>
