@@ -1,24 +1,27 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
-  display: 'swap', // Ensures text remains visible during font load
+  display: "swap", // Ensures text remains visible during font load
 });
 
 export const metadata: Metadata = {
   title: "SMS Client - La solution de marketing par SMS",
-  description: "Des SMS vus par vos clients, en quelques secondes. Générez automatiquement des campagnes, sans même avoir à rédiger.",
+  description:
+    "Des SMS vus par vos clients, en quelques secondes. Générez automatiquement des campagnes, sans même avoir à rédiger.",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
     title: "SMS Client",
   },
   icons: {
-    icon: '/icon.svg',
+    icon: "/icon.svg",
   },
 };
 
@@ -38,7 +41,9 @@ export default function RootLayout({
       <body
         className={`${inter.variable} font-sans antialiased bg-slate-50 text-slate-900`}
       >
+        <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

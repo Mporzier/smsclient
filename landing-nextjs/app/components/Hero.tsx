@@ -11,20 +11,19 @@ export default function Hero() {
        4. lg:col-span-5: Assigned 5/12 (approx 40%) to animation.
        5. lg:text-left/lg:items-start: Reverted centering on desktop for visual balance.
     */
-    <section className="py-20 w-full min-h-screen flex items-center">
+    <section id="hero" className="py-20 w-full min-h-screen flex items-center">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full">
 
         {/* Left Side: Text Content (Occupies 7 of 12 columns = ~60%) */}
         <div className="lg:col-span-7 flex flex-col items-center text-center lg:items-start mx-auto">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-slate-900 leading-[1.15]">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold mb-6 text-slate-900 leading-[1.15]">
             Des SMS vus par
             <br className="sm:hidden" />
             <span className="hidden sm:inline">&nbsp;</span>
             vos clients, en
             <br />
-            <span className="relative inline-block px-2 mt-2 lg:mt-0">
-              <div className="absolute inset-0 bg-slate-900 rounded-md h-[120%] top-[5%]" />
-              <span className="relative text-slate-50">quelques secondes.</span>
+            <span className="font-bold">
+              <span className="relative text-fuchsia-900">quelques secondes.</span>
             </span>
           </h1>
 

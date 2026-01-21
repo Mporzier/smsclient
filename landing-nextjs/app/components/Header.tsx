@@ -1,67 +1,162 @@
-'use client';
+"use client";
 
-import Logo from './Logo';
-import { useState, useEffect } from 'react';
+import Link from "next/link";
+import Logo from "./Logo";
+import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 export default function Header() {
   const [isPageScrolled, setIsPageScrolled] = useState(false);
+  const [activeId, setActiveId] = useState("");
+  const pathname = usePathname();
+  const isHome = pathname === "/";
 
-  // Handle scroll event to set the isPageScrolled state (header is a bubble when page is scrolled)
+  // 1. Handle scroll styling (Header bubble)
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsPageScrolled(true);
-      } else {
-        setIsPageScrolled(false);
-      }
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const handleScroll = () => setIsPageScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // 2. Handle Hash Navigation and State Reset
+  useEffect(() => {
+    // If we are NOT on home, clear the active ID and exit
+    if (!isHome) {
+      requestAnimationFrame(() => setActiveId(""));
+      return;
+    }
+
+    // If we ARE on home and have a hash, scroll to it
+    if (window.location.hash) {
+      const id = window.location.hash.replace("#", "");
+      // Use requestAnimationFrame to ensure DOM is ready without blocking render
+      requestAnimationFrame(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+          setActiveId(id);
+        }
+      });
+    }
+  }, [pathname, isHome]);
+
+  // 3. Intersection Observer (Only active on Home)
+  useEffect(() => {
+    if (!isHome) return;
+
+    const observerOptions = {
+      root: null,
+      rootMargin: "-20% 0px -70% 0px",
+      threshold: 0,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const newActiveId = entry.target.id === "hero" ? "" : entry.target.id;
+          setActiveId(newActiveId);
+        }
+      });
+    }, observerOptions);
+
+    const ids = [
+      "hero",
+      "features",
+      "campaign-simulator",
+      "sms-generator",
+      "faq",
+    ];
+    ids.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, [isHome]);
+
+  const handleHomeClick = (e: React.MouseEvent) => {
+    if (isHome) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      window.history.pushState({}, "", "/");
+      setActiveId("");
+    }
+  };
 
   return (
     <header className="sticky z-50 flex justify-center transition-all duration-500 top-1">
-      <div className={`
-    mx-auto rounded-2xl transition-all duration-500 ease-in-out
-    border border-border backdrop-blur-lg bg-background/75
-    w-full max-w-7xl
-    ${isPageScrolled
-          ? 'md:w-[800px] translate-y-3 shadow-lg'
-          : 'translate-y-0'}`}>
+      <div
+        className={`
+          mx-auto rounded-2xl transition-all duration-500 ease-in-out
+          border border-fuchsia-900/10 backdrop-blur-lg bg-background/75
+          w-full max-w-7xl
+          ${
+            isPageScrolled
+              ? "md:w-[1000px] translate-y-2 shadow-lg"
+              : "translate-y-0"
+          }
+        `}
+      >
         <div className="flex h-[56px] items-center justify-between p-4">
-          {/* Logo / Home Link */}
-          <div
-            className="flex items-center cursor-pointer"
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          <Link
+            href="/"
+            onClick={handleHomeClick}
+            className="flex items-center flex-1"
           >
             <Logo />
             <span className="font-extrabold text-xl md:text-3xl text-fuchsia-900">
               SMSClient
             </span>
-          </div>
+          </Link>
 
-          <div className="w-full hidden md:block">
-            <nav className="flex items-center gap-6">
-              <a href="#features" className="text-gray-600 hover:text-gray-900 font-medium">Fonctionnalités</a>
-              <a href="#pricing" className="text-gray-600 hover:text-gray-900 font-medium">Tarifs</a>
-              <a href="#faq" className="text-gray-600 hover:text-gray-900 font-medium">FAQ</a>
-            </nav>
-          </div>
+          <nav className="hidden md:flex items-center justify-center gap-8 flex-1">
+            {[
+              { name: "Accueil", id: "" },
+              { name: "Fonctionnalités", id: "features" },
+              { name: "Simulateur", id: "campaign-simulator" },
+              { name: "Générateur", id: "sms-generator" },
+              { name: "FAQ", id: "faq" },
+            ].map((item) => (
+              <Link
+                key={item.name}
+                href={item.id === "" ? "/" : `/#${item.id}`}
+                scroll={false}
+                onClick={(e) => {
+                  if (item.id === "") handleHomeClick(e);
+                  if (isHome && item.id !== "") {
+                    e.preventDefault();
+                    document
+                      .getElementById(item.id)
+                      ?.scrollIntoView({ behavior: "smooth" });
+                    window.history.pushState({}, "", `/#${item.id}`);
+                    setActiveId(item.id);
+                  }
+                }}
+                className={`relative py-1 text-sm font-medium transition-colors duration-300
+                  ${
+                    isHome && activeId === item.id
+                      ? "text-fuchsia-900"
+                      : "text-gray-500 hover:text-gray-900"
+                  }
+                `}
+              >
+                {item.name}
+                {isHome && (
+                  <span
+                    className={`absolute bottom-0 left-0 h-0.5 bg-fuchsia-900 transition-all duration-300 
+                    ${activeId === item.id ? "w-full" : "w-0"}`}
+                  />
+                )}
+              </Link>
+            ))}
+          </nav>
 
-          {/* Simple CTA */}
-          <div className="flex-shrink-0">
-            <button className="cursor-pointer group relative px-4 py-2 bg-fuchsia-900 text-white rounded-lg font-semibold text-sm md:text-base tracking-tight shadow-[0_10px_20px_-10px_rgba(112,26,117,0.5)] hover:bg-fuchsia-800 hover:shadow-[0_15px_25px_-10px_rgba(112,26,117,0.6)] active:scale-[0.98] transition-all duration-300 whitespace-nowrap border border-fuchsia-700/30">
-              <span className="flex items-center justify-center gap-1.5">
-                <span className="hidden sm:inline">Essayer gratuitement</span>
-                <span className="sm:hidden">Essayer</span>
-                <svg className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform duration-300 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </span>
+          <div className="flex-shrink-0 flex justify-end flex-1">
+            <button className="bg-fuchsia-900 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-fuchsia-800 transition-colors">
+              Essayer gratuitement
             </button>
           </div>
         </div>
-
       </div>
     </header>
   );

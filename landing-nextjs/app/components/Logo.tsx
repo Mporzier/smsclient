@@ -2,16 +2,13 @@ import React from 'react';
 
 const Logo = () => {
     return (
-        <div className="scale-50 md:scale-75 flex-none group relative flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-fuchsia-600 to-fuchsia-900 shadow-lg shadow-fuchsia-500/30 transition-all duration-300 cursor-pointer">
-            {/* Subtle Inner Border Overlay */}
-            <div className="absolute inset-0 rounded-2xl border border-white/10 pointer-events-none"></div>
-
+        <div className="scale-50 md:scale-75 flex-none group relative flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-fuchsia-600 to-fuchsia-900 transition-all duration-300 cursor-pointer">
             {/* Main SVG Icon */}
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="currentColor"
-                className="w-10 h-10 text-white drop-shadow-md"
+                className="w-10 h-10 text-white"
             >
                 {/* Chat Bubble Base */}
                 <path d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75a9.75 9.75 0 001.015 4.353l-1.015 3.382a.75.75 0 00.942.942l3.382-1.015A9.75 9.75 0 0012 21.75c5.385 0 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25z" />
