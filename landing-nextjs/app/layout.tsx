@@ -39,10 +39,10 @@ export default function RootLayout({
   return (
     <html lang="fr" className="scroll-smooth">
       <body
-        className={`${inter.variable} font-sans antialiased bg-slate-50 text-slate-900`}
+        className={`${inter.variable} font-sans antialiased bg-slate-50 text-slate-900 flex flex-col min-h-screen overflow-x-hidden`}
       >
         <Header />
-        {children}
+        <main className="flex-grow">{children}</main>
         <Footer />
       </body>
     </html>
