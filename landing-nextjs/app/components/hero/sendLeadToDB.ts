@@ -1,6 +1,12 @@
 import { supabase } from "@/lib/supabase";
 
 export async function sendLeadToDB(phoneNumber: string, smsText: string) {
+  if (!supabase) {
+    throw new Error(
+      "Configuration Supabase manquante. Vérifiez les variables d'environnement."
+    );
+  }
+
   // 1. Validation de base (commence par 06 ou 07 et fait 10 chiffres)
   const cleanNumber = phoneNumber.replace(/\s+/g, "");
   const frenchMobileRegex = /^(06|07)\d{8}$/;

@@ -12,6 +12,11 @@ jobs:
     defaults:
       run:
         working-directory: landing-nextjs
+    env:
+      # Optionnel : ajoute ces secrets dans Settings > Secrets and variables > Actions
+      # pour que le formulaire Supabase fonctionne en production
+      NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+      NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
