@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+@theme {
+  /* Use Inter from next/font (--font-inter is set on body by layout) */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+
 body {
-    overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }

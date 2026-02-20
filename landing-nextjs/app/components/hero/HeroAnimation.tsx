@@ -2,28 +2,53 @@
 
 import type { CSSProperties } from "react";
 import { motion } from "framer-motion";
+import SMSWidget from "./SMSWidget";
 
-export default function PhotorealisticIPhone() {
+export default function HeroAnimation() {
+  const fontSizeScaling = 1;
   return (
-    <div className="min-h-screen flex items-center justify-center font-['Inter'] overflow-hidden">
-      <div className="scale-50 flex items-center justify-center">
+    <div className="flex   justify-center font-['Inter'] w-full h-full">
+      <div
+        className="w-full flex  justify-center"
+        style={{
+          fontSize: `clamp(${fontSizeScaling * 1}px, ${
+            fontSizeScaling * 0.75
+          }vw, ${fontSizeScaling * 7.5}px)`,
+        }}
+      >
         <div
           style={
             {
               "--c-h": "284",
               "--c-s": "100%",
               "--c-l": "50%",
-              "--size": "max(5px, 1vmin)",
             } as CSSProperties
           }
-          className="text-[var(--size)]"
         >
           <motion.div
-            initial={{ opacity: 0, scale: 1.1 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, ease: [0.15, 0, 0.333, 1] }}
-            className="phone relative z-[1] aspect-[37/76] h-[80em] bg-black rounded-[6.666em]"
+            initial={{
+              opacity: 0,
+              scale: 0.6,
+              rotateY: -40,
+              rotateX: 10,
+              z: -300,
+            }}
+            animate={{
+              opacity: 1,
+              scale: 1,
+              rotateY: 0,
+              rotateX: 0,
+              z: 0,
+            }}
+            transition={{
+              duration: 1.4,
+              ease: [0.16, 1, 0.3, 1],
+              delay: 0.1,
+            }}
+            // Changed h-[80em] to 70vh for better screen fit
+            className="phone relative z-[1] aspect-[37/76] h-[70vh] bg-black rounded-[6.666em]"
             style={{
+              transformStyle: "preserve-3d",
               boxShadow: `
                 0 0 0.1em 0.25em hsl(var(--c-h), 20%, 25%), 
                 0 0 0 0.4em hsl(var(--c-h), 30%, 85%),
@@ -114,33 +139,46 @@ export default function PhotorealisticIPhone() {
                 <div className="w-[33.3%] aspect-square rounded-full bg-[#080928] opacity-50 shadow-[inset_0_0_0.25em_#4c4da3]" />
               </div>
 
-              <div
-                className="relative flex-grow bg-black overflow-hidden z-0"
-                style={{
-                  boxShadow: `inset 0 0 2em rgba(0, 0, 0, 0.5)`,
-                }}
-              >
-                {/* Screen depth effect */}
-                <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40 pointer-events-none" />
+              {/* Screen content */}
+              <div className="relative flex-grow overflow-hidden z-0">
+                {/* 1. Le fond de l'écran (Widget SMS) */}
+                <div className="absolute inset-0">
+                  <SMSWidget />
+                </div>
 
-                <div
-                  className="absolute inset-0 opacity-80"
-                  style={{
-                    background: `radial-gradient(150% 100% at 50% 80%, hsl(var(--c-h), 100%, 82.5%), transparent)`,
+                {/* 2. LE LOCKSCREEN (C'est ICI qu'il faut l'ajouter) */}
+                <motion.div
+                  initial={{ y: 0 }}
+                  animate={{ y: "-100%" }}
+                  transition={{
+                    delay: 1.5,
+                    duration: 0.8,
+                    ease: [0.16, 1, 0.3, 1],
                   }}
-                />
-
-                {/* Subtle screen content simulation */}
-                <div
-                  className="absolute inset-0 opacity-30 pointer-events-none"
+                  className="absolute inset-0 z-30 flex flex-col items-center justify-between py-12"
                   style={{
-                    background: `
-                    repeating-linear-gradient(0deg, transparent, transparent 2em, rgba(255, 255, 255, 0.02) 2em, rgba(255, 255, 255, 0.02) 2.1em)
-                  `,
+                    background:
+                      "linear-gradient(180deg, #BDB2FF 0%, #FFADAD 100%)",
                   }}
-                />
+                >
+                  {/* Contenu du lockscreen (Heure, date...) */}
+                  <div className="mt-10 text-center">
+                    <h2 className="text-[4em] font-bold text-white leading-none">
+                      09:41
+                    </h2>
+                    <p className="text-[1.2em] text-white/90 font-medium">
+                      Vendredi 20 février
+                    </p>
+                  </div>
 
-                <div className="absolute bottom-[0.75em] left-1/2 -translate-x-1/2 w-[36.6%] h-[0.5em] bg-white rounded-full z-10 shadow-[0_0.1em_0.25em_rgba(0,0,0,0.1),inset_0_0_0.05em_rgba(0,0,0,0.2)]" />
+                  {/* Barre de swipe en bas du lockscreen */}
+                  <div className="mb-6 w-full flex justify-center">
+                    <div className="w-[30%] h-[4px] bg-white/50 rounded-full" />
+                  </div>
+                </motion.div>
+
+                {/* 3. La barre de navigation iPhone (Toujours visible ou z-40) */}
+                <div className="absolute bottom-[0.75em] left-1/2 -translate-x-1/2 w-[36.6%] h-[0.5em] bg-black/20 rounded-full z-40" />
               </div>
             </div>
           </motion.div>
