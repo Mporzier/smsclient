@@ -1,83 +1,81 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Camera, LayoutGrid, Search, Users } from "lucide-react";
+import { UserPlus, Sparkles, SendHorizontal } from "lucide-react";
 
 const steps = [
   {
     number: "1",
-    title: "Scannez vos cartes",
+    title: "Ajoutez vos contacts",
     description:
-      "Prenez simplement une photo. Notre IA reconnaît instantanément la carte, l'édition et l'état.",
-    tag: "Reconnaissance en < 2 sec",
-    icon: Camera,
-    colorClass: "bg-rose-400",
-    lightColorClass: "bg-rose-50",
-    iconColor: "text-rose-400",
+      "Importez votre liste ou ajoutez vos clients en quelques clics.",
+    tag: "Import en ",
+    tagBold: "5 secondes",
+    icon: UserPlus,
+    numClass: "bg-rose-400 shadow-lg shadow-rose-300/40",
+    iconBgClass: "bg-rose-100",
+    iconColorClass: "text-rose-500",
   },
   {
     number: "2",
-    title: "Classez intelligemment",
+    title: "L'IA écrit vos SMS",
     description:
-      "Organisez vos cartes en Collection, Doubles à échanger ou Wishlist. Filtrez par série, rareté, état.",
-    tag: "Tri automatique",
-    icon: LayoutGrid,
-    colorClass: "bg-amber-400",
-    lightColorClass: "bg-amber-50",
-    iconColor: "text-amber-500",
+      "Décrivez votre offre en quelques mots, notre IA génère vos SMS prêts à envoyer.",
+    tag: "Rédaction ",
+    tagBold: "intelligente",
+    icon: Sparkles,
+    numClass: "bg-amber-400 shadow-lg shadow-amber-300/40",
+    iconBgClass: "bg-amber-100",
+    iconColorClass: "text-amber-600",
   },
   {
     number: "3",
-    title: "Trouvez des matches",
+    title: "Envoyez en un clic",
     description:
-      "Notre moteur de matching identifie automatiquement les collectionneurs qui ont ce que vous cherchez — et inversement.",
-    tag: "Match Engine™",
-    icon: Search,
-    colorClass: "bg-cyan-400",
-    lightColorClass: "bg-cyan-50",
-    iconColor: "text-cyan-500",
-  },
-  {
-    number: "4",
-    title: "Échangez en personne",
-    description:
-      "Rejoignez des événements locaux ou des bourses d'échange. Check-in QR, préparation de trades, tout est intégré.",
-    tag: "Mode Événement",
-    icon: Users,
-    colorClass: "bg-indigo-400",
-    lightColorClass: "bg-indigo-50",
-    iconColor: "text-indigo-500",
+      "Diffusez vos messages instantanément ou programmez votre campagne.",
+    tag: "Réception ",
+    tagBold: "garantie",
+    icon: SendHorizontal,
+    numClass: "bg-violet-400 shadow-lg shadow-violet-300/40",
+    iconBgClass: "bg-violet-100",
+    iconColorClass: "text-violet-600",
   },
 ];
 
+const smoothTransition = {
+  duration: 0.6,
+  ease: [0.165, 0.84, 0.44, 1] as const,
+};
+
 export default function HowItWorks() {
   return (
-    <section className="py-20 bg-white overflow-hidden" id="how-it-works">
-      <div className="max-w-7xl mx-auto px-4">
+    <section className="py-24 antialiased font-sans" id="how-it-works">
+      <div className="max-w-5xl mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-20">
           <motion.span
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={smoothTransition}
             className="inline-block px-4 py-2 rounded-full text-sm bg-amber-100 font-semibold text-slate-500 tracking-wider mb-4"
           >
             Simple comme 1-2-3
           </motion.span>
           <motion.h2
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6"
+            transition={{ ...smoothTransition, delay: 0.1 }}
+            className="text-4xl md:text-5xl font-extrabold text-slate-800 mb-6"
           >
             Comment ça marche ?
           </motion.h2>
           <motion.p
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
+            transition={{ ...smoothTransition, delay: 0.2 }}
             className="text-xl text-slate-500 max-w-2xl mx-auto"
           >
             De l&apos;ajout de vos contacts à l&apos;envoi de votre première
@@ -85,54 +83,57 @@ export default function HowItWorks() {
           </motion.p>
         </div>
 
-        {/* Timeline Container */}
+        {/* Steps Timeline : ligne + numéros superposés, contenu à droite */}
         <div className="relative">
-          {/* Vertical line (Desktop) */}
-          <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-slate-100 -translate-x-1/2 z-0" />
+          {/* Ligne verticale (passe derrière les cercles) */}
+          <div
+            className="absolute hidden md:block top-0 bottom-0 w-0.5 left-[28px] z-0 bg-gradient-to-b from-rose-400 via-amber-400 to-violet-400"
+            aria-hidden
+          />
 
-          <div className="space-y-12 lg:space-y-0">
+          <div className="space-y-12 md:space-y-16">
             {steps.map((step, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className={`relative flex flex-col lg:flex-row items-center justify-between z-10 ${
-                  index % 2 !== 0 ? "lg:flex-row-reverse" : ""
-                }`}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ ...smoothTransition, delay: index * 0.15 }}
+                className="relative flex flex-col md:flex-row md:items-start gap-6 md:gap-0"
               >
-                {/* Content */}
-                <div className="w-full lg:w-[42%] mb-8 lg:mb-0">
+                {/* Numéro centré sur la timeline (superposé à la ligne) */}
+                <div className="flex justify-center md:justify-start md:w-14 md:flex-shrink-0">
                   <div
-                    className={`p-8 rounded-[2rem] bg-slate-50 border border-slate-100 transition-all duration-300 hover:shadow-xl group`}
+                    className={`flex items-center justify-center w-14 h-14 rounded-full text-slate-700 font-extrabold text-xl z-10 ${step.numClass}`}
                   >
-                    <div
-                      className={`w-14 h-14 ${step.lightColorClass} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}
-                    >
-                      <step.icon size={28} className={step.iconColor} />
-                    </div>
-                    <h3 className="text-2xl font-bold text-slate-900 mb-4">
-                      {step.title}
-                    </h3>
-                    <p className="text-slate-600 leading-relaxed mb-6">
-                      {step.description}
-                    </p>
-                    <div className="inline-block px-4 py-1.5 rounded-lg bg-white border border-slate-200 text-sm font-semibold text-slate-700 shadow-sm">
-                      {step.tag}
-                    </div>
+                    {step.number}
                   </div>
                 </div>
 
-                {/* Number (Center) */}
-                <div
-                  className={`hidden lg:flex absolute left-1/2 -translate-x-1/2 w-12 h-12 rounded-full ${step.colorClass} text-white items-center justify-center font-bold text-xl shadow-lg border-4 border-white`}
-                >
-                  {step.number}
-                </div>
+                {/* Contenu à droite */}
+                <div className="md:pl-8 flex-1 min-w-0 border border-slate-200 rounded-3xl p-8 ml-6">
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-3 mb-3">
+                    <div
+                      className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 ${step.iconBgClass}`}
+                    >
+                      <step.icon size={25} className={step.iconColorClass} />
+                    </div>
+                    <h3 className="text-2xl font-bold text-slate-700">
+                      {step.title}
+                    </h3>
+                  </div>
 
-                {/* Empty space for grid alignment */}
-                <div className="hidden lg:block lg:w-[42%]" />
+                  <p className="text-lg text-slate-500 leading-relaxed mb-4 max-w-2xl font-medium">
+                    {step.description}
+                  </p>
+
+                  <div className="inline-flex px-4 py-1.5 rounded-lg bg-slate-100 text-sm text-slate-500 shadow-sm">
+                    {step.tag}
+                    <span className="font-bold text-slate-700">
+                      &nbsp;{step.tagBold}
+                    </span>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>

@@ -11,17 +11,18 @@ export default function Hero() {
     { icon: Mail, text: "Envoyer", color: "bg-violet-200" },
   ];
 
-  const itemVariants = {
+  // Copie exacte du .reveal / .reveal.active : opacity + translateY(20px), 0.6s ease-out, delay 0.1s
+  const revealVariants = {
     hidden: {
       opacity: 0,
-      y: 24,
+      y: 20,
     },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.75,
-        ease: [0.25, 0.46, 0.45, 0.94] as const,
+        duration: 0.6,
+        ease: "easeOut" as const,
       },
     },
   };
@@ -31,10 +32,9 @@ export default function Hero() {
     visible: {
       opacity: 1,
       transition: {
-        duration: 0.4,
-        ease: [0.25, 0.46, 0.45, 0.94] as const,
-        staggerChildren: 0.08,
-        delayChildren: 0.15,
+        opacity: { duration: 0.4, ease: "easeOut" },
+        staggerChildren: 0.1,
+        delayChildren: 0.1,
       },
     },
   };
@@ -53,7 +53,7 @@ export default function Hero() {
         {/* Left Side: Text Content */}
         <div className="py-15 lg:col-span-7 flex flex-col items-center text-center lg:items-start lg:text-left">
           <motion.div
-            variants={itemVariants}
+            variants={revealVariants}
             className="badge inline-flex items-center gap-2 px-4 py-2 rounded-full text-[0.85rem] font-medium bg-cyan-100 text-cyan-500 mb-4"
           >
             <span className="badge-dot h-2 w-2 rounded-full bg-[#5BC0C9] animate-pulse" />
@@ -61,7 +61,7 @@ export default function Hero() {
           </motion.div>
 
           <motion.h1
-            variants={itemVariants}
+            variants={revealVariants}
             className="text-[#2D3436] mb-[16px] font-extrabold leading-[1.1] tracking-[-0.02em] text-[clamp(2rem,5vw,3.5rem)]"
           >
             L&apos;IA écrit vos SMS,
@@ -74,7 +74,7 @@ export default function Hero() {
           </motion.h1>
 
           <motion.p
-            variants={itemVariants}
+            variants={revealVariants}
             className="text-xl text-gray-600 mb-8 max-w-xl"
           >
             Générez automatiquement des campagnes sans rédiger.
@@ -83,7 +83,7 @@ export default function Hero() {
           </motion.p>
 
           <motion.div
-            variants={itemVariants}
+            variants={revealVariants}
             className="flex flex-col sm:flex-row gap-6 sm:gap-8 justify-center lg:justify-start items-center lg:items-start mb-10"
           >
             {bullets.map((bullet, index) => (
@@ -106,7 +106,7 @@ export default function Hero() {
           </motion.div>
 
           <motion.div
-            variants={itemVariants}
+            variants={revealVariants}
             className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
           >
             <button className="cursor-pointer group relative w-full sm:w-auto px-8 py-4 rounded-2xl font-semibold text-lg tracking-tight text-slate-50 bg-gradient-to-br from-violet-300 to-rose-300 shadow-lg shadow-violet-300/30 transition-all duration-500 hover:opacity-90">
@@ -125,7 +125,7 @@ export default function Hero() {
 
         {/* Right Side: Media / Animation */}
         <motion.div
-          variants={itemVariants}
+          variants={revealVariants}
           className="lg:col-span-5 flex justify-center w-full lg:justify-end items-center"
         >
           <div className="w-full max-w-[450px]">
