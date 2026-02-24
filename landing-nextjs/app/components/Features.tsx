@@ -5,12 +5,23 @@ import ImportCard from "./features/ImportCard";
 import SchedulingCard from "./features/SchedulingCard";
 import CleanupCard from "./features/CleanupCard";
 import RentabilityCard from "./features/RentabilityCard";
+import PlaceholderCard from "./features/PlaceholderCard";
 import { motion } from "framer-motion";
 
 const smoothTransition = {
   duration: 0.6,
   ease: [0.165, 0.84, 0.44, 1] as const,
 };
+
+// Mise en page :  1 2 3
+//                 1 4 5
+//                 6 7 7
+// Feature 0 = row-span-2 (col 1), Feature 6 = col-span-2 (ligne 3)
+const LAYOUT: { rowSpan?: number; colSpan?: number }[] = [
+  { rowSpan: 2 },       // 0: occupe 2 lignes à gauche
+  {}, {}, {}, {}, {},  // 1-5: cellule normale
+  { colSpan: 2 },      // 6: occupe 2 colonnes à droite
+];
 
 const cardVariants = {
   hidden: { opacity: 0, y: 24 },
@@ -28,6 +39,7 @@ const featureCards = [
   SchedulingCard,
   CleanupCard,
   RentabilityCard,
+  PlaceholderCard,
 ];
 
 export default function Features() {
@@ -69,27 +81,35 @@ export default function Features() {
           </motion.p>
         </div>
 
-        {/* Grille 2 lignes × 3 colonnes */}
+        {/* Grille 7 features : 1 2 3 / 1 4 5 / 6 7 7 */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-4"
+          className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-5 auto-rows-fr"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-40px" }}
           variants={{
             visible: {
-              transition: { staggerChildren: 0.08, delayChildren: 0.1 },
+              transition: { staggerChildren: 0.06, delayChildren: 0.08 },
             },
           }}
         >
-          {featureCards.map((Card, index) => (
-            <motion.div
-              key={index}
-              variants={cardVariants}
-              className="min-w-0 max-w-sm mx-auto w-full"
-            >
-              <Card />
-            </motion.div>
-          ))}
+          {featureCards.map((Card, index) => {
+            const layout = LAYOUT[index];
+            const rowSpan = layout.rowSpan === 2 ? "md:row-span-2" : "";
+            const colSpan = layout.colSpan === 2 ? "md:col-span-2" : "";
+            return (
+              <motion.div
+                key={index}
+                variants={cardVariants}
+                className={`min-w-0 w-full h-full max-w-sm mx-auto md:mx-0 flex flex-col overflow-hidden ${rowSpan} ${colSpan} ${
+                  layout.colSpan === 2 ? "md:max-w-none" : ""
+                }`}
+                style={{ contain: "layout" }}
+              >
+                <Card />
+              </motion.div>
+            );
+          })}
         </motion.div>
       </div>
     </section>

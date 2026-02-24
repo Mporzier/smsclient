@@ -67,29 +67,28 @@ export default function ImportCard() {
     }, []);
 
     return (
-        <div className="max-w-md mx-auto p-4">
+        <div className="w-full h-full min-h-0 flex flex-col">
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="bg-white rounded-[32px] border border-slate-200 shadow-2xl overflow-hidden flex flex-col h-[520px]"
+                className="bg-white rounded-2xl border border-slate-200 shadow-xl overflow-hidden flex flex-col h-full min-h-[260px]"
             >
                 <div
                     ref={containerRef}
-                    className="relative bg-gradient-to-br from-emerald-500 to-teal-700 p-8 flex-1 flex items-center justify-center overflow-hidden"
+                    className="relative bg-gradient-to-br from-emerald-500 to-teal-700 p-4 flex-1 flex items-center justify-center overflow-hidden min-h-0"
                 >
-                    {/* Card UI */}
-                    <div className="w-full max-w-[280px] bg-white rounded-2xl shadow-xl p-6 relative z-10 border border-white/60">
-                        <div className="h-[200px] flex flex-col">
-                            <div className="flex items-center gap-2 mb-6">
-                                <div className="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center">
-                                    <FileUp className="w-4 h-4 text-emerald-600" />
+                    <div className="w-full max-w-[200px] bg-white rounded-xl shadow-xl p-3 relative z-10 border border-white/60">
+                        <div className="min-h-[120px] flex flex-col">
+                            <div className="flex items-center gap-1.5 mb-3">
+                                <div className="w-6 h-6 rounded-md bg-emerald-50 flex items-center justify-center">
+                                    <FileUp className="w-3 h-3 text-emerald-600" />
                                 </div>
-                                <span className="text-xs font-bold text-slate-800">Importation Directe</span>
+                                <span className="text-[10px] font-bold text-slate-800">Importation Directe</span>
                             </div>
 
                             <div
                                 ref={dropZoneRef}
-                                className={`flex-1 border-2 border-dashed rounded-2xl flex flex-col items-center justify-center transition-colors duration-500 ${phase === "uploading" || phase === "done"
+                                className={`flex-1 border-2 border-dashed rounded-xl flex flex-col items-center justify-center min-h-0 transition-colors duration-500 ${phase === "uploading" || phase === "done"
                                         ? "border-emerald-200 bg-emerald-50/30"
                                         : "border-slate-100 bg-slate-50/50"
                                     }`}
@@ -100,17 +99,17 @@ export default function ImportCard() {
                                             key="progress"
                                             initial={{ opacity: 0, scale: 0.9 }}
                                             animate={{ opacity: 1, scale: 1 }}
-                                            className="w-full px-6 flex flex-col items-center"
+                                            className="w-full px-3 flex flex-col items-center"
                                         >
-                                            <FileSpreadsheet className={`w-10 h-10 mb-3 ${phase === "done" ? "text-emerald-500" : "text-slate-400"}`} />
-                                            <div className="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                                            <FileSpreadsheet className={`w-7 h-7 mb-2 ${phase === "done" ? "text-emerald-500" : "text-slate-400"}`} />
+                                            <div className="w-full h-1 bg-slate-100 rounded-full overflow-hidden">
                                                 <motion.div
                                                     className="h-full bg-emerald-500"
                                                     initial={{ width: 0 }}
                                                     animate={{ width: `${progress}%` }}
                                                 />
                                             </div>
-                                            <span className="text-[10px] font-bold text-slate-500 mt-2">
+                                            <span className="text-[9px] font-bold text-slate-500 mt-1.5">
                                                 {phase === "done" ? "1,240 clients importés !" : `Analyse... ${progress}%`}
                                             </span>
                                         </motion.div>
@@ -118,12 +117,12 @@ export default function ImportCard() {
                                         <motion.div
                                             key="idle"
                                             className="flex flex-col items-center"
-                                            animate={{ y: [0, 5, 0] }}
+                                            animate={{ y: [0, 4, 0] }}
                                             transition={{ repeat: Infinity, duration: 2 }}
                                         >
-                                            <ArrowDown className="w-6 h-6 text-slate-300 mb-2" />
-                                            <p className="text-[11px] text-slate-400 font-medium px-4 text-center">
-                                                Glissez votre fichier .csv ou .xlsx ici
+                                            <ArrowDown className="w-4 h-4 text-slate-300 mb-1" />
+                                            <p className="text-[9px] text-slate-400 font-medium px-2 text-center">
+                                                Glissez .csv ou .xlsx ici
                                             </p>
                                         </motion.div>
                                     )}
@@ -131,19 +130,18 @@ export default function ImportCard() {
                             </div>
                         </div>
 
-                        {/* Status Button */}
-                        <div className="mt-5 relative">
+                        <div className="mt-3 relative">
                             <motion.div
                                 animate={{
                                     scale: phase === "click" ? 0.95 : (phase === "done" ? 1.05 : 1)
                                 }}
                                 className={`
-                                    w-full flex items-center justify-center gap-2 text-white text-xs font-bold py-3 rounded-xl shadow-lg 
+                                    w-full flex items-center justify-center gap-1.5 text-white text-[10px] font-bold py-2 rounded-lg shadow-lg 
                                     transition-all duration-700 ease-in-out
                                     ${phase === "done" ? "bg-emerald-600 shadow-emerald-700/30" : "bg-slate-900 shadow-slate-900/20"}
                                 `}
                             >
-                                {phase === "done" ? <CheckCircle2 className="w-4 h-4" /> : <Zap className="w-4 h-4" />}
+                                {phase === "done" ? <CheckCircle2 className="w-3 h-3" /> : <Zap className="w-3 h-3" />}
                                 <span>
                                     {phase === "done" ? "Prêt à envoyer !" : "Démarrage instantané"}
                                 </span>
@@ -151,7 +149,6 @@ export default function ImportCard() {
                         </div>
                     </div>
 
-                    {/* Cursor with "Ghost File" during movement */}
                     <div style={{ opacity: phase === "idle" ? 0 : 1, transition: "opacity 0.2s" }}>
                         <div className="relative">
                             <AnimatedCursor phase={phase} cursorPos={cursorPos} />
@@ -159,28 +156,27 @@ export default function ImportCard() {
                                 <motion.div
                                     style={{
                                         position: 'absolute',
-                                        left: cursorPos.x + 15,
-                                        top: cursorPos.y + 15
+                                        left: cursorPos.x + 12,
+                                        top: cursorPos.y + 12
                                     }}
-                                    className="bg-white p-2 rounded shadow-lg border border-slate-200"
+                                    className="bg-white p-1.5 rounded shadow-lg border border-slate-200"
                                 >
-                                    <FileSpreadsheet className="w-4 h-4 text-emerald-600" />
+                                    <FileSpreadsheet className="w-3 h-3 text-emerald-600" />
                                 </motion.div>
                             )}
                         </div>
                     </div>
                 </div>
 
-                {/* Footer */}
-                <div className="p-8 bg-white border-t border-slate-50 text-left">
-                    <div className="flex items-center gap-3 mb-3">
-                        <div className="bg-emerald-50 p-2 rounded-lg">
-                            <Zap className="text-emerald-900 w-5 h-5" />
+                <div className="p-4 bg-white border-t border-slate-50 text-left flex-shrink-0">
+                    <div className="flex items-center gap-2 mb-1.5">
+                        <div className="bg-emerald-50 p-1.5 rounded-md">
+                            <Zap className="text-emerald-900 w-4 h-4" />
                         </div>
-                        <h3 className="text-lg font-bold text-slate-900 tracking-tight">Importation en 1 Clic</h3>
+                        <h3 className="text-sm font-bold text-slate-900 tracking-tight">Importation en 1 Clic</h3>
                     </div>
-                    <p className="text-slate-500 text-sm leading-relaxed">
-                        Glissez-déposez votre fichier client (Excel, CRM) et <strong className="text-emerald-900 font-semibold">commencez à communiquer</strong> avec votre base en moins de 2 minutes.
+                    <p className="text-slate-500 text-xs leading-relaxed">
+                        Glissez-déposez votre fichier (Excel, CRM) et <strong className="text-emerald-900 font-semibold">commencez à communiquer</strong> en moins de 2 minutes.
                     </p>
                 </div>
             </motion.div>
