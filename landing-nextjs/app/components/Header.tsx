@@ -97,15 +97,23 @@ export default function Header() {
           }
         `}
       >
-        <div className="flex h-[56px] items-center justify-between p-4">
+        <div className="flex h-[56px] items-center justify-between px-3">
           <Link
             href="/"
             onClick={handleHomeClick}
             className="flex items-center flex-1"
           >
             <Logo />
-            <span className="font-extrabold text-xl md:text-3xl text-fuchsia-900">
-              SMSClient
+            <span
+              className={`
+                inline-block overflow-hidden whitespace-nowrap
+                transition-[max-width] duration-500 ease-in-out
+                ${isPageScrolled ? "max-w-0" : "max-w-[200px] md:max-w-[280px]"}
+              `}
+            >
+              <span className="inline-block font-semibold text-xl md:text-3xl text-violet-400">
+                Smsclient.fr
+              </span>
             </span>
           </Link>
 

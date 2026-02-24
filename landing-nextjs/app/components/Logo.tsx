@@ -1,29 +1,46 @@
-import React from 'react';
+import React from "react";
 
-const Logo = () => {
-    return (
-        <div className="scale-50 md:scale-75 flex-none group relative flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-fuchsia-600 to-fuchsia-900 transition-all duration-300 cursor-pointer">
-            {/* Main SVG Icon */}
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="w-10 h-10 text-white"
-            >
-                {/* Chat Bubble Base */}
-                <path d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75a9.75 9.75 0 001.015 4.353l-1.015 3.382a.75.75 0 00.942.942l3.382-1.015A9.75 9.75 0 0012 21.75c5.385 0 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25z" />
+/** Taille du logo (classes Tailwind). Exemples : "w-12 h-12", "w-20 h-20", "w-24 h-24" */
+const LOGO_SIZE = "w-24 h-24";
 
-                {/* Accent Plus/Star Icon */}
-                <path
-                    transform="translate(15, 15) scale(1.2) translate(-15, -15)"
-                    fillRule="evenodd"
-                    d="M14.615 8.25a.75.75 0 01.75.75v.75h.75a.75.75 0 010 1.5h-.75v.75a.75.75 0 01-1.5 0v-.75h-.75a.75.75 0 010-1.5h.75V9a.75.75 0 01.75-.75z"
-                    clipRule="evenodd"
-                    className="fill-yellow-400"
-                />
-            </svg>
-        </div>
-    );
+type LogoProps = {
+  /** Override container size/scale. Examples: "w-12 h-12", "scale-100", "w-32 h-32" */
+  className?: string;
+};
+
+const Logo = ({ className = "" }: LogoProps) => {
+  return (
+    <div
+      className={`scale-50 md:scale-75 flex-none group relative flex items-center justify-center ${LOGO_SIZE} rounded-2xl transition-all duration-300 cursor-pointer overflow-visible ${className}`}
+    >
+      <svg
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="-2 -2 62 62"
+        className="w-full h-full overflow-visible"
+        style={{ shapeRendering: "geometricPrecision" }}
+      >
+        <g filter="url(#logo-round)">
+          <polygon
+            className="fill-amber-300"
+            points="0,22.032 17.064,31.032 58.064,10.032"
+          />
+          <polygon
+            className="fill-pink-500"
+            points="24.064,35.032 20.064,48.032 58.064,10.032"
+          />
+          <polygon
+            className="fill-purple-300"
+            points="17.064,31.032 24.064,35.032 44.064,48.032 58.064,10.032"
+          />
+          <polygon
+            className="fill-pink-400"
+            points="24.064,35.032 20.127,48.032 17.064,31.032 58.064,10.032"
+          />
+        </g>
+      </svg>
+    </div>
+  );
 };
 
 export default Logo;
