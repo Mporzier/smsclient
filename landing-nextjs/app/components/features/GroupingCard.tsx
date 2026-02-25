@@ -187,16 +187,16 @@ export default function GroupingCard() {
               <Target className="text-indigo-900 w-4 h-4" />
             </div>
             <h3 className="text-sm font-bold text-slate-900 tracking-tight">
-              Ciblage Client Précis
+              Segmentation des clients
             </h3>
           </div>
           <p className="text-slate-500 text-xs leading-relaxed">
-            Ne parlez qu&apos;aux bons clients.{" "}
+            Envoyez vos campagnes SMS aux bons clients grâce à une
             <strong className="text-indigo-900 font-semibold">
-              Créez des groupes intelligents
+              segmentation intelligente.
             </strong>{" "}
-            pour multiplier vos conversions par 3 avec des offres
-            ultra-personnalisées.
+            Créez des groupes ciblés et augmentez vos ventes avec des SMS
+            personnalisés.
           </p>
         </div>
       </motion.div>

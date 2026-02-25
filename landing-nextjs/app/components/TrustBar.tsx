@@ -8,7 +8,7 @@ const trustItems = [
   },
   {
     icon: MonitorSmartphone,
-    text: "iOS & Android",
+    text: "PC & Smartphone",
     iconColor: "text-cyan-400", // Équivalent Mint
   },
   {
@@ -18,7 +18,7 @@ const trustItems = [
   },
   {
     icon: Zap,
-    text: "Délivrabilité 99%",
+    text: "Délivrabilité 100%",
     iconColor: "text-rose-400", // Équivalent Coral
   },
 ];
@@ -27,8 +27,8 @@ export default function TrustBar() {
   return (
     <section className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] bg-slate-100 py-6 border-y border-slate-200 antialiased">
       <div className="max-w-5xl mx-auto flex flex-col items-center">
-        <p className="text-sm text-slate-400 text-center mb-6">
-          Conçu pour les commerçants exigeants
+        <p className="text-sm text-slate-400 text-center mb-2">
+          Pensé par et pour les commerçants
         </p>
         <div className="flex flex-wrap justify-center gap-4">
           {trustItems.map((item, index) => {

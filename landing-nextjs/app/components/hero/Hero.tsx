@@ -57,12 +57,12 @@ export default function Hero() {
             className="badge inline-flex items-center gap-2 px-4 py-2 rounded-full text-[0.85rem] font-medium bg-cyan-100 text-cyan-500 mb-4"
           >
             <span className="badge-dot h-2 w-2 rounded-full bg-[#5BC0C9] animate-pulse" />
-            <span>Bientôt disponible sur iOS & Android</span>
+            <span>Sans abonnement, ni engagement.</span>
           </motion.div>
 
           <motion.h1
             variants={revealVariants}
-            className="text-[#2D3436] mb-[16px] font-extrabold leading-[1.1] tracking-[-0.02em] text-[clamp(2rem,5vw,3.5rem)]"
+            className="text-[#2D3436] mb-8 font-extrabold leading-[1.1] tracking-[-0.02em] text-[clamp(2rem,5vw,3.5rem)]"
           >
             L&apos;IA écrit vos SMS,
             <br />
@@ -77,9 +77,12 @@ export default function Hero() {
             variants={revealVariants}
             className="text-xl text-gray-600 mb-8 max-w-xl"
           >
-            Générez automatiquement des campagnes sans rédiger.
-            <br />
-            Importez vos contacts, on s&apos;occupe du reste.
+            <span className="text-2xl">
+              Un outil pour conçu pour les petits commerçants.
+            </span>
+            <span className="block mb-4" />
+            Ajoutez vos contacts, lancez vos campagnes et envoyez vos SMS
+            simplement et rapidement.
           </motion.p>
 
           <motion.div

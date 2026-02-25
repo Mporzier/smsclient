@@ -164,11 +164,7 @@ export default function AICard() {
                   ref={buttonRef}
                   animate={{
                     scale:
-                      phase === "click"
-                        ? 0.95
-                        : phase === "done"
-                          ? 1.05
-                          : 1,
+                      phase === "click" ? 0.95 : phase === "done" ? 1.05 : 1,
                   }}
                   className={`
                     w-full flex items-center justify-center gap-1.5 text-white text-[10px] font-bold py-2 rounded-lg shadow-lg
@@ -208,10 +204,10 @@ export default function AICard() {
                     {phase === "generating"
                       ? "Rédaction..."
                       : phase === "sending"
-                        ? "Envoi en cours..."
-                        : phase === "done"
-                          ? "Envoyé !"
-                          : "Générer le message"}
+                      ? "Envoi en cours..."
+                      : phase === "done"
+                      ? "Envoyé !"
+                      : "Générer le message"}
                   </span>
                 </motion.div>
               </div>
@@ -237,7 +233,10 @@ export default function AICard() {
                     initial={{ opacity: 0, y: 8, scale: 0.96 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0 }}
-                    transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
+                    transition={{
+                      duration: 0.35,
+                      ease: [0.25, 0.46, 0.45, 0.94],
+                    }}
                     className="bg-white rounded-lg rounded-bl-sm shadow-md px-2.5 py-2 text-[9px] text-slate-700 leading-relaxed whitespace-pre-wrap text-left border border-slate-100/80 max-h-full overflow-y-auto"
                   >
                     {sentMessage}
@@ -282,7 +281,7 @@ export default function AICard() {
               <Sparkles className="text-fuchsia-900 w-4 h-4" />
             </div>
             <h3 className="text-sm font-bold text-slate-900 tracking-tight">
-              IA Rédactrice
+              IA de rédaction SMS
             </h3>
           </div>
           <p className="text-slate-500 text-xs leading-relaxed">

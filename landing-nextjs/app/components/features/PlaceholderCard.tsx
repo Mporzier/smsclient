@@ -80,10 +80,7 @@ export default function PlaceholderCard() {
       );
 
       timeouts.push(
-        setTimeout(
-          runCycle,
-          1400 + SENDING_DURATION_MS + RESULTS_DISPLAY_MS
-        )
+        setTimeout(runCycle, 1400 + SENDING_DURATION_MS + RESULTS_DISPLAY_MS)
       );
     };
 
@@ -175,10 +172,7 @@ export default function PlaceholderCard() {
                   className="h-full bg-violet-400 rounded-full"
                   initial={{ width: 0 }}
                   animate={{
-                    width:
-                      phase === "results"
-                        ? `${openRate}%`
-                        : "0%",
+                    width: phase === "results" ? `${openRate}%` : "0%",
                   }}
                   transition={{ duration: 0.5, ease: "easeOut" }}
                 />
@@ -207,10 +201,7 @@ export default function PlaceholderCard() {
                   className="h-full bg-indigo-400 rounded-full"
                   initial={{ width: 0 }}
                   animate={{
-                    width:
-                      phase === "results"
-                        ? `${clickRate}%`
-                        : "0%",
+                    width: phase === "results" ? `${clickRate}%` : "0%",
                   }}
                   transition={{ duration: 0.5, ease: "easeOut" }}
                 />
@@ -225,19 +216,15 @@ export default function PlaceholderCard() {
               <BarChart3 className="text-violet-900 w-4 h-4" />
             </div>
             <h3 className="text-sm font-bold text-slate-900 tracking-tight">
-              Résultats en direct
+              Suivi des campagnes SMS en temps réel
             </h3>
           </div>
           <p className="text-slate-500 text-xs leading-relaxed">
-            Suivez en temps réel vos envois,{" "}
+            Suivez en temps réel vos campagnes SMS,{" "}
             <strong className="text-violet-900 font-semibold">
-              taux d&apos;ouverture
+              taux d&apos;ouverture, taux de clics et performances détaillées
             </strong>{" "}
-            et{" "}
-            <strong className="text-violet-900 font-semibold">
-              clics
-            </strong>
-            . Pilotez vos campagnes SMS avec des indicateurs clairs.
+            Analysez vos résultats et optimisez vos envois SMS.
           </p>
         </div>
       </motion.div>

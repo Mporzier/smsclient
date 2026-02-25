@@ -111,8 +111,8 @@ export default function Header() {
                 ${isPageScrolled ? "max-w-0" : "max-w-[200px] md:max-w-[280px]"}
               `}
             >
-              <span className="inline-block font-semibold text-xl md:text-3xl text-violet-400">
-                Smsclient.fr
+              <span className="inline-block font-semibold text-2xl text-slate-900">
+                smsclient.fr
               </span>
             </span>
           </Link>

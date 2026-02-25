@@ -18,9 +18,13 @@ const smoothTransition = {
 //                 6 7 7
 // Feature 0 = row-span-2 (col 1), Feature 6 = col-span-2 (ligne 3)
 const LAYOUT: { rowSpan?: number; colSpan?: number }[] = [
-  { rowSpan: 2 },       // 0: occupe 2 lignes à gauche
-  {}, {}, {}, {}, {},  // 1-5: cellule normale
-  { colSpan: 2 },      // 6: occupe 2 colonnes à droite
+  { rowSpan: 2 }, // 0: occupe 2 lignes à gauche
+  {},
+  {},
+  {},
+  {},
+  {}, // 1-5: cellule normale
+  { colSpan: 2 }, // 6: occupe 2 colonnes à droite
 ];
 
 const cardVariants = {
@@ -76,8 +80,8 @@ export default function Features() {
             transition={{ ...smoothTransition, delay: 0.2 }}
             className="text-xl text-slate-500 max-w-2xl mx-auto"
           >
-            Des outils qu&apos;il vous faut pour gagner du temps et booster
-            votre business.
+            Des outils de marketing SMS pour gagner du temps, fidéliser vos
+            clients et augmenter vos ventes.
           </motion.p>
         </div>
 

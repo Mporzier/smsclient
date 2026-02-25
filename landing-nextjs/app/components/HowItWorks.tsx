@@ -6,11 +6,11 @@ import { UserPlus, Sparkles, SendHorizontal } from "lucide-react";
 const steps = [
   {
     number: "1",
-    title: "Ajoutez vos contacts",
+    title: "Importez vos contacts client",
     description:
-      "Importez votre liste ou ajoutez vos clients en quelques clics.",
-    tag: "Import en ",
-    tagBold: "5 secondes",
+      "Importez votre liste de clients en un clic, ou ajoutez vos contacts manuellement.",
+    tag: "Import ",
+    tagBold: "rapide",
     icon: UserPlus,
     numClass: "bg-rose-400 shadow-lg shadow-rose-300/40",
     iconBgClass: "bg-rose-100",
@@ -18,11 +18,11 @@ const steps = [
   },
   {
     number: "2",
-    title: "L'IA écrit vos SMS",
+    title: "L'IA écrit vos SMS marketing",
     description:
-      "Décrivez votre offre en quelques mots, notre IA génère vos SMS prêts à envoyer.",
+      "Décrivez votre besoin en quelques mots, notre Intelligence Artificielle génère automatiquement vos SMS prêts à envoyer.",
     tag: "Rédaction ",
-    tagBold: "intelligente",
+    tagBold: "automatique",
     icon: Sparkles,
     numClass: "bg-amber-400 shadow-lg shadow-amber-300/40",
     iconBgClass: "bg-amber-100",
@@ -30,11 +30,11 @@ const steps = [
   },
   {
     number: "3",
-    title: "Envoyez en un clic",
+    title: "Lancez votre campagne en un clic",
     description:
-      "Diffusez vos messages instantanément ou programmez votre campagne.",
-    tag: "Réception ",
-    tagBold: "garantie",
+      "Envoyez instantanément ou planifiez vos SMS pour le moment idéal : soldes, fêtes, anniversaires clients.",
+    tag: "Envoi ",
+    tagBold: "immédiat ou programmé",
     icon: SendHorizontal,
     numClass: "bg-violet-400 shadow-lg shadow-violet-300/40",
     iconBgClass: "bg-violet-100",
@@ -60,7 +60,7 @@ export default function HowItWorks() {
             transition={smoothTransition}
             className="inline-block px-4 py-2 rounded-full text-sm bg-amber-100 font-semibold text-slate-500 tracking-wider mb-4"
           >
-            Simple comme 1-2-3
+            Envoi de SMS en 3 étapes
           </motion.span>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -69,7 +69,7 @@ export default function HowItWorks() {
             transition={{ ...smoothTransition, delay: 0.1 }}
             className="text-4xl md:text-5xl font-extrabold text-slate-800 mb-6"
           >
-            Comment ça marche ?
+            Comment envoyer des SMS à vos clients ?
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -78,8 +78,8 @@ export default function HowItWorks() {
             transition={{ ...smoothTransition, delay: 0.2 }}
             className="text-xl text-slate-500 max-w-2xl mx-auto"
           >
-            De l&apos;ajout de vos contacts à l&apos;envoi de votre première
-            campagne, en quelques minutes.
+            De l&apos;importation de vos contacts à l&apos;envoi de votre
+            première campagne SMS, en quelques minutes seulement.
           </motion.p>
         </div>
 

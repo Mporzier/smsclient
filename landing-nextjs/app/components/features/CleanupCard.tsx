@@ -1,12 +1,6 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-import {
-  ShieldCheck,
-  Smartphone,
-  Check,
-  RefreshCw,
-  X,
-} from "lucide-react";
+import { ShieldCheck, Smartphone, Check, RefreshCw, X } from "lucide-react";
 import { motion } from "framer-motion";
 import { AnimatedCursor } from "./animatedIcons/AnimatedCursor";
 
@@ -214,16 +208,15 @@ export default function CleanupCard() {
               <ShieldCheck className="text-blue-900 w-4 h-4" />
             </div>
             <h3 className="text-sm font-bold text-slate-900 tracking-tight">
-              Nettoyage Inclus
+              Vérification et nettoyage des numéros
             </h3>
           </div>
           <p className="text-slate-500 text-xs leading-relaxed">
-            Évitez de payer pour rien. Notre système{" "}
+            Évitez les SMS non délivrés. Notre système{" "}
             <strong className="text-blue-900 font-semibold">
-              vérifie la validité des numéros
+              vérifie la validité des numéros et supprime les doublons
             </strong>{" "}
-            avant l&apos;envoi pour garantir que 100% de votre budget arrive à
-            destination.
+            avant l&apos;envoi pour garantir un budget optimisé.
           </p>
         </div>
       </motion.div>
