@@ -9,3 +9,145 @@ body {
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
+
+/* Blog article styles */
+.prose {
+  font-size: 1.125rem;
+  line-height: 1.85;
+}
+
+.prose > * + * {
+  margin-top: 1.5em;
+}
+
+.prose p {
+  margin-bottom: 1.5em;
+}
+
+.prose h2 {
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.prose h3 {
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.prose hr {
+  margin: 3.5rem 0;
+  border: none;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #e5e7eb 20%, #e5e7eb 80%, transparent);
+}
+
+.prose ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 1.5em 0;
+}
+
+.prose ul > li {
+  position: relative;
+  padding-left: 1.75rem;
+  margin-bottom: 0.75em;
+}
+
+.prose ul > li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 8px;
+  height: 8px;
+  background: linear-gradient(135deg, #d946ef, #a855f7);
+  border-radius: 50%;
+}
+
+.prose ol {
+  padding-left: 1.5rem;
+  margin: 1.5em 0;
+}
+
+.prose ol > li {
+  padding-left: 0.5rem;
+  margin-bottom: 0.75em;
+}
+
+.prose ol > li::marker {
+  color: #a855f7;
+  font-weight: 600;
+}
+
+.prose blockquote {
+  margin: 2rem 0;
+  padding: 1.25rem 1.5rem;
+  background: linear-gradient(to right, #fdf4ff, transparent);
+  border-left: 4px solid #d946ef;
+  border-radius: 0 0.75rem 0.75rem 0;
+}
+
+.prose blockquote p {
+  margin: 0;
+  font-style: italic;
+  color: #374151;
+}
+
+.prose blockquote p::before,
+.prose blockquote p::after {
+  content: none;
+}
+
+/* First paragraph after h1 - make it stand out */
+.prose h1 + p {
+  font-size: 1.25rem;
+  color: #4b5563;
+  line-height: 1.7;
+}
+
+/* Smooth transitions for links */
+.prose a {
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+/* Tables */
+.prose table {
+  width: 100%;
+  margin: 2rem 0;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.prose th {
+  background: #fdf4ff;
+  color: #86198f;
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 2px solid #f0abfc;
+}
+
+.prose td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.prose tr:hover td {
+  background: #fefce8;
+}
+
+/* Code */
+.prose code {
+  font-size: 0.9em;
+  padding: 0.2em 0.4em;
+  background: #fdf4ff;
+  color: #a21caf;
+  border-radius: 0.25rem;
+}
+
+/* Spacing after intro section */
+.prose h1 + hr {
+  margin-top: 2rem;
+}

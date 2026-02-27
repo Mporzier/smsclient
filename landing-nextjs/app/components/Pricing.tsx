@@ -60,13 +60,13 @@ export default function Pricing() {
           <div className="rounded-xl bg-white p-8 xl:p-10 border border-slate-200">
             <div className="border-b border-b-slate-200 pb-8 text-center">
               <h3 className="text-xl font-bold leading-8 text-slate-900">
-                Free
+                Découverte
               </h3>
               <div className="mt-4 flex items-baseline justify-center gap-x-1">
                 <span className="text-4xl font-extrabold tracking-tight text-slate-900">
-                  0€
+                  0
                 </span>
-                <span className="text-sm text-slate-400">pour toujours</span>
+                <span className="text-sm text-slate-400">€ / mois</span>
               </div>
             </div>
             <ul className="mt-4 space-y-3 text-sm leading-6" role="list">
@@ -158,17 +158,17 @@ export default function Pricing() {
               className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-gradient-to-br from-violet-400 to-rose-400 px-3.5 py-1.5 text-xs font-semibold text-white shadow-md"
               aria-hidden
             >
-              Recommandé
+              🚀 Rédaction avec l&apos;IA
             </div>
             <div className="border-b border-b-slate-200 pb-8 text-center">
               <h3 className="text-xl font-bold leading-8 text-slate-900">
-                Premium
+                Professionnel
               </h3>
               <div className="mt-4 flex items-baseline justify-center gap-x-1">
                 <span className="text-4xl font-extrabold tracking-tight text-slate-900">
-                  9,99€
+                  19
                 </span>
-                <span className="text-sm text-slate-400">/ mois</span>
+                <span className="text-sm text-slate-400"> € / mois</span>
               </div>
             </div>
             <ul className="mt-4 space-y-3 text-sm leading-6" role="list">

@@ -84,15 +84,7 @@ export default async function PostPage({
 
         {/* Content Section */}
         <div
-          className="prose prose-lg max-w-none 
-          prose-headings:text-gray-900 prose-headings:font-bold prose-headings:tracking-tight
-          prose-p:text-gray-600 prose-p:leading-relaxed
-          prose-a:text-fuchsia-600 prose-a:no-underline hover:prose-a:text-fuchsia-800
-          prose-strong:text-gray-900 prose-strong:font-bold
-          prose-img:rounded-3xl prose-img:shadow-lg
-          prose-code:text-fuchsia-600 prose-code:bg-fuchsia-50 prose-code:px-1 prose-code:rounded
-          prose-blockquote:border-fuchsia-500 prose-blockquote:bg-fuchsia-50/30 prose-blockquote:py-1 prose-blockquote:rounded-r-xl
-        "
+          className="prose max-w-none prose-headings:text-gray-900 prose-headings:font-bold prose-h3:text-fuchsia-900 prose-p:text-gray-600 prose-a:text-fuchsia-600 prose-a:font-medium prose-a:underline prose-a:underline-offset-2 prose-a:decoration-fuchsia-200 hover:prose-a:text-fuchsia-800 prose-strong:text-gray-900 prose-strong:font-semibold prose-li:text-gray-600 prose-img:rounded-2xl prose-img:shadow-lg"
         >
           <div dangerouslySetInnerHTML={{ __html: post.content }} />
         </div>

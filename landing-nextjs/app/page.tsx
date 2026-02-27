@@ -2,7 +2,6 @@
 
 import Hero from "./components/hero/Hero";
 import FAQ from "./components/FAQ";
-import CampaignSimulator from "./components/CampaignSimulator";
 import Features from "./components/Features";
 import Pricing from "./components/Pricing";
 import TrustBar from "./components/TrustBar";
@@ -16,7 +15,6 @@ export default function Home() {
       <HowItWorks />
       <Features />
       <Pricing />
-      <CampaignSimulator />
       <FAQ />
     </div>
   );

@@ -1,7 +1,7 @@
 import React from "react";
 
 /** Taille du logo (classes Tailwind). Exemples : "w-12 h-12", "w-20 h-20", "w-24 h-24" */
-const LOGO_SIZE = "w-20 h-20";
+const LOGO_SIZE = "w-18 h-18";
 
 /** Configuration de l'étoile à 4 branches */
 const STAR_CONFIG = {

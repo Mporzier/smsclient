@@ -50,6 +50,8 @@ export default function Header() {
       threshold: 0,
     };
 
+    const ids = ["hero", "how-it-works", "features", "pricing", "faq"];
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -59,13 +61,6 @@ export default function Header() {
       });
     }, observerOptions);
 
-    const ids = [
-      "hero",
-      "features",
-      "campaign-simulator",
-      "sms-generator",
-      "faq",
-    ];
     ids.forEach((id) => {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
@@ -120,9 +115,9 @@ export default function Header() {
           <nav className="hidden md:flex items-center justify-center gap-8 flex-1">
             {[
               { name: "Accueil", id: "" },
+              { name: "Mode d'emploi", id: "how-it-works" },
               { name: "Fonctionnalités", id: "features" },
-              { name: "Simulateur", id: "campaign-simulator" },
-              { name: "Générateur", id: "sms-generator" },
+              { name: "Tarifs", id: "pricing" },
               { name: "FAQ", id: "faq" },
             ].map((item) => (
               <Link
@@ -140,10 +135,10 @@ export default function Header() {
                     setActiveId(item.id);
                   }
                 }}
-                className={`relative py-1 text-sm font-medium transition-colors duration-300
+                className={`relative py-1 text-sm font-medium transition-colors duration-300 whitespace-nowrap
                   ${
                     isHome && activeId === item.id
-                      ? "text-fuchsia-900"
+                      ? "text-sky-800"
                       : "text-gray-500 hover:text-gray-900"
                   }
                 `}
@@ -151,7 +146,7 @@ export default function Header() {
                 {item.name}
                 {isHome && (
                   <span
-                    className={`absolute bottom-0 left-0 h-0.5 bg-fuchsia-900 transition-all duration-300 
+                    className={`absolute bottom-0 left-0 h-0.5 bg-sky-800 transition-all duration-300 
                     ${activeId === item.id ? "w-full" : "w-0"}`}
                   />
                 )}
@@ -160,7 +155,7 @@ export default function Header() {
           </nav>
 
           <div className="flex-shrink-0 flex justify-end flex-1">
-            <button className="bg-fuchsia-900 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-fuchsia-800 transition-colors">
+            <button className="bg-sky-800 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-sky-700 transition-colors">
               Essayer gratuitement
             </button>
           </div>

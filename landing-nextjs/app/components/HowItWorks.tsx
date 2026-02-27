@@ -18,7 +18,7 @@ const steps = [
   },
   {
     number: "2",
-    title: "L'IA écrit vos SMS marketing",
+    title: "L'IA rédige vos SMS marketing",
     description:
       "Décrivez votre besoin en quelques mots, notre Intelligence Artificielle génère automatiquement vos SMS prêts à envoyer.",
     tag: "Rédaction ",
@@ -32,7 +32,7 @@ const steps = [
     number: "3",
     title: "Lancez votre campagne en un clic",
     description:
-      "Envoyez instantanément ou planifiez vos SMS pour le moment idéal : soldes, fêtes, anniversaires clients.",
+      "Envoyez vos SMS instantanément ou planifiez-les pour le moment idéal : soldes, fêtes, anniversaires clients.",
     tag: "Envoi ",
     tagBold: "immédiat ou programmé",
     icon: SendHorizontal,
